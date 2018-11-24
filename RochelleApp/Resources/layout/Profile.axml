@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/lifee">
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+              
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:src="@drawable/image2"
+                    android:layout_height="100dp"
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="150dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    android:textColor="#363147"
+                    android:text="Eugênio Maria" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#8b8a8d"
+                    android:maxLines="2"
+                    android:letterSpacing="0.1"
+                    android:text="Dica 1: faça indicação de serviços para ganhar mais pontos e trocar por prêmios" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="#c6cbcf"
+                    android:layout_marginTop="25dp"></View>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="852"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorHead"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorpara"
+                            android:text="Pontos" />
+                    </LinearLayout>
+        
+                </LinearLayout>
+                
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="#c6cbcf"
+                    android:layout_marginTop="15dp"></View>
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/circle"
+                        android:layout_marginTop="8dp"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:letterSpacing="0.08"
+                        android:textColor="#363147"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="Como ganhar pontos?" />
+                  
+                </LinearLayout>
+                
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="#c6cbcf"
+                    android:layout_marginTop="15dp"></View>
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/circle"
+                        android:layout_marginTop="8dp"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Trocar pontos por prêmios"
+                        android:textSize="20dp"
+                        android:letterSpacing="0.08"
+                        android:textColor="#363147"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="20dp"/>
+                </LinearLayout>
+                
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="#c6cbcf"
+                    android:layout_marginTop="15dp"></View>
+                
+                
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/circle"
+                        android:layout_marginTop="8dp"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Extrato de pontos"
+                        android:textSize="20dp"
+                        android:letterSpacing="0.08"
+                        android:textColor="#363147"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="20dp"/>
+                </LinearLayout>
+                
+                
+                 <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="#c6cbcf"
+                    android:layout_marginTop="15dp"></View>
+            
+            </LinearLayout>           
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

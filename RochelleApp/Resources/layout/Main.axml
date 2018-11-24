@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout 
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/relative01">
+   
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/webView1"/>
+        
+        <TextView
+            android:id="@+id/MainBtnAcessar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:background="@drawable/round"
+            android:textColor="#CBD1DC"
+            android:gravity="center"
+            android:padding="14dp"
+            android:layout_marginTop="50dp"
+            android:layout_alignParentBottom="true"
+            android:text="Acessar Programa de Fidelidade" />
+
+</RelativeLayout>
