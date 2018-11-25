@@ -2,6 +2,7 @@
 using Android.Support.V4.App;
 using Android.OS;
 using RochelleApp.Fragments;
+using Me.Relex;
 
 namespace RochelleApp.Activitys
 {
@@ -9,6 +10,8 @@ namespace RochelleApp.Activitys
     public class InfocarroucelActivity : FragmentActivity
     {
         private ViewPager viewPager;
+        private CircleIndicator circleIndicator;
+        private ViewpagerAdapter viewpagerAdapter;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -18,10 +21,14 @@ namespace RochelleApp.Activitys
             SetContentView(Resource.Layout.Infocarroucel);
 
             viewPager = (ViewPager)FindViewById(Resource.Id.viewpager);
+            circleIndicator = (CircleIndicator)FindViewById(Resource.Id.circleindicator);
 
             Infopager1 tab1 = new Infopager1();
-            ViewpagerAdapter adapter = new ViewpagerAdapter(SupportFragmentManager, tab1);
-            viewPager.Adapter = adapter;
+            viewpagerAdapter = new ViewpagerAdapter(SupportFragmentManager, tab1);
+            viewPager.Adapter = viewpagerAdapter;
+            circleIndicator.SetViewPager(viewPager);
+            viewpagerAdapter.RegisterDataSetObserver(circleIndicator.GetDataSetObserver());
+
 
         }
     }
@@ -46,20 +53,20 @@ namespace RochelleApp.Activitys
             switch (position)
             {
                 case 0:
-                    Infopager1 tab1 = new Infopager1();
+                    Infopager1 tab1 = Infopager1.newInstance();
                     return tab1;
                 case 1:
-                    Infopager2 tab2 = new Infopager2();
+                    Infopager2 tab2 = Infopager2.newInstance();
                     return tab2;
                 case 2:
-                    Infopager3 tab3 = new Infopager3();
+                    Infopager3 tab3 = Infopager3.newInstance();
                     return tab3;
                 case 3:
-                    Infopager4 tab4 = new Infopager4();
+                    Infopager4 tab4 = Infopager4.newInstance();
                     return tab4;
 
                 default:
-                    Infopager1 tab = new Infopager1();
+                    Infopager1 tab = Infopager1.newInstance();
                     return tab;
 
             }

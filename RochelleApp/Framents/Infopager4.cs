@@ -9,9 +9,9 @@ namespace RochelleApp.Fragments
 {
     public class Infopager4 : Fragment
     {
-        public Infopager4() { }
+        //public Infopager4() { }
 
-        public static Infopager4 newInstance(String question, String answer)
+        public static Infopager4 newInstance()
         {
             Infopager4 fragment = new Infopager4();
             return fragment;

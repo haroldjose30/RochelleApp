@@ -4,38 +4,146 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-
-        <ImageView
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="150dp"
-            android:src="@drawable/info"
-            android:scaleType="fitCenter"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="GET PROMOTION"
-            android:textSize="20sp"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="70dp"
-            android:gravity="center"
-            android:textColor="#000000"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Want to wait for a low price?
-Get discount for millions of products"
-            android:textSize="14sp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_gravity="bottom"
-            android:gravity="center"
-            android:layout_marginTop="15dp"
-            android:textColor="#000000"/>
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/banner_cartao2"
+        android:scaleType="fitCenter"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TABELA DE PONTOS"
+        android:textSize="20sp"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:textColor="#000000"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Veja abaixo como é fácil conseguir pontos!"
+        android:textSize="15sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+250pt indicando cada amigo."
+        android:textSize="15sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="bottom"
+        android:gravity="start"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/grey_500"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+750pt se o indicado fizer o cadastro."
+        android:textSize="15sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="bottom"
+        android:gravity="start"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/grey_500"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+100pt registrando like na pagina do facebook."
+        android:textSize="15sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="bottom"
+        android:gravity="start"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/grey_500"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+250pt Follow no instagram."
+        android:textSize="15sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="bottom"
+        android:gravity="start"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/grey_500"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+100pt para Sergir no twitter."
+        android:textSize="15sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="bottom"
+        android:gravity="start"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/grey_500"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+1000pt registrando seu depoimento."
+        android:textSize="15sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="bottom"
+        android:gravity="start"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/grey_500"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+200pt completando e detalhando seu cadastro."
+        android:textSize="15sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="bottom"
+        android:gravity="start"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/grey_500"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+500pt / R$ em compra de produtos ou serviços."
+        android:textSize="15sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="bottom"
+        android:gravity="start"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/grey_500"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+500pt / R$ ref. a primeira aquisiçao produtos e serviços adquirido por quem você indicou."
+        android:textSize="15sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="bottom"
+        android:gravity="start"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/grey_500"/> 
+    
+    
+    <TextView
+        android:id="@+id/HomeBtnMaisInformacao"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="30dp"
+        android:text="+ ir para o cadastro +"
+        android:textSize="13dp"
+        android:textColor="@color/accent_material_light"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"/>
+    
+    
 </LinearLayout>

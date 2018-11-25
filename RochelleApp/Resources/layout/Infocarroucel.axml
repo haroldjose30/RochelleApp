@@ -14,6 +14,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/viewpager"/>
+        
+<me.relex.circleindicator.CircleIndicator
+        android:id="@+id/circleindicator"
+        android:layout_marginTop="185dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom"
+        app:ci_drawable="@drawable/ic_brightness_1_black_24dp"
+        app:ci_drawable_unselected="@drawable/ic_brightness_1_black"/>
+        
 </FrameLayout>
 
 </LinearLayout>
