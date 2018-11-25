@@ -29,7 +29,7 @@ namespace RochelleApp
             MainBtnAcessar = (TextView)FindViewById(Resource.Id.MainBtnAcessar);
 
             MainBtnAcessar.Click += (sender, e) => {
-                var it = new Intent(this, typeof(LoginActivity));
+                var it = new Intent(this, typeof(InfocarroucelActivity));
                 this.StartActivity(it);
             };
            

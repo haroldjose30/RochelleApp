@@ -90,6 +90,11 @@
     <Compile Include="Activitys\SignupActivity.cs" />
     <Compile Include="Activitys\ProfileActivity.cs" />
     <Compile Include="Activitys\ShareActivity.cs" />
+    <Compile Include="Activitys\InfocarroucelActivity.cs" />
+    <Compile Include="Framents\Infopager1.cs" />
+    <Compile Include="Framents\Infopager2.cs" />
+    <Compile Include="Framents\Infopager3.cs" />
+    <Compile Include="Framents\Infopager4.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -136,9 +141,16 @@
     <AndroidResource Include="Resources\drawable\newborn.png" />
     <AndroidResource Include="Resources\drawable\whatsapp.png" />
     <AndroidResource Include="Resources\drawable\email.png" />
+    <AndroidResource Include="Resources\drawable\info.png" />
+    <AndroidResource Include="Resources\layout\Infopager1.axml" />
+    <AndroidResource Include="Resources\layout\Infopager2.axml" />
+    <AndroidResource Include="Resources\layout\Infopager3.axml" />
+    <AndroidResource Include="Resources\layout\Infopager4.axml" />
+    <AndroidResource Include="Resources\layout\Infocarroucel.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Activitys\" />
+    <Folder Include="Framents\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets')" />
