@@ -1840,91 +1840,118 @@ namespace RochelleApp
 			public const int abc_vector_test = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int circle = 2130837587;
+			public const int acompanhamento = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int fb = 2130837588;
+			public const int aniversario = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int google = 2130837589;
+			public const int casamento = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int image2 = 2130837590;
+			public const int circle = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int lifee = 2130837591;
+			public const int comemorativo = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int like = 2130837592;
+			public const int email = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int mon = 2130837593;
+			public const int ensaiogestante = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int newlogo = 2130837594;
+			public const int fb = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int notification_action_background = 2130837595;
+			public const int google = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int notification_bg = 2130837596;
+			public const int image2 = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int notification_bg_low = 2130837597;
+			public const int lifee = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int notification_bg_low_normal = 2130837598;
+			public const int like = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int notification_bg_low_pressed = 2130837599;
+			public const int mon = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int notification_bg_normal = 2130837600;
+			public const int nascimento = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int notification_bg_normal_pressed = 2130837601;
+			public const int newborn = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int notification_icon_background = 2130837602;
-			
-			// aapt resource value: 0x7f02006e
-			public const int notification_template_icon_bg = 2130837614;
-			
-			// aapt resource value: 0x7f02006f
-			public const int notification_template_icon_low_bg = 2130837615;
+			public const int newlogo = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int notification_tile_bg = 2130837603;
+			public const int notification_action_background = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int notify_panel_notification_icon_bg = 2130837604;
+			public const int notification_bg = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int round = 2130837605;
+			public const int notification_bg_low = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int social = 2130837606;
+			public const int notification_bg_low_normal = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int social1 = 2130837607;
+			public const int notification_bg_low_pressed = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int social2 = 2130837608;
+			public const int notification_bg_normal = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int tooltip_frame_dark = 2130837609;
+			public const int notification_bg_normal_pressed = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int tooltip_frame_light = 2130837610;
+			public const int notification_icon_background = 2130837610;
+			
+			// aapt resource value: 0x7f020077
+			public const int notification_template_icon_bg = 2130837623;
+			
+			// aapt resource value: 0x7f020078
+			public const int notification_template_icon_low_bg = 2130837624;
 			
 			// aapt resource value: 0x7f02006b
-			public const int twiter = 2130837611;
+			public const int notification_tile_bg = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int zoo_logo = 2130837612;
+			public const int notify_panel_notification_icon_bg = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int zoologo = 2130837613;
+			public const int round = 2130837613;
+			
+			// aapt resource value: 0x7f02006e
+			public const int social = 2130837614;
+			
+			// aapt resource value: 0x7f02006f
+			public const int social1 = 2130837615;
+			
+			// aapt resource value: 0x7f020070
+			public const int social2 = 2130837616;
+			
+			// aapt resource value: 0x7f020071
+			public const int tooltip_frame_dark = 2130837617;
+			
+			// aapt resource value: 0x7f020072
+			public const int tooltip_frame_light = 2130837618;
+			
+			// aapt resource value: 0x7f020073
+			public const int twiter = 2130837619;
+			
+			// aapt resource value: 0x7f020074
+			public const int whatsapp = 2130837620;
+			
+			// aapt resource value: 0x7f020075
+			public const int zoo_logo = 2130837621;
+			
+			// aapt resource value: 0x7f020076
+			public const int zoologo = 2130837622;
 			
 			static Drawable()
 			{

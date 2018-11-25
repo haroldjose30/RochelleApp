@@ -127,6 +127,15 @@
     <AndroidResource Include="Resources\drawable\twiter.png" />
     <AndroidResource Include="Resources\drawable\zoo_logo.png" />
     <AndroidResource Include="Resources\drawable\zoologo.png" />
+    <AndroidResource Include="Resources\drawable\acompanhamento.png" />
+    <AndroidResource Include="Resources\drawable\aniversario.png" />
+    <AndroidResource Include="Resources\drawable\casamento.png" />
+    <AndroidResource Include="Resources\drawable\comemorativo.png" />
+    <AndroidResource Include="Resources\drawable\ensaiogestante.png" />
+    <AndroidResource Include="Resources\drawable\nascimento.png" />
+    <AndroidResource Include="Resources\drawable\newborn.png" />
+    <AndroidResource Include="Resources\drawable\whatsapp.png" />
+    <AndroidResource Include="Resources\drawable\email.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Activitys\" />
