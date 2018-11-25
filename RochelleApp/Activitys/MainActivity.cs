@@ -5,6 +5,7 @@ using Android.Content;
 using RochelleApp.Activitys;
 using Android.Webkit;
 using Android.Runtime;
+using Android.Net;
 
 namespace RochelleApp
 {
@@ -22,7 +23,7 @@ namespace RochelleApp
             webView.Settings.JavaScriptEnabled = true;
             webView.SetWebViewClient(new HybridWebViewClient());
             // Render the view from the type generated from RazorView.cshtml  
-            webView.LoadUrl("http://www.google.co.in");
+            webView.LoadUrl("https://www.rochellemassinhan.com.br");
 
 
             MainBtnAcessar = (TextView)FindViewById(Resource.Id.MainBtnAcessar);
@@ -39,12 +40,24 @@ namespace RochelleApp
 
     public class HybridWebViewClient : WebViewClient
     {
+
+        [System.Obsolete("obsoleto")]
+        [Android.Runtime.Register("shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "GetShouldOverrideUrlLoading_Landroid_webkit_WebView_Ljava_lang_String_Handler")]
         public override bool ShouldOverrideUrlLoading(WebView view, string url)
         {
 
             view.LoadUrl(url);
             return true;
         }
+
+        public override bool ShouldOverrideUrlLoading(WebView view, IWebResourceRequest request)
+        {
+            Uri url = request.Url;
+            view.LoadUrl(url.ToString());
+            return true;
+        }
+
+
         public override void OnPageStarted(WebView view, string url, Android.Graphics.Bitmap favicon)
         {
             base.OnPageStarted(view, url, favicon);
@@ -53,6 +66,8 @@ namespace RochelleApp
         {
             base.OnPageFinished(view, url);
         }
+
+        [System.Obsolete("obsoleto")]
         public override void OnReceivedError(WebView view, [GeneratedEnum] ClientError errorCode, string description, string failingUrl)
         {
             base.OnReceivedError(view, errorCode, description, failingUrl);
