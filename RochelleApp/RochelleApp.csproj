@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -183,6 +182,8 @@
     <AndroidResource Include="Resources\drawable\ic_site.png" />
     <AndroidResource Include="Resources\drawable\ic_site2.png" />
     <AndroidResource Include="Resources\drawable\foto_ro.png" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
+    <AndroidResource Include="Resources\layout\Points.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Activitys\" />

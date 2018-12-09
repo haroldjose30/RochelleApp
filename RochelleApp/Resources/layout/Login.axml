@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,14 +9,14 @@
         android:id="@+id/zoologo"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:src="@drawable/zoologo"
+        android:src="@drawable/logo"
         android:layout_marginTop="15dp"/>
     <TextView
         android:id="@+id/zoo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:textColor="#2C3646"
+        android:textColor="@android:color/holo_red_dark"
         android:gravity="center"
         android:layout_below="@+id/zoologo"
         android:textStyle="bold"
@@ -27,22 +28,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:textColor="#00051f"
+        android:textColor="@android:color/holo_red_dark"
         android:textSize="17dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_below="@+id/zoo"
         android:layout_marginTop="10dp"
         />
-<LinearLayout
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/signin"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="25dp"
-    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signin"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,15 +54,14 @@
             android:background="#00000000"
             android:paddingLeft="8dp"
         />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#a9b0c3"
-        android:layout_marginTop="5dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#a9b0c3"
+            android:layout_marginTop="5dp"
 
         >
-    </LinearLayout>
+        </LinearLayout>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,14 +73,13 @@
             android:background="#00000000"
             android:paddingLeft="8dp"
         />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#a9b0c3"
-        android:layout_marginTop="5dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#a9b0c3"
+            android:layout_marginTop="5dp"
         >
-    </LinearLayout>
+        </LinearLayout>
         <TextView
             android:id="@+id/LoginBtnLogin"
             android:layout_width="match_parent"
@@ -97,37 +96,32 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="5dp"
-            android:textColor="#2C3646"
+            android:textColor="@android:color/holo_red_dark"
             android:text="ou entre com:" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/main"
-        android:layout_marginTop="15dp"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/fb"
-            android:layout_marginRight="5dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/main"
+            android:layout_marginTop="15dp"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/fb"
+                android:layout_marginRight="5dp"
             />
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/google"/>
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/twiter"
-            android:layout_marginLeft="5dp"/>
-
-
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/google"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/twiter"
+                android:layout_marginLeft="5dp"/>
+        </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -144,14 +138,14 @@
             android:layout_height="wrap_content"
             android:text="Não tem uma conta?"
             android:textSize="13dp"
-            android:textColor="#2C3646"
+            android:textColor="@android:color/holo_red_dark"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Esqueceu a senha "
             android:textSize="13dp"
-            android:textColor="#2C3646"
+            android:textColor="@android:color/holo_red_dark"
 
             />
     </LinearLayout>

@@ -81,7 +81,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Como ganhar pontos?"
+                    android:text="Como ganhar pontos"
                     android:textSize="20dp"
                     android:letterSpacing="0.08"
                     android:textColor="#363147"
@@ -122,6 +122,71 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.2dp"
                     android:background="#c6cbcf"></View>
+                
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="#c6cbcf"></View>
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Agenda e atividades"
+                        android:textSize="20dp"
+                        android:letterSpacing="0.08"
+                        android:textColor="#363147"
+                        android:drawableRight="@drawable/circle"
+                        android:paddingLeft="5dp"
+                        android:gravity="left|center"
+                        />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="#c6cbcf"></View>                
+                
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="#c6cbcf"></View>
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Financeiro"
+                        android:textSize="20dp"
+                        android:letterSpacing="0.08"
+                        android:textColor="#363147"
+                        android:drawableRight="@drawable/circle"
+                        android:paddingLeft="5dp"
+                        android:gravity="left|center"
+                        />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="#c6cbcf"></View>         
+ 
+                
+                  <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="#c6cbcf"></View>
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Promoções"
+                        android:textSize="20dp"
+                        android:letterSpacing="0.08"
+                        android:textColor="#363147"
+                        android:drawableRight="@drawable/circle"
+                        android:paddingLeft="5dp"
+                        android:gravity="left|center"
+                        />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="#c6cbcf"></View>         
+ 
+                
+                
+                
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>

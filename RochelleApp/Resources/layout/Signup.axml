@@ -23,7 +23,7 @@
                 android:id="@+id/zoologo"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/zoologo"/>
+                android:src="@drawable/logo"/>
 
           <LinearLayout
               android:layout_width="0dp"
@@ -40,7 +40,7 @@
                     android:textSize="16dp"
                     android:layout_gravity="right"
                     android:gravity="end"
-                    android:textColor="#2C3646"
+                    android:textColor="@android:color/holo_red_dark"
                     android:text="Login" 
                 />
               <LinearLayout
@@ -58,7 +58,7 @@
             android:id="@+id/signin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#00051f"
+            android:textColor="@android:color/holo_red_dark"
             android:textSize="17dp"
             android:layout_marginTop="48dp"
             android:text="Criar nova conta" 
@@ -112,7 +112,25 @@
             android:background="#00000000"
 
             />
-
+            
+        
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#a9b0c3"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CODIGO DO CONVITE"
+            android:inputType="textPassword"
+            android:textColorHint="#a9b0c3"
+            android:layout_marginTop="32dp"
+            android:textSize="13dp"
+            android:background="#00000000"
+             />
+           
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
@@ -148,7 +166,7 @@
             android:layout_height="wrap_content"
             android:text="ou entre com:"
             android:gravity="center"
-            android:textColor="#2C3646"/>
+            android:textColor="@android:color/holo_red_dark"/>
 
         <ImageView
             android:layout_width="50dp"
