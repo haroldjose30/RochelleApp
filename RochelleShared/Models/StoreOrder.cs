@@ -7,7 +7,7 @@ namespace RochelleShared.Models
     {
         public DateTime Date { get; set; }
         public Customer CustomerFrom { get; set; }
-        public StoreOrderStatus Status { get; set; }
+        public StoreOrderStatus StoreOrderStatus { get; set; }
         public IList<StoreOrderItem> Items { get; set; }
     }
 }

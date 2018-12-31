@@ -7,6 +7,8 @@ namespace RochelleShared.Models
         public string Password { get; set; }
         public string FullName { get; set; }
         public RegisterState State { get; set; }
+
+        public Customer Customer { get; set; }
     }
 
 

@@ -8,7 +8,7 @@ namespace RochelleShared.Models
         public string History { get; set; }
         public Customer Customer { get; set; }
         public string Document { get; set; }
-        public PointExtractType ScoreExtractType { get; set; }
+        public PointExtractType PointExtractType { get; set; }
         public DateTime? Expiration { get; set; }
     }
 
