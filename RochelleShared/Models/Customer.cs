@@ -1,7 +1,7 @@
 ﻿using System;
 namespace RochelleShared.Models
 {
-    public class Customer:EntityBase
+    public class Customer:EntityBaseCompany
     {
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }

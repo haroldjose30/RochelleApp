@@ -1,7 +1,7 @@
 ﻿using System;
 namespace RochelleShared.Models
 {
-    public class ParamConfiguration:EntityBase
+    public class ParamConfiguration:EntityBaseCompany
     {
         public string Name { get; set; }
         public string Description { get; set; }

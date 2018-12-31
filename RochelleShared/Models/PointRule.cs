@@ -1,16 +1,16 @@
 ﻿using System;
 namespace RochelleShared.Models
 {
-    public class PointRules:EntityBase
+    public class PointRule:EntityBaseCompany
     {
         public string Name { get; set; }
         public double PointToGain { get; set; }
-        public RegisterState State { get; set; }
+        public RegisterState RegisterState { get; set; }
 
-        public PointRulesType PointRulesType { get; set; }
+        public PointRuleType PointRuleType { get; set; }
     }
 
-    public enum PointRulesType
+    public enum PointRuleType
     {
           None,
           ByValue,

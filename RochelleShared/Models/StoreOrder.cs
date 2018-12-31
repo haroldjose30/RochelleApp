@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RochelleShared.Models
 {
-    public class StoreOrder:EntityBase
+    public class StoreOrder:EntityBaseCompany
     {
         public DateTime Date { get; set; }
         public Customer CustomerFrom { get; set; }

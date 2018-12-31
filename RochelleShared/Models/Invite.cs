@@ -1,7 +1,7 @@
 ﻿using System;
 namespace RochelleShared.Models
 {
-    public class Invite:EntityBase
+    public class Invite:EntityBaseCompany
     {
         public string Code { get; set; }
         public DateTime ExpirationDate { get; set; }

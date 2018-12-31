@@ -1,7 +1,7 @@
 ﻿using System;
 namespace RochelleShared.Models
 {
-    public class PointExtract:EntityBase
+    public class PointExtract:EntityBaseCompany
     {
         public DateTime Date { get; set; }
         public double Value { get; set; }

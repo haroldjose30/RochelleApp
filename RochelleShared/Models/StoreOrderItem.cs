@@ -1,6 +1,6 @@
 ﻿namespace RochelleShared.Models
 {
-    public class StoreOrderItem:EntityBase
+    public class StoreOrderItem:EntityBaseCompany
     {
         public StoreProduct Product { get; set; }
         public double Quantity { get; set; }

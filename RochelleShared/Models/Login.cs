@@ -1,7 +1,7 @@
 ﻿using System;
 namespace RochelleShared.Models
 {
-    public class Login:EntityBase
+    public class Login:EntityBaseCompany
     {
         public string Email { get; set; }
         public string Password { get; set; }

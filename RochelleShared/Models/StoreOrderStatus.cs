@@ -1,6 +1,6 @@
 ﻿namespace RochelleShared.Models
 {
-    public class StoreOrderStatus:EntityBaseGlobal
+    public class StoreOrderStatus:EntityBase
     {
         public string Name { get; set; }
         public string Description { get; set; }
