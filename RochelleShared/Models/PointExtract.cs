@@ -6,6 +6,7 @@ namespace RochelleShared.Models
         public DateTime Date { get; set; }
         public double Value { get; set; }
         public string History { get; set; }
+        public string CustomerId { get; set; }
         public Customer Customer { get; set; }
         public string Document { get; set; }
         public PointExtractType PointExtractType { get; set; }

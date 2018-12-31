@@ -19,7 +19,9 @@ namespace RochelleServer.Repositories
             services.AddScoped<IPointRuleRepository, PointRuleRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IStoreOrderRepository, StoreOrderRepository>();
+            services.AddScoped<IStoreOrderStatusRepository, StoreOrderStatusRepository>();
             services.AddScoped<IStoreOrderItemRepository, StoreOrderItemRepository>();
+            services.AddScoped<IStoreProductRepository, StoreProductRepository>();
         }
     }
 

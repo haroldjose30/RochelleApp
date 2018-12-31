@@ -3,6 +3,6 @@
     public enum RegisterState
     {
         Enabled,
-        disabled
+        Disabled
     }
 }

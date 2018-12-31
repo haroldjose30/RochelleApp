@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RochelleShared.Models;
@@ -17,7 +19,6 @@ namespace RochelleServer.Repositories
 
         public async Task<IQueryable<TEntity>> GetAllAsync()
         {
-            //_dbContext.Set<TEntity>().AsNoTracking();
             return  _dbContext.Set<TEntity>().AsNoTracking();
         }
 
@@ -30,6 +31,7 @@ namespace RochelleServer.Repositories
 
         public async Task<TEntity> CreateAsync(TEntity entity)
         {
+            RemoveEntityBaseProperty(entity);
             await _dbContext.Set<TEntity>().AddAsync(entity);
             await _dbContext.SaveChangesAsync();
             return entity;
@@ -37,6 +39,7 @@ namespace RochelleServer.Repositories
 
         public async Task<TEntity> UpdateAsync(TEntity entity)
         {
+            RemoveEntityBaseProperty(entity);
             _dbContext.Set<TEntity>().Update(entity);
             await _dbContext.SaveChangesAsync();
             return entity;
@@ -49,5 +52,44 @@ namespace RochelleServer.Repositories
             await _dbContext.SaveChangesAsync();
             return true;
         }
+
+        //remove all ForeingKey/EntityBase property from object, using reflexions
+        private void RemoveEntityBaseProperty(TEntity entity)
+        {
+            Type type = entity.GetType();
+            PropertyInfo[] properties = type.GetProperties();
+            //var propertiesEntitybase = properties.Where(p => p.PropertyType?.BaseType == typeof(EntityBase));
+
+            foreach (PropertyInfo property in properties)
+            {
+                if (property.PropertyType.BaseType == typeof(EntityBase))
+                {
+                    Console.WriteLine($"EntityBase={property.Name}=null");
+                    property.SetValue(entity,null);
+                    continue;
+                }
+
+                if (property.PropertyType.BaseType == typeof(EntityBaseCompany))
+                {
+                    Console.WriteLine($"EntityBaseCompany={property.Name}=null");
+                    property.SetValue(entity, null);
+                    continue;
+                }
+
+
+                if (property.PropertyType.Namespace.Equals("System.Collections.Generic"))
+                {
+                    Console.WriteLine($"System.Collections.Generic={property.Name}=null");
+                    property.SetValue(entity, null);
+                    continue;
+                }
+            }
+
+           
+        }
     }
+
+
+
+
 }
