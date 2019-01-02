@@ -28,5 +28,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\ApplicationBusiness\ApplicationBusiness.csproj" />
+    <ProjectReference Include="..\Infra.CrossCutting.IoC\Infra.CrossCutting.IoC.csproj" />
   </ItemGroup>
 </Project>

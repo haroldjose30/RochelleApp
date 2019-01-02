@@ -22,12 +22,9 @@ namespace WebApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            //add class to Dependence Injector
-            services.AddDbContext<DbSqlContext>();
-            ApplicationBusiness.Validators.AllValidators.AddValidatorsToDI(services);
-            ApplicationBusiness.Services.AllServices.AddServicesToDI(services);
-            Infra.Data.Repositories.AllRepositories.AddRepositoriesToDI(services);
-
+            // .NET Native DI Abstraction
+            RegisterServices(services);
+            
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
@@ -63,6 +60,12 @@ namespace WebApi
             app.UseMvc();
 
            
+        }
+
+        private static void RegisterServices(IServiceCollection services)
+        {
+            // Adding dependencies from another layers (isolated from Presentation)
+            Infra.CrossCutting.IoC.NativeInjectorBootStrapper.RegisterServices(services);
         }
     }
 }
