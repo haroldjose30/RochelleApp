@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infra.Data.Migrations
 {
-    [DbContext(typeof(DbSqlContext))]
+    [DbContext(typeof(DbContextGeneric))]
     [Migration("20190102073348_InitialMigration")]
     partial class InitialMigration
     {

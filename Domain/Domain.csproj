@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Models\Base\" />
+    <Folder Include="Generals\" />
+    <Folder Include="PointsManager\" />
+    <Folder Include="Stores\" />
+    <Folder Include="Generals\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.NetStd\Framework.NetStd.csproj" />
   </ItemGroup>
 </Project>

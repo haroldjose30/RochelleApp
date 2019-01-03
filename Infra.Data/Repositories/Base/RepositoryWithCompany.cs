@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Domain.Models.Base;
+using Domain.Generals.Base;
 using Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Repositories.Base
 {
-    public class RepositoryWithCompany<TEntity> : Repository<TEntity>, IRepositoryWithCompany<TEntity>
+    public class RepositoryWithCompany<TEntity> : RepositoryGeneric<TEntity>, IRepositoryWithCompany<TEntity>
          where TEntity : EntityWithCompany
     {
-        public RepositoryWithCompany(DbSqlContext _dbContext) : base(_dbContext)
+        public RepositoryWithCompany(DbContextGeneric _dbContext) : base(_dbContext)
         {
 
         }

@@ -1,22 +1,23 @@
-﻿using ApplicationBusiness.Services;
-using Domain.Models;
-using Infra.Data.Repositories;
+﻿using Domain.Generals;
+using Domain.PointsManager;
+using Domain.Store;
+using Framework.NetStd.Services;
 using WebApi.Controllers.Base;
 
 namespace WebApi.Controllers
 {
     public class CompaniesController : BusinessController<Company>
     {
-        public CompaniesController(CompanyService _service) : base(_service)
+        public CompaniesController(IServiceGeneric<Company> _service) : base(_service)
         {
 
         }
     }
 
-    /*
+
     public class CustomersController : BusinessController<Customer>
     {
-        public CustomersController(Customerservice _service) : base(_service)
+        public CustomersController(IServiceGeneric<Customer> _service) : base(_service)
         {
 
         }
@@ -25,7 +26,7 @@ namespace WebApi.Controllers
 
     public class InvitesController : BusinessController<Invite>
     {
-        public InvitesController(Inviteservice _service) : base(_service)
+        public InvitesController(IServiceGeneric<Invite> _service) : base(_service)
         {
 
         }
@@ -34,7 +35,7 @@ namespace WebApi.Controllers
    
     public class ParamConfigurationsController : BusinessController<ParamConfiguration>
     {
-        public ParamConfigurationsController(ParamConfigurationservice _service) : base(_service)
+        public ParamConfigurationsController(IServiceGeneric<ParamConfiguration> _service) : base(_service)
         {
 
         }
@@ -42,7 +43,7 @@ namespace WebApi.Controllers
 
     public class PointExtractsController : BusinessController<PointExtract>
     {
-        public PointExtractsController(PointExtractservice _service) : base(_service)
+        public PointExtractsController(IServiceGeneric<PointExtract> _service) : base(_service)
         {
 
         }
@@ -50,7 +51,7 @@ namespace WebApi.Controllers
 
     public class PointRulesController : BusinessController<PointRule>
     {
-        public PointRulesController(PointRuleservice _service) : base(_service)
+        public PointRulesController(IServiceGeneric<PointRule> _service) : base(_service)
         {
 
         }
@@ -58,7 +59,7 @@ namespace WebApi.Controllers
 
     public class ProductsController : BusinessController<Product>
     {
-        public ProductsController(Productservice _service) : base(_service)
+        public ProductsController(IServiceGeneric<Product> _service) : base(_service)
         {
 
         }
@@ -67,7 +68,7 @@ namespace WebApi.Controllers
 
     public class StoreOrdersController : BusinessController<StoreOrder>
     {
-        public StoreOrdersController(StoreOrderservice _service) : base(_service)
+        public StoreOrdersController(IServiceGeneric<StoreOrder> _service) : base(_service)
         {
 
         }
@@ -76,7 +77,7 @@ namespace WebApi.Controllers
 
     public class StoreOrderStatusController : BusinessController<StoreOrderStatus>
     {
-        public StoreOrderStatusController(StoreOrderStatusservice _service) : base(_service)
+        public StoreOrderStatusController(IServiceGeneric<StoreOrderStatus> _service) : base(_service)
         {
 
         }
@@ -84,7 +85,7 @@ namespace WebApi.Controllers
 
     public class StoreOrderItemsController : BusinessController<StoreOrderItem>
     {
-        public StoreOrderItemsController(StoreOrderItemservice _service) : base(_service)
+        public StoreOrderItemsController(IServiceGeneric<StoreOrderItem> _service) : base(_service)
         {
 
         }
@@ -92,12 +93,12 @@ namespace WebApi.Controllers
 
     public class StoreProductsController : BusinessController<StoreProduct>
     {
-        public StoreProductsController(StoreProductservice _service) : base(_service)
+        public StoreProductsController(IServiceGeneric<StoreProduct> _service) : base(_service)
         {
 
         }
     }
-    */
+
 
 
 

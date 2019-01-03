@@ -11,5 +11,7 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Infra.Data\Infra.Data.csproj" />
     <ProjectReference Include="..\ApplicationBusiness\ApplicationBusiness.csproj" />
+    <ProjectReference Include="..\Framework.NetStd\Framework.NetStd.csproj" />
+    <ProjectReference Include="..\Framework.NetCore\Framework.NetCore.csproj" />
   </ItemGroup>
 </Project>

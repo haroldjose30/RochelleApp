@@ -1,4 +1,7 @@
-﻿using Domain.Models;
+﻿using Domain.Generals;
+using Domain.PointsManager;
+using Domain.Store;
+using Framework.NetStd.Validators;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ApplicationBusiness.Validators
@@ -7,31 +10,35 @@ namespace ApplicationBusiness.Validators
     {
         public static void AddValidatorsToDI(IServiceCollection services)
         {
-            services.AddScoped<CompanyValidator>();
-            services.AddScoped<CustomerValidator>();
-            services.AddScoped<InviteValidator>();
-            services.AddScoped<UserValidator>();
-            services.AddScoped<ParamConfigurationValidator>();
-            services.AddScoped<PointExtractValidator>();
-            services.AddScoped<PointRuleValidator>();
-            services.AddScoped<ProductValidator>();
-            services.AddScoped<StoreOrderValidator>();
-            services.AddScoped<StoreOrderStatusValidator>();
-            services.AddScoped<StoreOrderItemValidator>();
-            services.AddScoped<StoreProductValidator>();
+            services.AddScoped<IValidatorGeneric<User>, UserValidator>();
+            services.AddScoped<IValidatorGeneric<Company>, CompanyValidator>();
+
+            services.AddScoped<IValidatorGeneric<Customer>, CustomerValidator >();
+            services.AddScoped<IValidatorGeneric<Invite>, InviteValidator>();
+            services.AddScoped<IValidatorGeneric<ParamConfiguration>, ParamConfigurationValidator>();
+            services.AddScoped<IValidatorGeneric<PointExtract>, PointExtractValidator>();
+            services.AddScoped<IValidatorGeneric<PointRule>, PointRuleValidator >();
+            services.AddScoped<IValidatorGeneric<Product>, ProductValidator>();
+            services.AddScoped<IValidatorGeneric<StoreOrder>, StoreOrderValidator>();
+            services.AddScoped<IValidatorGeneric<StoreOrderStatus>, StoreOrderStatusValidator>();
+            services.AddScoped<IValidatorGeneric<StoreOrderItem>, StoreOrderItemValidator>();
+            services.AddScoped<IValidatorGeneric<StoreProduct>, StoreProductValidator>();
         }
     }
 
-    public class CompanyValidator : Validator<Company> { }
-    public class CustomerValidator : Validator<Customer> { }
-    public class InviteValidator : Validator<Invite> { }
-    public class ParamConfigurationValidator : Validator<ParamConfiguration> { }
-    public class PointExtractValidator : Validator<PointExtract> { }
-    public class PointRuleValidator : Validator<PointRule> { }
-    public class ProductValidator : Validator<Product> { }
-    public class StoreOrderValidator : Validator<StoreOrder> { }
-    public class StoreOrderItemValidator : Validator<StoreOrderItem> { }
-    public class StoreOrderStatusValidator : Validator<StoreOrderStatus> { }
-    public class StoreProductValidator : Validator<StoreProduct> { }
+    public class CompanyValidator : ValidatorGeneric<Company> { };
+    public class CustomerValidator : ValidatorGeneric<Customer> { };
+    public class InviteValidator : ValidatorGeneric<Invite> { };
+    public class ParamConfigurationValidator : ValidatorGeneric<ParamConfiguration> { };
+    public class PointExtractValidator : ValidatorGeneric<PointExtract> { };
+    public class PointRuleValidator : ValidatorGeneric<PointRule> { };
+    public class ProductValidator : ValidatorGeneric<Product> { };
+    public class StoreOrderValidator : ValidatorGeneric<StoreOrder> { };
+    public class StoreOrderStatusValidator : ValidatorGeneric<StoreOrderStatus> { };
+    public class StoreOrderItemValidator : ValidatorGeneric<StoreOrderItem> { };
+    public class StoreProductValidator : ValidatorGeneric<StoreProduct> { };
+
+
+
 
 }

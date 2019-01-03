@@ -1,9 +1,8 @@
-﻿using System;
-using ApplicationBusiness.Validators;
-using Domain.Models;
+﻿using Domain.Generals;
 using FluentValidation;
+using Framework.NetStd.Validators;
 
-public class UserValidator : Validator<User>
+public class UserValidator : ValidatorGeneric<User>
 {
     public UserValidator()
     {
