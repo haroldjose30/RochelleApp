@@ -9,8 +9,12 @@
     <Folder Include="PointsManager\" />
     <Folder Include="Stores\" />
     <Folder Include="Generals\Base\" />
+    <Folder Include="Identity\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Framework.NetStd\Framework.NetStd.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="shortid" Version="2.0.0" />
   </ItemGroup>
 </Project>

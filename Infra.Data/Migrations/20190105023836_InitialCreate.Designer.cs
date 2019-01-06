@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Data.Migrations
 {
     [DbContext(typeof(DbContextGeneric))]
-    [Migration("20190102073348_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20190105023836_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace Infra.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.2.0-rtm-35687")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Domain.Models.Company", b =>
+            modelBuilder.Entity("Domain.Generals.Company", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -61,7 +61,7 @@ namespace Infra.Data.Migrations
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("Domain.Models.Customer", b =>
+            modelBuilder.Entity("Domain.Generals.Customer", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -93,7 +93,107 @@ namespace Infra.Data.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("Domain.Models.Invite", b =>
+            modelBuilder.Entity("Domain.Generals.ParamConfiguration", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CompanyId");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<string>("CreatedDate");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<string>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Type");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("ParamConfigurations");
+                });
+
+            modelBuilder.Entity("Domain.Generals.Product", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CompanyId");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<string>("CreatedDate");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<string>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("ProductType");
+
+                    b.Property<int>("RegisterState");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Domain.Generals.User", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CompanyId");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<string>("CreatedDate");
+
+                    b.Property<string>("CustomerId");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Login");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<string>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Password");
+
+                    b.Property<int>("State");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Domain.PointsManager.Invite", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -131,39 +231,7 @@ namespace Infra.Data.Migrations
                     b.ToTable("Invites");
                 });
 
-            modelBuilder.Entity("Domain.Models.ParamConfiguration", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CompanyId");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<string>("CreatedDate");
-
-                    b.Property<bool>("Deleted");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<string>("ModifiedDate");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("Type");
-
-                    b.Property<string>("Value");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("ParamConfigurations");
-                });
-
-            modelBuilder.Entity("Domain.Models.PointExtract", b =>
+            modelBuilder.Entity("Domain.PointsManager.PointExtract", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -203,7 +271,7 @@ namespace Infra.Data.Migrations
                     b.ToTable("PointExtracts");
                 });
 
-            modelBuilder.Entity("Domain.Models.PointRule", b =>
+            modelBuilder.Entity("Domain.PointsManager.PointRule", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -235,37 +303,7 @@ namespace Infra.Data.Migrations
                     b.ToTable("PointRules");
                 });
 
-            modelBuilder.Entity("Domain.Models.Product", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CompanyId");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<string>("CreatedDate");
-
-                    b.Property<bool>("Deleted");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<string>("ModifiedDate");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("ProductType");
-
-                    b.Property<int>("RegisterState");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("Domain.Models.StoreOrder", b =>
+            modelBuilder.Entity("Domain.Store.StoreOrder", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -299,7 +337,7 @@ namespace Infra.Data.Migrations
                     b.ToTable("StoreOrders");
                 });
 
-            modelBuilder.Entity("Domain.Models.StoreOrderItem", b =>
+            modelBuilder.Entity("Domain.Store.StoreOrderItem", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -335,7 +373,7 @@ namespace Infra.Data.Migrations
                     b.ToTable("StoreOrderItems");
                 });
 
-            modelBuilder.Entity("Domain.Models.StoreOrderStatus", b =>
+            modelBuilder.Entity("Domain.Store.StoreOrderStatus", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -361,7 +399,7 @@ namespace Infra.Data.Migrations
                     b.ToTable("StoreOrderStatus");
                 });
 
-            modelBuilder.Entity("Domain.Models.StoreProduct", b =>
+            modelBuilder.Entity("Domain.Store.StoreProduct", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -393,148 +431,110 @@ namespace Infra.Data.Migrations
                     b.ToTable("StoreProducts");
                 });
 
-            modelBuilder.Entity("Domain.Models.User", b =>
+            modelBuilder.Entity("Domain.Generals.Customer", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CompanyId");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<string>("CreatedDate");
-
-                    b.Property<string>("CustomerId");
-
-                    b.Property<bool>("Deleted");
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("Login");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<string>("ModifiedDate");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Password");
-
-                    b.Property<int>("State");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Domain.Models.Customer", b =>
-                {
-                    b.HasOne("Domain.Models.Company", "Company")
+                    b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
                 });
 
-            modelBuilder.Entity("Domain.Models.Invite", b =>
+            modelBuilder.Entity("Domain.Generals.ParamConfiguration", b =>
                 {
-                    b.HasOne("Domain.Models.Company", "Company")
+                    b.HasOne("Domain.Generals.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+                });
+
+            modelBuilder.Entity("Domain.Generals.Product", b =>
+                {
+                    b.HasOne("Domain.Generals.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+                });
+
+            modelBuilder.Entity("Domain.Generals.User", b =>
+                {
+                    b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
 
-                    b.HasOne("Domain.Models.Customer", "CustomerFrom")
+                    b.HasOne("Domain.Generals.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+                });
+
+            modelBuilder.Entity("Domain.PointsManager.Invite", b =>
+                {
+                    b.HasOne("Domain.Generals.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+
+                    b.HasOne("Domain.Generals.Customer", "CustomerFrom")
                         .WithMany()
                         .HasForeignKey("CustomerFromId");
 
-                    b.HasOne("Domain.Models.Customer", "CustomerTo")
+                    b.HasOne("Domain.Generals.Customer", "CustomerTo")
                         .WithMany()
                         .HasForeignKey("CustomerToId");
                 });
 
-            modelBuilder.Entity("Domain.Models.ParamConfiguration", b =>
+            modelBuilder.Entity("Domain.PointsManager.PointExtract", b =>
                 {
-                    b.HasOne("Domain.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
-                });
-
-            modelBuilder.Entity("Domain.Models.PointExtract", b =>
-                {
-                    b.HasOne("Domain.Models.Company", "Company")
+                    b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
 
-                    b.HasOne("Domain.Models.Customer", "Customer")
+                    b.HasOne("Domain.Generals.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId");
                 });
 
-            modelBuilder.Entity("Domain.Models.PointRule", b =>
+            modelBuilder.Entity("Domain.PointsManager.PointRule", b =>
                 {
-                    b.HasOne("Domain.Models.Company", "Company")
+                    b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
                 });
 
-            modelBuilder.Entity("Domain.Models.Product", b =>
+            modelBuilder.Entity("Domain.Store.StoreOrder", b =>
                 {
-                    b.HasOne("Domain.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
-                });
-
-            modelBuilder.Entity("Domain.Models.StoreOrder", b =>
-                {
-                    b.HasOne("Domain.Models.Company", "Company")
+                    b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
 
-                    b.HasOne("Domain.Models.Customer", "CustomerFrom")
+                    b.HasOne("Domain.Generals.Customer", "CustomerFrom")
                         .WithMany()
                         .HasForeignKey("CustomerFromId");
 
-                    b.HasOne("Domain.Models.StoreOrderStatus", "StoreOrderStatus")
+                    b.HasOne("Domain.Store.StoreOrderStatus", "StoreOrderStatus")
                         .WithMany()
                         .HasForeignKey("StoreOrderStatusId");
                 });
 
-            modelBuilder.Entity("Domain.Models.StoreOrderItem", b =>
+            modelBuilder.Entity("Domain.Store.StoreOrderItem", b =>
                 {
-                    b.HasOne("Domain.Models.Company", "Company")
+                    b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
 
-                    b.HasOne("Domain.Models.StoreProduct", "Product")
+                    b.HasOne("Domain.Store.StoreProduct", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId");
 
-                    b.HasOne("Domain.Models.StoreOrder")
+                    b.HasOne("Domain.Store.StoreOrder")
                         .WithMany("Items")
                         .HasForeignKey("StoreOrderId");
                 });
 
-            modelBuilder.Entity("Domain.Models.StoreProduct", b =>
+            modelBuilder.Entity("Domain.Store.StoreProduct", b =>
                 {
-                    b.HasOne("Domain.Models.Company", "Company")
+                    b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
 
-                    b.HasOne("Domain.Models.Product", "Product")
+                    b.HasOne("Domain.Generals.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId");
-                });
-
-            modelBuilder.Entity("Domain.Models.User", b =>
-                {
-                    b.HasOne("Domain.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
-
-                    b.HasOne("Domain.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
                 });
 #pragma warning restore 612, 618
         }

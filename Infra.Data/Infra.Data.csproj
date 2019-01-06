@@ -20,5 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Repositories\IAllRepositories.cs" />
+    <Compile Remove="Migrations\20190102073348_InitialMigration.cs" />
   </ItemGroup>
 </Project>

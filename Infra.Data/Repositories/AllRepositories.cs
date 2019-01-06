@@ -1,5 +1,6 @@
 ﻿
 using Domain.Generals;
+using Domain.Identity;
 using Domain.PointsManager;
 using Domain.Store;
 using Framework.NetStd.Repositories;
@@ -20,7 +21,7 @@ namespace Infra.Data.Repositories
             services.AddScoped<IRepositoryGeneric<Invite>, RepositoryGeneric<Invite>>();
             services.AddScoped<IRepositoryGeneric<User>, RepositoryGeneric<User>>();
             services.AddScoped<IRepositoryGeneric<ParamConfiguration>, RepositoryGeneric<ParamConfiguration>>();
-            services.AddScoped<IRepositoryGeneric<PointExtract>, RepositoryGeneric<PointExtract>>();
+            services.AddScoped<IRepositoryGeneric<PointAccountDetail>, RepositoryGeneric<PointAccountDetail>>();
             services.AddScoped<IRepositoryGeneric<PointRule>, RepositoryGeneric<PointRule>>();
             services.AddScoped<IRepositoryGeneric<Product>, RepositoryGeneric<Product>>();
             services.AddScoped<IRepositoryGeneric<StoreOrder>, RepositoryGeneric<StoreOrder>>();

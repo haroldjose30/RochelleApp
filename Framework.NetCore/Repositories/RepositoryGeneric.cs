@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using Framework.NetCore.Contexts;
 using Framework.NetStd.Models;
@@ -39,16 +38,10 @@ namespace Infra.Data.Repositories.Base
         public virtual async Task<TEntity> CreateAsync(TEntity entity)
         {
 
-            //if id is empyty, get new id automaticaly
-            if (String.IsNullOrWhiteSpace(entity.Id))
-                entity.Id = GetNewId(entity);
+            if (entity.Deleted)
+                throw new Exception("Registro Deletado nao pode ser incluido!");
 
-            //update inserted date
-            entity.Deleted = false;
-            entity.CreatedDate = GetDateTime();
-            entity.ModifiedDate = entity.CreatedDate;
-
-            RemoveEntityBaseProperty(entity);
+            entity.RemoveEntityBaseProperty();
             await dbSet.AddAsync(entity);
 
             if (lAutoSaveChanges)
@@ -57,22 +50,14 @@ namespace Infra.Data.Repositories.Base
             return entity;
         }
 
-        public virtual string GetNewId(TEntity entity)
-        {
-            var cNewId = DateTime.Now.ToUniversalTime().ToString("yyMMddHHmmssfff");
-
-            if (string.IsNullOrWhiteSpace(entity.CreatedBy))
-                cNewId += entity.CreatedBy.Trim();
-
-            return cNewId;
-
-        }
-
         public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
-            entity.ModifiedDate = GetDateTime();
+            if (entity.Deleted)
+                throw new Exception("Registro Deletado nao pode ser alterado!");
 
-            RemoveEntityBaseProperty(entity);
+            entity.Update(entity.CreatedBy);
+
+            entity.RemoveEntityBaseProperty();
             dbSet.Update(entity);
 
             if (lAutoSaveChanges)
@@ -86,12 +71,16 @@ namespace Infra.Data.Repositories.Base
 
             var entity = await GetByIdAsync(_entity.Id);
 
+
+            if (entity.Deleted)
+                throw new Exception("Registro já Deletado!");
+
+
             if (entity == null)
                 return false;
 
+            entity.Delete(_entity.CreatedBy);
 
-            entity.ModifiedDate = GetDateTime();
-            entity.Deleted = true;
             //dont delete fisicaly only logical
             dbSet.Update(entity);
 
@@ -101,52 +90,6 @@ namespace Infra.Data.Repositories.Base
 
             return true;
         }
-
-        //remove all ForeingKey/EntityBase property from object, using reflexions
-        public static void RemoveEntityBaseProperty(TEntity entity)
-        {
-            Type type = entity.GetType();
-            PropertyInfo[] properties = type.GetProperties();
-            //var propertiesEntitybase = properties.Where(p => p.PropertyType?.BaseType == typeof(EntityBase));
-
-            foreach (PropertyInfo property in properties)
-            {
-                if (property.PropertyType.BaseType == typeof(Entity))
-                {
-                    Console.WriteLine($"EntityBase={property.Name}=null");
-                    property.SetValue(entity, null);
-                    continue;
-                }
-
-                if (property.PropertyType.BaseType.Name.Equals("EntityWithCompany"))
-                //if (property.PropertyType.BaseType == typeof(EntityWithCompany))
-                {
-                    Console.WriteLine($"EntityBaseCompany={property.Name}=null");
-                    property.SetValue(entity, null);
-                    continue;
-                }
-
-
-                if (property.PropertyType.Namespace.Equals("System.Collections.Generic"))
-                {
-                    Console.WriteLine($"System.Collections.Generic={property.Name}=null");
-                    property.SetValue(entity, null);
-                    continue;
-                }
-            }
-
-
-        }
-
-        /// <summary>
-        /// Return date time on format yyyyMMdd HH:mm:ss
-        /// </summary>
-        /// <returns>The date time.</returns>
-        public static string GetDateTime()
-        {
-            return DateTime.Now.ToString("yyyyMMdd HH:mm:ss");
-        }
-
         public void Dispose()
         {
             dbContext.Dispose();

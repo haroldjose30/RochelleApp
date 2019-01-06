@@ -31,20 +31,6 @@ namespace Infra.Data.Repositories.Base
                                     .AsNoTracking()
                                     .FirstOrDefaultAsync();
         }
-
-        public override string GetNewId(TEntity entity)
-        {
-            var cNewId = DateTime.Now.ToUniversalTime().ToString("yyMMddHHmmssfff");
-
-            if (string.IsNullOrWhiteSpace(entity.CompanyId))
-                cNewId += entity.CompanyId.Trim();
-
-            if (string.IsNullOrWhiteSpace(entity.CreatedBy))
-                cNewId += entity.CreatedBy.Trim();
-
-            return cNewId;
-
-        }
     }
 
 }

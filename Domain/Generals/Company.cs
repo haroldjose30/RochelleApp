@@ -1,30 +1,59 @@
 ﻿using Framework.NetStd.Models;
+using Newtonsoft.Json;
 
 namespace Domain.Generals
 {
     public class Company:Entity
     {
-        public string CompanyName { get; set; }
 
-        public string FantasyName { get; set; }
 
-        public string CorporateNumber { get; set; }
+        [JsonProperty]
+        public string CompanyName { get; private set; }
+        [JsonProperty]
+        public string FantasyName { get; private set; }
+        [JsonProperty]
+        public string CorporateNumber { get; private set; }
+        [JsonProperty]
+        public string StateRegistration { get; private set; }
+        [JsonProperty]
+        public string Address { get; private set; }
+        [JsonProperty]
+        public string Dristrict { get; private set; }
+        [JsonProperty]
+        public string Complement { get; private set; }
+        [JsonProperty]
+        public string State { get; private set; }
+        [JsonProperty]
+        public string City { get; private set; }
+        [JsonProperty]
+        public string ZipCode { get; private set; }
+        [JsonProperty]
+        public string Phone { get; private set; }
 
-        public string StateRegistration { get; set; }
+        public Company(string id, string createdBy,string companyName, string fantasyName, string corporateNumber, string stateRegistration, string address, string dristrict, string complement, string state, string city, string zipCode, string phone): base(id, createdBy)
+        {
+            this.CompanyName = companyName;
+            this.FantasyName = fantasyName;
+            this.CorporateNumber = corporateNumber;
+            this.StateRegistration = stateRegistration;
+            this.Address = address;
+            this.Dristrict = dristrict;
+            this.Complement = complement;
+            this.State = state;
+            this.City = city;
+            this.ZipCode = zipCode;
+            this.Phone = phone;
+        }
 
-        public string Address { get; set; }
+       
 
-        public string Dristrict { get; set; }
+        public static Company Create(string id, string createdBy, string companyName, string fantasyName, string corporateNumber, string stateRegistration, string address, string dristrict, string complement, string state, string city, string zipCode, string phone) 
+        {
+            var oCompany = new Company(id, createdBy, companyName, fantasyName, corporateNumber, stateRegistration, address, dristrict, complement, state, city, zipCode, phone);
+            return oCompany;
+        }
 
-        public string Complement { get; set; }
 
-        public string State { get; set; }
-
-        public string City { get; set; }
-
-        public string ZipCode { get; set; }
-
-        public string Phone { get; set; }
 
     }
 

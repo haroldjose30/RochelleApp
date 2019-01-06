@@ -4,6 +4,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Generals;
+using Domain.Identity;
 using Domain.PointsManager;
 using Domain.Store;
 using Framework.NetCore.Contexts;
@@ -13,22 +14,19 @@ namespace Infra.Data.Context
 {
     public partial class DbContextGeneric : DbContext, IDbContextGeneric
     {
-
-        public DbSet<Company> Companies { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Invite> Invites { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<ParamConfiguration> ParamConfigurations { get; set; }
-        public DbSet<PointExtract> PointExtracts { get; set; }
-        public DbSet<PointRule> PointRules { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<StoreOrder> StoreOrders { get; set; }
-        public DbSet<StoreOrderItem> StoreOrderItems { get; set; }
-        public DbSet<StoreOrderStatus> StoreOrderStatus { get; set; }
-        public DbSet<StoreProduct> StoreProducts { get; set; }
-
-
-
+        public DbSet<Company> Companies { get; private set; }
+        public DbSet<Customer> Customers { get; private set; }
+        public DbSet<Invite> Invites { get; private set; }
+        public DbSet<User> Users { get; private set; }
+        public DbSet<ParamConfiguration> ParamConfigurations { get; private set; }
+        public DbSet<PointAccount> PointAccounts { get; private set; }
+        public DbSet<PointAccountDetail> PointAccountDetails { get; private set; }
+        public DbSet<PointRule> PointRules { get; private set; }
+        public DbSet<Product> Products { get; private set; }
+        public DbSet<StoreOrder> StoreOrders { get; private set; }
+        public DbSet<StoreOrderItem> StoreOrderItems { get; private set; }
+        public DbSet<StoreOrderStatus> StoreOrderStatus { get; private set; }
+        public DbSet<StoreProduct> StoreProducts { get; private set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

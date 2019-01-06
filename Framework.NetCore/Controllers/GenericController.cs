@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApi.Controllers.Base
 {
     [Route("api/[controller]")]
-    public class BusinessController<TEntity> : ControllerBase where TEntity : Entity
+    public class GenericController<TEntity> : ControllerBase where TEntity : Entity
     {
         protected readonly IServiceGeneric<TEntity> service;
 
-        public BusinessController(IServiceGeneric<TEntity> _service)
+        public GenericController(IServiceGeneric<TEntity> _service)
         {
             service = _service;
         }

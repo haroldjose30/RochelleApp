@@ -4,7 +4,7 @@ using WebApi.Controllers.Base;
 
 namespace WebApi.Controllers
 {
-    public class UsersController : BusinessController<User>
+    public class UsersController : GenericController<User>
     {
         public UsersController(IServiceGeneric<User> _service) : base(_service)
         {

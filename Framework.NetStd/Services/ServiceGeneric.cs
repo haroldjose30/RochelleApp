@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using FluentValidation;
 using Framework.NetStd.Models;
 using Framework.NetStd.Repositories;
 using Framework.NetStd.Validators;
@@ -62,7 +61,8 @@ namespace Framework.NetStd.Services
             if (entity == null)
                 throw new Exception("Registros não detectados!");
 
-            validator.ValidateAndThrow(entity);
+            //validator.ValidateAndThrow(entity);
+           var oValidator = validator.Validate(entity);
         }
     }
 }
