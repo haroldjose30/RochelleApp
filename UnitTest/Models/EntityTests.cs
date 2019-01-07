@@ -24,6 +24,17 @@ namespace Domain.UnitTest.Models
             return entity;
         }
 
+
+        [Fact]
+        public void EntityMustBeCreatedWithNewId()
+        {
+            Entity entity = new Entity(string.Empty, createdBy: UserTest1);
+
+            //assert
+            Assert.NotEmpty(entity.Id);
+        }
+
+
         [Fact]
         public async Task EntityMustBeUpdatedAsync()
         {

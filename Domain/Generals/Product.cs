@@ -20,7 +20,7 @@ namespace Domain.Generals
             ProductType = productType;
         }
 
-        public Product CreateNew(string companyId, string id, string createdBy, string name, ProductType productType) 
+        public static Product CreateNew(string companyId, string id, string createdBy, string name, ProductType productType) 
         {
             RegisterState registerState = RegisterState.Enabled;
             Product oProduct = new Product(companyId, string.Empty, createdBy, name, registerState, productType);

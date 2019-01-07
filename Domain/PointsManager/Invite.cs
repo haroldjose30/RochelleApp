@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using Domain.Generals;
 using Domain.Generals.Base;
-using shortid;
 
 namespace Domain.PointsManager
 {
@@ -33,26 +35,42 @@ namespace Domain.PointsManager
 
 
 
-        public Invite CreateNew(string companyId, string createdBy, string customerFromId, string customerToId)
+        public static Invite CreateNew(string companyId, string createdBy, string customerFromId, string customerToId)
         {
-            string code = GenerateNewInviteCode();
-            DateTime? expirationDate = CalcExpirationDate();
+
+            string code = Invite.GenerateNewInviteCode();
+            DateTime? expirationDate = Invite.CalcExpirationDate();
             InviteStatus inviteStatus = InviteStatus.Created;
             Invite oInvite = new Invite(companyId, string.Empty, createdBy, code, expirationDate, customerFromId, customerToId, inviteStatus);
             return oInvite;
         }
 
-        private DateTime? CalcExpirationDate()
+        private static DateTime? CalcExpirationDate()
         {
             return null;
         }
 
-        private string GenerateNewInviteCode()
+        private static string GenerateNewInviteCode()
         {
-            string code = ShortId.Generate(true, false,5);
-            return code;
-        }
+            string code = DateTime.Now.ToUniversalTime().ToString("yyMMddHHmmssfff");//Some input text that includes the datetime the hash was created;
 
+            using (SHA1Managed sha1 = new SHA1Managed())
+            {
+                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(code));
+
+                //make sure the hash is only alpha numeric to prevent charecters that may break the url
+                var codeList = Convert.ToBase64String(hash).ToUpper().ToCharArray().Where(x => char.IsLetterOrDigit(x)).Take(10);
+
+                code = "";
+                foreach (var item in codeList)
+                {
+                    code += item.ToString();
+                }
+
+                return code;
+
+            }
+        }
     }
 
     public enum InviteStatus

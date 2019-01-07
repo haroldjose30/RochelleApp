@@ -35,7 +35,7 @@ namespace Domain.Identity
         }
 
 
-        public User CreateNew(string companyId, string createdBy, string name, string email, string login, string password, string customerId)
+        public static User CreateNew(string companyId, string createdBy, string name, string email, string login, string password, string customerId)
         {
             RegisterState state = RegisterState.Enabled;
             User oUser = new User(companyId,string.Empty, createdBy, name, email, login, password,state, customerId);

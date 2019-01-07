@@ -15,42 +15,38 @@ namespace Domain.PointsManager
         [JsonProperty]
         public double Amount { get; private set; } = 0;
         [JsonProperty]
-        public List<PointAccountDetail> pointAccountDetail { get; private set; }
+        public List<PointAccountDetail> Items { get; private set; }
 
         public PointAccount(string companyId, string id, string createdBy, string customerId, double amount) : base(companyId, id, createdBy)
         {
             this.CustomerId = CustomerId;
             this.Amount = amount;
-            this.pointAccountDetail = new List<PointAccountDetail>();
+            this.Items = new List<PointAccountDetail>();
         }
 
-        public static PointAccount CreateNew(string companyId, string createdBy, string customerId, double amount) 
+        public static PointAccount CreateNew(string companyId, string createdBy, string customerId) 
         {
+            double amount = 0;
             PointAccount oPointAccount = new PointAccount(companyId, string.Empty, createdBy, customerId, amount);
             return oPointAccount;
         }
 
-        public PointAccountDetail AddPoints(string companyId, string createdBy, DateTime date, double value, string history, string customerId, string document, PointExtractType pointExtractType)
+        public void AddPoints(PointAccountDetail _PointAccountDetail)
         {
-            if (value <= 0)
+            if (_PointAccountDetail.Value <= 0)
                 throw new Exception("Valor deve ser maior que zero");
 
-
-            PointAccountDetail oPointAccountDetail = new PointAccountDetail(companyId, String.Empty, createdBy, date, value, history, customerId, document, pointExtractType, null);
-            this.pointAccountDetail.Add(oPointAccountDetail);
-            this.Amount += value;
-            return oPointAccountDetail;
+            this.Items.Add(_PointAccountDetail);
+            this.Amount += _PointAccountDetail.Value;
         }
 
-        public PointAccountDetail RemovePoints(string companyId, string createdBy, DateTime date, double value, string history, string customerId, string document, PointExtractType pointExtractType)
+        public void RemovePoints(PointAccountDetail _PointAccountDetail)
         {
-            if (value >= 0)
+            if (_PointAccountDetail.Value >= 0)
                 throw new Exception("Valor deve ser menor que zero");
 
-            PointAccountDetail oPointAccountDetail = new PointAccountDetail(companyId, String.Empty, createdBy, date, value, history, customerId, document, pointExtractType, null);
-            this.pointAccountDetail.Add(oPointAccountDetail);
-            this.Amount -= value;
-            return oPointAccountDetail;
+            this.Items.Add(_PointAccountDetail);
+            this.Amount -= _PointAccountDetail.Value;
         }
 
     }

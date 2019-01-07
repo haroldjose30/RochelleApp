@@ -18,7 +18,7 @@ namespace Domain.Generals
         [JsonProperty]
         public string Address { get; private set; }
         [JsonProperty]
-        public string Dristrict { get; private set; }
+        public string District { get; private set; }
         [JsonProperty]
         public string Complement { get; private set; }
         [JsonProperty]
@@ -30,14 +30,14 @@ namespace Domain.Generals
         [JsonProperty]
         public string Phone { get; private set; }
 
-        public Company(string id, string createdBy,string companyName, string fantasyName, string corporateNumber, string stateRegistration, string address, string dristrict, string complement, string state, string city, string zipCode, string phone): base(id, createdBy)
+        public Company(string id, string createdBy,string companyName, string fantasyName, string corporateNumber, string stateRegistration, string address, string district, string complement, string state, string city, string zipCode, string phone): base(id, createdBy)
         {
             this.CompanyName = companyName;
             this.FantasyName = fantasyName;
             this.CorporateNumber = corporateNumber;
             this.StateRegistration = stateRegistration;
             this.Address = address;
-            this.Dristrict = dristrict;
+            this.District = district;
             this.Complement = complement;
             this.State = state;
             this.City = city;
@@ -47,9 +47,9 @@ namespace Domain.Generals
 
        
 
-        public static Company Create(string id, string createdBy, string companyName, string fantasyName, string corporateNumber, string stateRegistration, string address, string dristrict, string complement, string state, string city, string zipCode, string phone) 
+        public static Company CreateNew(string createdBy, string companyName, string fantasyName, string corporateNumber, string stateRegistration, string address, string dristrict, string complement, string state, string city, string zipCode, string phone) 
         {
-            var oCompany = new Company(id, createdBy, companyName, fantasyName, corporateNumber, stateRegistration, address, dristrict, complement, state, city, zipCode, phone);
+            var oCompany = new Company(string.Empty, createdBy, companyName, fantasyName, corporateNumber,  stateRegistration, address, dristrict, complement, state, city, zipCode, phone);
             return oCompany;
         }
 

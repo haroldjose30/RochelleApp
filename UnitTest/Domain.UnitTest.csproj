@@ -19,5 +19,11 @@
   <ItemGroup>
     <Folder Include="Generals\" />
     <Folder Include="Models\" />
+    <Folder Include="Identity\" />
+    <Folder Include="PointsManager\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Generals\Base\EntityithCompany.cs" />
+    <Compile Remove="Base\GenericTest.cs" />
   </ItemGroup>
 </Project>
