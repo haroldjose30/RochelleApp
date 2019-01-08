@@ -1,4 +1,5 @@
 ﻿using Domain.Generals;
+using Domain.Identity;
 using Domain.PointsManager;
 using Domain.Store;
 using Framework.NetStd.Services;

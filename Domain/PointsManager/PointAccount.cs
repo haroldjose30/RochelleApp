@@ -13,20 +13,20 @@ namespace Domain.PointsManager
         [JsonProperty]
         public Customer Customer { get; private set; }
         [JsonProperty]
-        public double Amount { get; private set; } = 0;
+        public Decimal Amount { get; private set; }
         [JsonProperty]
         public List<PointAccountDetail> Items { get; private set; }
 
-        public PointAccount(string companyId, string id, string createdBy, string customerId, double amount) : base(companyId, id, createdBy)
+        public PointAccount(string companyId, string id, string createdBy, string customerId, Decimal amount) : base(companyId, id, createdBy)
         {
-            this.CustomerId = CustomerId;
+            this.CustomerId = customerId;
             this.Amount = amount;
             this.Items = new List<PointAccountDetail>();
         }
 
         public static PointAccount CreateNew(string companyId, string createdBy, string customerId) 
         {
-            double amount = 0;
+            Decimal amount = 0;
             PointAccount oPointAccount = new PointAccount(companyId, string.Empty, createdBy, customerId, amount);
             return oPointAccount;
         }
@@ -46,7 +46,7 @@ namespace Domain.PointsManager
                 throw new Exception("Valor deve ser menor que zero");
 
             this.Items.Add(_PointAccountDetail);
-            this.Amount -= _PointAccountDetail.Value;
+            this.Amount = this.Amount + _PointAccountDetail.Value;
         }
 
     }

@@ -9,24 +9,24 @@ namespace Domain.PointsManager
     {
 
         [JsonProperty]
-        public DateTime Date { get; set; }
+        public DateTime Date { get; private set; }
         [JsonProperty]
-        public double Value { get; set; }
+        public Decimal Value { get; private set; }
         [JsonProperty]
-        public string History { get; set; }
+        public string History { get; private set; }
         [JsonProperty]
-        public string CustomerId { get; set; }
+        public string CustomerId { get; private set; }
         [JsonProperty]
-        public Customer Customer { get; set; }
+        public Customer Customer { get; private set; }
         [JsonProperty]
-        public string Document { get; set; }
+        public string Document { get; private set; }
         [JsonProperty]
-        public PointExtractType PointExtractType { get; set; }
+        public PointExtractType PointExtractType { get; private set; }
         [JsonProperty]
-        public DateTime? Expiration { get; set; }
+        public DateTime? Expiration { get; private set; }
 
 
-        public PointAccountDetail(string companyId, string id, string createdBy,DateTime date, double value, string history, string customerId, string document, PointExtractType pointExtractType, DateTime? expiration) : base(companyId, id, createdBy)
+        public PointAccountDetail(string companyId, string id, string createdBy,DateTime date, Decimal value, string history, string customerId, string document, PointExtractType pointExtractType, DateTime? expiration) : base(companyId, id, createdBy)
         {
             Date = date;
             Value = value;
@@ -38,7 +38,7 @@ namespace Domain.PointsManager
             Expiration = expiration;
         }
 
-        public static PointAccountDetail CreateNew(string companyId, string createdBy, DateTime date, double value, string history, string customerId, string document, PointExtractType pointExtractType, DateTime? expiration) 
+        public static PointAccountDetail CreateNew(string companyId, string createdBy, DateTime date, Decimal value, string history, string customerId, string document, PointExtractType pointExtractType, DateTime? expiration) 
         {
             PointAccountDetail oPointAccountDetail = new PointAccountDetail(companyId, string.Empty, createdBy, date, value, history, customerId, document, pointExtractType,  null);
             return oPointAccountDetail;

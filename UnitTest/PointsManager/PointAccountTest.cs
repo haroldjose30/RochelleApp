@@ -11,17 +11,19 @@ namespace Domain.UnitTest.PointsManager
         readonly string customerId = "CustomerId";
 
         readonly DateTime date = DateTime.Now;
-        double value = 10;
-        string history = "history";
-        string document = "document";
-        PointExtractType pointExtractType = PointExtractType.Manual;
-        DateTime? expiration = null;
+        readonly Decimal value = 10;
+        readonly string history = "history";
+        readonly string document = "document";
+        readonly PointExtractType pointExtractType = PointExtractType.Manual;
+        readonly DateTime? expiration;
 
 
         [Fact]
         public PointAccount EntityCreatedAndAllPropertyTested()
         {
             PointAccount entity = PointAccount.CreateNew(companyId,  createdBy, customerId);
+
+           
 
             //assert
             Assert.Equal(createdBy, entity.CreatedBy);
@@ -37,9 +39,12 @@ namespace Domain.UnitTest.PointsManager
         {
             PointAccount entity = EntityCreatedAndAllPropertyTested();
             PointAccountDetail oPointAccountDetail = PointAccountDetail.CreateNew(companyId, createdBy, date, value, history, customerId, document, pointExtractType, expiration);
+
+            entity.Items.Add(oPointAccountDetail);
+
             entity.AddPoints(oPointAccountDetail);
-            Assert.Equal(entity.Items.Count, 1);
-            Assert.Equal(entity.Amount, oPointAccountDetail.Value);
+            Assert.Single(entity.Items);
+            Assert.Equal(oPointAccountDetail.Value,entity.Amount);
 
             return entity;
         }
@@ -50,7 +55,8 @@ namespace Domain.UnitTest.PointsManager
             PointAccount entity = EntityCreatedAndAllPropertyTested();
             PointAccountDetail oPointAccountDetail = PointAccountDetail.CreateNew(companyId, createdBy, date, -value, history, customerId, document, pointExtractType, expiration);
             entity.RemovePoints(oPointAccountDetail);
-            Assert.Equal(entity.Items.Count, -oPointAccountDetail.Value);
+            Assert.Single(entity.Items);
+            Assert.Equal(oPointAccountDetail.Value,entity.Amount);
             return entity;
         }
 
@@ -58,26 +64,18 @@ namespace Domain.UnitTest.PointsManager
         [Fact]
         public void TryAddAndRemoveInvalidValuePoints()
         {
-            try
-            {
-                double ValueZero = 0;
-                double ValuePositive = 1;
-                double ValueNegative = -1;
-                PointAccount entity = EntityCreatedAndAllPropertyTested();
-                PointAccountDetail oPointAccountDetailZero = PointAccountDetail.CreateNew(companyId, createdBy, date, ValueZero, history, customerId, document, pointExtractType, expiration);
-                PointAccountDetail oPointAccountDetailPositive = PointAccountDetail.CreateNew(companyId, createdBy, date, ValuePositive, history, customerId, document, pointExtractType, expiration);
-                PointAccountDetail oPointAccountDetailNegative = PointAccountDetail.CreateNew(companyId, createdBy, date, ValueNegative, history, customerId, document, pointExtractType, expiration);
-                entity.AddPoints(oPointAccountDetailZero);
-                entity.AddPoints(oPointAccountDetailNegative);
-                entity.RemovePoints(oPointAccountDetailPositive);
-            }
-            catch 
-            {
-                Assert.True(true,"Invalid value bloqued");
-                return;
-            }
+            Decimal ValueZero = 0;
+            Decimal ValuePositive = 1;
+            Decimal ValueNegative = -1;
+            PointAccount entity = EntityCreatedAndAllPropertyTested();
+            PointAccountDetail oPointAccountDetailZero = PointAccountDetail.CreateNew(companyId, createdBy, date, ValueZero, history, customerId, document, pointExtractType, expiration);
+            PointAccountDetail oPointAccountDetailPositive = PointAccountDetail.CreateNew(companyId, createdBy, date, ValuePositive, history, customerId, document, pointExtractType, expiration);
+            PointAccountDetail oPointAccountDetailNegative = PointAccountDetail.CreateNew(companyId, createdBy, date, ValueNegative, history, customerId, document, pointExtractType, expiration);
 
-            Assert.True(false, "Invalid value not bloqued");
+            Exception ex = Assert.Throws<Exception>(() => entity.AddPoints(oPointAccountDetailZero));
+            Exception ex2 = Assert.Throws<Exception>(() => entity.AddPoints(oPointAccountDetailNegative));
+            Exception ex3 = Assert.Throws<Exception>(() => entity.RemovePoints(oPointAccountDetailZero));
+            Exception ex4 = Assert.Throws<Exception>(() => entity.RemovePoints(oPointAccountDetailPositive));
 
         }
 

@@ -11,7 +11,6 @@ namespace RochelleApp.Fragments
 {
     public class home : Fragment
     {
-        public home() { }
 
         public static home newInstance()
         {

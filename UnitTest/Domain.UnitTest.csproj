@@ -21,9 +21,11 @@
     <Folder Include="Models\" />
     <Folder Include="Identity\" />
     <Folder Include="PointsManager\" />
+    <Folder Include="Stores\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Generals\Base\EntityithCompany.cs" />
     <Compile Remove="Base\GenericTest.cs" />
+    <Compile Remove="PointsManager\CalculatorTestData.cs" />
   </ItemGroup>
 </Project>

@@ -65,6 +65,9 @@ namespace RochelleApp
                 case Resource.Id.menu_video:
                     fragment = web.newInstance();
                     break;
+                default:
+                    fragment = home.newInstance();
+                    break;
             }
 
             if (fragment == null)

@@ -14,7 +14,7 @@ namespace Domain.UnitTest.Models
         [Fact]
         public Entity EntityMustBeCreated()
         {
-            Entity entity = new Entity(id: id, createdBy: UserTest1);
+            Entity entity = new Entity(id, UserTest1);
 
             //assert
             Assert.Equal(id, entity.Id);
@@ -28,7 +28,7 @@ namespace Domain.UnitTest.Models
         [Fact]
         public void EntityMustBeCreatedWithNewId()
         {
-            Entity entity = new Entity(string.Empty, createdBy: UserTest1);
+            Entity entity = new Entity(string.Empty, UserTest1);
 
             //assert
             Assert.NotEmpty(entity.Id);
@@ -81,26 +81,16 @@ namespace Domain.UnitTest.Models
         public void TryingUpdateADeletedEntity()
         {
 
-            var lExceptionThrowed = false;
 
-            try
-            {
-                Entity entity = EntityMustBeCreated();
+            Entity entity = EntityMustBeCreated();
 
-                entity.Delete(UserTest2);
-                Assert.True(entity.Deleted, "not deleted");
+            entity.Delete(UserTest2);
+            Assert.True(entity.Deleted, "not deleted");
 
-                entity.Update(UserTest1);
+            Exception ex = Assert.Throws<Exception>(() => entity.Update(UserTest1));
 
-            }
-            catch
-            {
-                lExceptionThrowed = true;
-                Assert.True(lExceptionThrowed, "exception throwed");
-                return;
-            }
 
-            Assert.True(lExceptionThrowed, "exception not throwed");
+
         }
 
 
@@ -108,26 +98,16 @@ namespace Domain.UnitTest.Models
         public void TryingDeleteADeletedEntity()
         {
 
-            var lExceptionThrowed = false;
 
-            try
-            {
                 Entity entity = EntityMustBeCreated();
 
                 entity.Delete(UserTest2);
                 Assert.True(entity.Deleted, "not deleted");
 
-                entity.Delete(UserTest1);
 
-            }
-            catch
-            {
-                lExceptionThrowed = true;
-                Assert.True(lExceptionThrowed, "exception throwed");
-                return;
-            }
+                Exception ex = Assert.Throws<Exception>(() => entity.Delete(UserTest1));
 
-            Assert.True(lExceptionThrowed, "exception not throwed");
+          
         }
     }
 }

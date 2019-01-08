@@ -5,7 +5,7 @@ namespace Framework.NetStd.Validators
 {
     public abstract class ValidatorGeneric<TEntity> : AbstractValidator<TEntity>, IValidatorGeneric<TEntity> where TEntity : Entity
     {
-        public ValidatorGeneric()
+        protected ValidatorGeneric()
         {
             ValidateDeleted();
         }

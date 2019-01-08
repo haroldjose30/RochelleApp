@@ -1,4 +1,5 @@
 ﻿using Domain.Generals;
+using Domain.Identity;
 using Framework.NetStd.Services;
 using WebApi.Controllers.Base;
 

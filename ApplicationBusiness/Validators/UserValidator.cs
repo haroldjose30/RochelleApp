@@ -1,4 +1,5 @@
 ﻿using Domain.Generals;
+using Domain.Identity;
 using FluentValidation;
 using Framework.NetStd.Validators;
 

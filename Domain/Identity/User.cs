@@ -42,9 +42,9 @@ namespace Domain.Identity
             return oUser;
         }
 
-        public bool LoginIsValid(User userToLogin)
+        public bool LoginIsValid(string cLogin,string cPassword)
         {
-            return this.Login.Equals(userToLogin.Login) && this.Password.Equals(userToLogin.Password);
+            return this.Login.Equals(cLogin) && this.Password.Equals(cPassword);
         }
 
 
