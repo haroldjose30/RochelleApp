@@ -11,21 +11,24 @@ namespace Domain.Store
         [JsonProperty]
         public Product Product { get; set; }
         [JsonProperty]
-        public double ValuePoint { get; set; }
+        public Decimal ValuePoint { get; set; }
+        [JsonProperty]
+        public Decimal ValueMoney { get; set; }
         [JsonProperty]
         public RegisterState RegisterState { get; set; }
 
-        public StoreProduct(string companyId, string id, string createdBy, double valuePoint, RegisterState registerState) : base(companyId, id, createdBy)
+        public StoreProduct(string companyId, string id, string createdBy, Decimal valuePoint, Decimal valueMoney, RegisterState registerState) : base(companyId, id, createdBy)
         {
             //Product = product;
-            ValuePoint = valuePoint;
-            RegisterState = registerState;
+            this.ValuePoint = valuePoint;
+            this.RegisterState = registerState;
+            this.ValueMoney = valueMoney;
         }
 
-        public static StoreProduct CreateNew(string companyId, string id, string createdBy, double valuePoint) 
+        public static StoreProduct CreateNew(string companyId, string id, string createdBy, Decimal valuePoint, Decimal valueMoney) 
         {
             RegisterState registerState = RegisterState.Enabled;
-            StoreProduct oStoreProduct = new StoreProduct( companyId, id,  createdBy,  valuePoint, registerState);
+            StoreProduct oStoreProduct = new StoreProduct( companyId, id,  createdBy,  valuePoint, valueMoney, registerState);
             return oStoreProduct;
         }
 

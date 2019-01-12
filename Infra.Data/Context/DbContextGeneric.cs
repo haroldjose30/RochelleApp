@@ -16,13 +16,17 @@ namespace Infra.Data.Context
     {
         public DbSet<Company> Companies { get; private set; }
         public DbSet<Customer> Customers { get; private set; }
-        public DbSet<Invite> Invites { get; private set; }
-        public DbSet<User> Users { get; private set; }
         public DbSet<ParamConfiguration> ParamConfigurations { get; private set; }
+        public DbSet<Product> Products { get; private set; }
+
+        public DbSet<User> Users { get; private set; }
+
+        public DbSet<Invite> Invites { get; private set; }
         public DbSet<PointAccount> PointAccounts { get; private set; }
         public DbSet<PointAccountDetail> PointAccountDetails { get; private set; }
+        public DbSet<PointCustomer> PointCustomers { get; private set; }
         public DbSet<PointRule> PointRules { get; private set; }
-        public DbSet<Product> Products { get; private set; }
+
         public DbSet<StoreOrder> StoreOrders { get; private set; }
         public DbSet<StoreOrderItem> StoreOrderItems { get; private set; }
         public DbSet<StoreOrderStatus> StoreOrderStatus { get; private set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Framework.NetCore.Contexts;
 using Framework.NetStd.Models;
@@ -17,6 +18,7 @@ namespace Infra.Data.Repositories.Base
 
         public RepositoryGeneric(IDbContextGeneric _dbContext)
         {
+
             dbContext = _dbContext;
             dbSet = dbContext.Set<TEntity>();
         }
@@ -37,6 +39,7 @@ namespace Infra.Data.Repositories.Base
 
         public virtual async Task<TEntity> CreateAsync(TEntity entity)
         {
+          
 
             if (entity.Deleted)
                 throw new Exception("Registro Deletado nao pode ser incluido!");

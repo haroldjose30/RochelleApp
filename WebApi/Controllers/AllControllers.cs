@@ -41,9 +41,27 @@ namespace WebApi.Controllers
         }
     }
 
-    public class PointExtractsController : GenericController<PointAccountDetail>
+    public class PointAccountController : GenericController<PointAccount>
     {
-        public PointExtractsController(IServiceGeneric<PointAccountDetail> _service) : base(_service)
+        public PointAccountController(IServiceGeneric<PointAccount> _service) : base(_service)
+        {
+
+        }
+    }
+
+    public class PointCustomerController : GenericController<PointCustomer>
+    {
+        public PointCustomerController(IServiceGeneric<PointCustomer> _service) : base(_service)
+        {
+
+        }
+    }
+
+
+
+    public class PointAccountDetailController : GenericController<PointAccountDetail>
+    {
+        public PointAccountDetailController(IServiceGeneric<PointAccountDetail> _service) : base(_service)
         {
 
         }

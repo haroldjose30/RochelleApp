@@ -16,7 +16,9 @@ namespace ApplicationBusiness.Services
             services.AddScoped<IServiceGeneric<Customer>, ServiceGeneric<Customer>>();
             services.AddScoped<IServiceGeneric<Invite>, ServiceGeneric<Invite>>();
             services.AddScoped<IServiceGeneric<ParamConfiguration>, ServiceGeneric<ParamConfiguration>>();
+            services.AddScoped<IServiceGeneric<PointAccount>, ServiceGeneric<PointAccount>>();
             services.AddScoped<IServiceGeneric<PointAccountDetail>, ServiceGeneric<PointAccountDetail>>();
+            services.AddScoped<IServiceGeneric<PointCustomer>, ServiceGeneric<PointCustomer>>();
             services.AddScoped<IServiceGeneric<PointRule>, ServiceGeneric<PointRule>>();
             services.AddScoped<IServiceGeneric<Product>, ServiceGeneric<Product>>();
             services.AddScoped<IServiceGeneric<StoreOrder>, ServiceGeneric<StoreOrder>>();

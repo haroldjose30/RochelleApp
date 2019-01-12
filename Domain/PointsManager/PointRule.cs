@@ -23,7 +23,7 @@ namespace Domain.PointsManager
             PointRuleType = pointRuleType;
         }
 
-        public static PointRule CreateNew(string companyId, string id, string createdBy, string name, double pointToGain,  PointRuleType pointRuleType)
+        public static PointRule CreateNew(string companyId, string createdBy, string name, double pointToGain,  PointRuleType pointRuleType)
         {
             RegisterState registerState = RegisterState.Enabled;
             PointRule oPointRule = new PointRule(companyId, string.Empty, createdBy, name, pointToGain, registerState, pointRuleType);

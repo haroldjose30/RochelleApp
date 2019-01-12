@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Data.Migrations
 {
     [DbContext(typeof(DbContextGeneric))]
-    [Migration("20190105023836_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190111213655_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,7 @@ namespace Infra.Data.Migrations
 
                     b.Property<bool>("Deleted");
 
-                    b.Property<string>("Dristrict");
+                    b.Property<string>("District");
 
                     b.Property<string>("FantasyName");
 
@@ -155,7 +155,7 @@ namespace Infra.Data.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Domain.Generals.User", b =>
+            modelBuilder.Entity("Domain.Identity.User", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -212,7 +212,7 @@ namespace Infra.Data.Migrations
 
                     b.Property<bool>("Deleted");
 
-                    b.Property<DateTime>("ExpirationDate");
+                    b.Property<DateTime?>("ExpirationDate");
 
                     b.Property<int>("InviteStatus");
 
@@ -231,7 +231,37 @@ namespace Infra.Data.Migrations
                     b.ToTable("Invites");
                 });
 
-            modelBuilder.Entity("Domain.PointsManager.PointExtract", b =>
+            modelBuilder.Entity("Domain.PointsManager.PointAccount", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("Amount");
+
+                    b.Property<string>("CompanyId");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<string>("CreatedDate");
+
+                    b.Property<string>("CustomerId");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<string>("ModifiedDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("PointAccounts");
+                });
+
+            modelBuilder.Entity("Domain.PointsManager.PointAccountDetail", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -258,9 +288,11 @@ namespace Infra.Data.Migrations
 
                     b.Property<string>("ModifiedDate");
 
+                    b.Property<string>("PointAccountId");
+
                     b.Property<int>("PointExtractType");
 
-                    b.Property<double>("Value");
+                    b.Property<decimal>("Value");
 
                     b.HasKey("Id");
 
@@ -268,7 +300,39 @@ namespace Infra.Data.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("PointExtracts");
+                    b.HasIndex("PointAccountId");
+
+                    b.ToTable("PointAccountDetails");
+                });
+
+            modelBuilder.Entity("Domain.PointsManager.PointCustomer", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CompanyId");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<string>("CreatedDate");
+
+                    b.Property<string>("CustomerId");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<int>("InvitesQuantity");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<string>("ModifiedDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("PointCustomers");
                 });
 
             modelBuilder.Entity("Domain.PointsManager.PointRule", b =>
@@ -356,11 +420,11 @@ namespace Infra.Data.Migrations
 
                     b.Property<string>("ProductId");
 
-                    b.Property<double>("Quantity");
+                    b.Property<decimal>("Quantity");
 
                     b.Property<string>("StoreOrderId");
 
-                    b.Property<double>("ValuePoint");
+                    b.Property<decimal>("ValuePoint");
 
                     b.HasKey("Id");
 
@@ -420,7 +484,9 @@ namespace Infra.Data.Migrations
 
                     b.Property<int>("RegisterState");
 
-                    b.Property<double>("ValuePoint");
+                    b.Property<decimal>("ValueMoney");
+
+                    b.Property<decimal>("ValuePoint");
 
                     b.HasKey("Id");
 
@@ -452,7 +518,7 @@ namespace Infra.Data.Migrations
                         .HasForeignKey("CompanyId");
                 });
 
-            modelBuilder.Entity("Domain.Generals.User", b =>
+            modelBuilder.Entity("Domain.Identity.User", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
@@ -478,7 +544,33 @@ namespace Infra.Data.Migrations
                         .HasForeignKey("CustomerToId");
                 });
 
-            modelBuilder.Entity("Domain.PointsManager.PointExtract", b =>
+            modelBuilder.Entity("Domain.PointsManager.PointAccount", b =>
+                {
+                    b.HasOne("Domain.Generals.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+
+                    b.HasOne("Domain.Generals.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+                });
+
+            modelBuilder.Entity("Domain.PointsManager.PointAccountDetail", b =>
+                {
+                    b.HasOne("Domain.Generals.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+
+                    b.HasOne("Domain.Generals.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("Domain.PointsManager.PointAccount")
+                        .WithMany("Items")
+                        .HasForeignKey("PointAccountId");
+                });
+
+            modelBuilder.Entity("Domain.PointsManager.PointCustomer", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
@@ -521,7 +613,7 @@ namespace Infra.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ProductId");
 
-                    b.HasOne("Domain.Store.StoreOrder")
+                    b.HasOne("Domain.Store.StoreOrder", "StoreOrder")
                         .WithMany("Items")
                         .HasForeignKey("StoreOrderId");
                 });

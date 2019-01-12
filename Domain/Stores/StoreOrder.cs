@@ -32,7 +32,7 @@ namespace Domain.Store
             this.Items = new List<StoreOrderItem>();
         }
 
-        public static StoreOrder CreateNew(string companyId, string id, string createdBy, DateTime date, string customerFromId)
+        public static StoreOrder CreateNew(string companyId,  string createdBy, DateTime date, string customerFromId)
         {
             string storeOrderStatusId = string.Empty;
             StoreOrder oStoreOrder = new StoreOrder(companyId, string.Empty, createdBy, date, customerFromId, storeOrderStatusId);

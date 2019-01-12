@@ -21,6 +21,8 @@ namespace Infra.Data.Repositories
             services.AddScoped<IRepositoryGeneric<Invite>, RepositoryGeneric<Invite>>();
             services.AddScoped<IRepositoryGeneric<User>, RepositoryGeneric<User>>();
             services.AddScoped<IRepositoryGeneric<ParamConfiguration>, RepositoryGeneric<ParamConfiguration>>();
+            services.AddScoped<IRepositoryGeneric<PointAccount>, RepositoryGeneric<PointAccount>>();
+            services.AddScoped<IRepositoryGeneric<PointCustomer>, RepositoryGeneric<PointCustomer>>();
             services.AddScoped<IRepositoryGeneric<PointAccountDetail>, RepositoryGeneric<PointAccountDetail>>();
             services.AddScoped<IRepositoryGeneric<PointRule>, RepositoryGeneric<PointRule>>();
             services.AddScoped<IRepositoryGeneric<Product>, RepositoryGeneric<Product>>();

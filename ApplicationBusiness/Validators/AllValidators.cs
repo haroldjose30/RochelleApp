@@ -17,7 +17,9 @@ namespace ApplicationBusiness.Validators
             services.AddScoped<IValidatorGeneric<Customer>, CustomerValidator >();
             services.AddScoped<IValidatorGeneric<Invite>, InviteValidator>();
             services.AddScoped<IValidatorGeneric<ParamConfiguration>, ParamConfigurationValidator>();
-            services.AddScoped<IValidatorGeneric<PointAccountDetail>, PointExtractValidator>();
+            services.AddScoped<IValidatorGeneric<PointAccount>, PointAccountValidator>();
+            services.AddScoped<IValidatorGeneric<PointCustomer>, PointCustomerValidator>();
+            services.AddScoped<IValidatorGeneric<PointAccountDetail>, PointAccountDetailValidator>();
             services.AddScoped<IValidatorGeneric<PointRule>, PointRuleValidator >();
             services.AddScoped<IValidatorGeneric<Product>, ProductValidator>();
             services.AddScoped<IValidatorGeneric<StoreOrder>, StoreOrderValidator>();
@@ -31,7 +33,9 @@ namespace ApplicationBusiness.Validators
     public class CustomerValidator : ValidatorGeneric<Customer> { };
     public class InviteValidator : ValidatorGeneric<Invite> { };
     public class ParamConfigurationValidator : ValidatorGeneric<ParamConfiguration> { };
-    public class PointExtractValidator : ValidatorGeneric<PointAccountDetail> { };
+    public class PointAccountValidator : ValidatorGeneric<PointAccount> { };
+    public class PointCustomerValidator : ValidatorGeneric<PointCustomer> { };
+    public class PointAccountDetailValidator : ValidatorGeneric<PointAccountDetail> { };
     public class PointRuleValidator : ValidatorGeneric<PointRule> { };
     public class ProductValidator : ValidatorGeneric<Product> { };
     public class StoreOrderValidator : ValidatorGeneric<StoreOrder> { };

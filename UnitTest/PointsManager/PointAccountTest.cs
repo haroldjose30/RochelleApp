@@ -40,7 +40,8 @@ namespace Domain.UnitTest.PointsManager
             PointAccount entity = EntityCreatedAndAllPropertyTested();
             PointAccountDetail oPointAccountDetail = PointAccountDetail.CreateNew(companyId, createdBy, date, value, history, customerId, document, pointExtractType, expiration);
 
-            entity.Items.Add(oPointAccountDetail);
+            //todo: verificar como bloquear para nao permitir adicionar um item em uma lista por fora da classe
+            //entity.Items.Add(oPointAccountDetail);
 
             entity.AddPoints(oPointAccountDetail);
             Assert.Single(entity.Items);

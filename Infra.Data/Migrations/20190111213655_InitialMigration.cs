@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infra.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,7 +22,7 @@ namespace Infra.Data.Migrations
                     CorporateNumber = table.Column<string>(nullable: true),
                     StateRegistration = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
-                    Dristrict = table.Column<string>(nullable: true),
+                    District = table.Column<string>(nullable: true),
                     Complement = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
@@ -172,7 +172,7 @@ namespace Infra.Data.Migrations
                     Deleted = table.Column<bool>(nullable: false),
                     CompanyId = table.Column<string>(nullable: true),
                     Code = table.Column<string>(nullable: true),
-                    ExpirationDate = table.Column<DateTime>(nullable: false),
+                    ExpirationDate = table.Column<DateTime>(nullable: true),
                     CustomerFromId = table.Column<string>(nullable: true),
                     CustomerToId = table.Column<string>(nullable: true),
                     InviteStatus = table.Column<int>(nullable: false)
@@ -201,7 +201,7 @@ namespace Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PointExtracts",
+                name: "PointAccounts",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -211,25 +211,51 @@ namespace Infra.Data.Migrations
                     ModifiedBy = table.Column<string>(nullable: true),
                     Deleted = table.Column<bool>(nullable: false),
                     CompanyId = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false),
-                    Value = table.Column<double>(nullable: false),
-                    History = table.Column<string>(nullable: true),
                     CustomerId = table.Column<string>(nullable: true),
-                    Document = table.Column<string>(nullable: true),
-                    PointExtractType = table.Column<int>(nullable: false),
-                    Expiration = table.Column<DateTime>(nullable: true)
+                    Amount = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PointExtracts", x => x.Id);
+                    table.PrimaryKey("PK_PointAccounts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PointExtracts_Companies_CompanyId",
+                        name: "FK_PointAccounts_Companies_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_PointExtracts_Customers_CustomerId",
+                        name: "FK_PointAccounts_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PointCustomers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreatedDate = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    ModifiedDate = table.Column<string>(nullable: true),
+                    ModifiedBy = table.Column<string>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false),
+                    CompanyId = table.Column<string>(nullable: true),
+                    CustomerId = table.Column<string>(nullable: true),
+                    InvitesQuantity = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PointCustomers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PointCustomers_Companies_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Companies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PointCustomers_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
@@ -321,7 +347,8 @@ namespace Infra.Data.Migrations
                     Deleted = table.Column<bool>(nullable: false),
                     CompanyId = table.Column<string>(nullable: true),
                     ProductId = table.Column<string>(nullable: true),
-                    ValuePoint = table.Column<double>(nullable: false),
+                    ValuePoint = table.Column<decimal>(nullable: false),
+                    ValueMoney = table.Column<decimal>(nullable: false),
                     RegisterState = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -342,6 +369,49 @@ namespace Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PointAccountDetails",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreatedDate = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    ModifiedDate = table.Column<string>(nullable: true),
+                    ModifiedBy = table.Column<string>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false),
+                    CompanyId = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Value = table.Column<decimal>(nullable: false),
+                    History = table.Column<string>(nullable: true),
+                    CustomerId = table.Column<string>(nullable: true),
+                    Document = table.Column<string>(nullable: true),
+                    PointExtractType = table.Column<int>(nullable: false),
+                    Expiration = table.Column<DateTime>(nullable: true),
+                    PointAccountId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PointAccountDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PointAccountDetails_Companies_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Companies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PointAccountDetails_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PointAccountDetails_PointAccounts_PointAccountId",
+                        column: x => x.PointAccountId,
+                        principalTable: "PointAccounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "StoreOrderItems",
                 columns: table => new
                 {
@@ -352,10 +422,10 @@ namespace Infra.Data.Migrations
                     ModifiedBy = table.Column<string>(nullable: true),
                     Deleted = table.Column<bool>(nullable: false),
                     CompanyId = table.Column<string>(nullable: true),
+                    StoreOrderId = table.Column<string>(nullable: true),
                     ProductId = table.Column<string>(nullable: true),
-                    Quantity = table.Column<double>(nullable: false),
-                    ValuePoint = table.Column<double>(nullable: false),
-                    StoreOrderId = table.Column<string>(nullable: true)
+                    Quantity = table.Column<decimal>(nullable: false),
+                    ValuePoint = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -406,13 +476,38 @@ namespace Infra.Data.Migrations
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PointExtracts_CompanyId",
-                table: "PointExtracts",
+                name: "IX_PointAccountDetails_CompanyId",
+                table: "PointAccountDetails",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PointExtracts_CustomerId",
-                table: "PointExtracts",
+                name: "IX_PointAccountDetails_CustomerId",
+                table: "PointAccountDetails",
+                column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PointAccountDetails_PointAccountId",
+                table: "PointAccountDetails",
+                column: "PointAccountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PointAccounts_CompanyId",
+                table: "PointAccounts",
+                column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PointAccounts_CustomerId",
+                table: "PointAccounts",
+                column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PointCustomers_CompanyId",
+                table: "PointCustomers",
+                column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PointCustomers_CustomerId",
+                table: "PointCustomers",
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
@@ -485,7 +580,10 @@ namespace Infra.Data.Migrations
                 name: "ParamConfigurations");
 
             migrationBuilder.DropTable(
-                name: "PointExtracts");
+                name: "PointAccountDetails");
+
+            migrationBuilder.DropTable(
+                name: "PointCustomers");
 
             migrationBuilder.DropTable(
                 name: "PointRules");
@@ -495,6 +593,9 @@ namespace Infra.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "PointAccounts");
 
             migrationBuilder.DropTable(
                 name: "StoreProducts");

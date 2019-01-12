@@ -1,4 +1,5 @@
-﻿using Domain.Generals.Base;
+﻿using System;
+using Domain.Generals.Base;
 using Newtonsoft.Json;
 
 namespace Domain.Store
@@ -14,11 +15,11 @@ namespace Domain.Store
         [JsonProperty]
         public StoreProduct Product { get; private set; }
         [JsonProperty]
-        public double Quantity { get; private set; }
+        public Decimal Quantity { get; private set; }
         [JsonProperty]
-        public double ValuePoint { get; private set; }
+        public Decimal ValuePoint { get; private set; }
 
-        public StoreOrderItem(string companyId, string id, string createdBy, string productId, double quantity, double valuePoint) : base(companyId, id, createdBy)
+        public StoreOrderItem(string companyId, string id, string createdBy, string productId, Decimal quantity, Decimal valuePoint) : base(companyId, id, createdBy)
         {
             ProductId = productId;
             //Product = product;
@@ -26,7 +27,7 @@ namespace Domain.Store
             ValuePoint = valuePoint;
         }
 
-        public StoreOrderItem CreateNew(string companyId, string createdBy, string productId, double quantity, double valuePoint) 
+        public static StoreOrderItem CreateNew(string companyId, string createdBy, string productId, Decimal quantity, Decimal valuePoint) 
         {
             StoreOrderItem oStoreOrderItem = new StoreOrderItem(companyId, string.Empty, createdBy, productId, quantity, valuePoint);
             return oStoreOrderItem;

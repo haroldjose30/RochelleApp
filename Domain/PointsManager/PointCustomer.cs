@@ -14,9 +14,16 @@ namespace Domain.PointsManager
         [JsonProperty]
         public int InvitesQuantity { get; private set; }
 
-        public PointCustomer(string companyId, string id, string createdBy, string customerId) : base(companyId, id, createdBy)
+        public PointCustomer(string companyId, string id, string createdBy, string customerId, int invitesQuantity) : base(companyId, id, createdBy)
         {
             this.CustomerId = customerId;
+            this.InvitesQuantity = invitesQuantity;
+        }
+
+        public static PointCustomer CreateNew(string companyId, string createdBy, string customerId, int invitesQuantity)
+        {
+            PointCustomer oPointCustomer = new PointCustomer(companyId, string.Empty, createdBy, customerId, invitesQuantity);
+            return oPointCustomer;
         }
 
 

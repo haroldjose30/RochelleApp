@@ -9,21 +9,18 @@ namespace Framework.NetStd.Models
 
     public class Entity
     {
-
-
-
         [JsonProperty]
-        public string Id { get; private set; } = string.Empty;
+        public string Id { get; protected set; } = string.Empty;
         [JsonProperty]
-        public string CreatedDate { get; private set; } = string.Empty;
+        public string CreatedDate { get; protected set; } = string.Empty;
         [JsonProperty]
-        public string CreatedBy { get; private set; } = string.Empty;
+        public string CreatedBy { get; protected set; } = string.Empty;
         [JsonProperty]
-        public string ModifiedDate { get; private set; } = string.Empty;
+        public string ModifiedDate { get; protected set; } = string.Empty;
         [JsonProperty]
-        public string ModifiedBy { get; private set; } = string.Empty;
+        public string ModifiedBy { get; protected set; } = string.Empty;
         [JsonProperty]
-        public bool Deleted { get; private set; } = false;
+        public bool Deleted { get; protected set; } = false;
 
         public Entity(string id, string createdBy)
         {
@@ -51,7 +48,7 @@ namespace Framework.NetStd.Models
             this.ModifiedBy = cUser;
         }
 
-        public virtual void Delete(string cUser) 
+        public virtual void Delete(string cUser)
         {
 
             if (this.Deleted)
@@ -64,7 +61,7 @@ namespace Framework.NetStd.Models
 
         protected virtual string GetNewId()
         {
-            var cDateId =  DateTime.Now.ToUniversalTime().ToString("yyMMddHHmmssfff");
+            var cDateId = DateTime.Now.ToUniversalTime().ToString("yyMMddHHmmssfff");
             return cDateId + this.CreatedBy;
         }
 
@@ -77,38 +74,29 @@ namespace Framework.NetStd.Models
         //remove all ForeingKey/EntityBase property from object, using reflexions
         public void RemoveEntityBaseProperty()
         {
+
             Type type = this.GetType();
             PropertyInfo[] properties = type.GetProperties();
             //var propertiesEntitybase = properties.Where(p => p.PropertyType?.BaseType == typeof(EntityBase));
 
             foreach (PropertyInfo property in properties)
             {
-                if (property.PropertyType.BaseType == typeof(Entity))
+                if (
+                        property.PropertyType.BaseType == typeof(Entity) ||
+                        property.PropertyType.BaseType.Name.Equals("EntityWithCompany") ||
+                        property.PropertyType.Namespace.Equals("System.Collections.Generic")
+                    )
                 {
-                    Console.WriteLine($"EntityBase={property.Name}=null");
-                    property.SetValue(this, null);
+                    EntityReflexion.SetPrivatePropertyValue<Entity>(this, property.Name, null);
                     continue;
                 }
 
-                if (property.PropertyType.BaseType.Name.Equals("EntityWithCompany"))
-                //if (property.PropertyType.BaseType == typeof(EntityWithCompany))
-                {
-                    Console.WriteLine($"EntityBaseCompany={property.Name}=null");
-                    property.SetValue(this, null);
-                    continue;
-                }
-
-
-                if (property.PropertyType.Namespace.Equals("System.Collections.Generic"))
-                {
-                    Console.WriteLine($"System.Collections.Generic={property.Name}=null");
-                    property.SetValue(this, null);
-                    continue;
-                }
             }
 
 
+
         }
+
 
 
     }

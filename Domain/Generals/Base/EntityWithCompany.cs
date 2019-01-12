@@ -1,11 +1,14 @@
 ﻿using Framework.NetStd.Models;
+using Newtonsoft.Json;
 
 namespace Domain.Generals.Base
 {
     public class EntityWithCompany:Entity
     {
-        public string CompanyId { get; private set; }
-        public Company Company { get; private set; }
+        [JsonProperty]
+        public string CompanyId { get; protected set; }
+        [JsonProperty]
+        public Company Company { get; protected set; }
 
 
         public EntityWithCompany(string companyId, string id, string createdBy) : base(id, createdBy)
