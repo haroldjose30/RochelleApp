@@ -29,4 +29,9 @@
     <ProjectReference Include="..\Framework.NetCore\Framework.NetCore.csproj" />
     <ProjectReference Include="..\Framework.NetStd\Framework.NetStd.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Infrastructure\Jwt\" />
+    <Folder Include="Infrastructure\Swagger\" />
+  </ItemGroup>
 </Project>

@@ -39,3 +39,25 @@ Thumbs.db
 
 # dotCover
 *.dotCover
+
+# dependencies
+/ui.website/node_modules
+/ui.website/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/ui.website/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
