@@ -41,15 +41,15 @@ Thumbs.db
 *.dotCover
 
 # dependencies
-/ui.website/node_modules
-/ui.website/.pnp
+/ui.webapp/node_modules
+/ui.webapp/.pnp
 .pnp.js
 
 # testing
 /coverage
 
 # production
-/ui.website/build
+/ui.webapp/build
 
 # misc
 .DS_Store
