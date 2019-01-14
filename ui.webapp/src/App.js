@@ -1,50 +1,34 @@
-/*import React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import GAListener from './components/GAListener';
-import { EmptyLayout, LayoutRoute, MainLayout } from './components/Layout';
-
-import Dashboard from "./components/Layout/Dashboard";
-import UserPage from "./views/UserPage/UserPage";
-import DashboardPage from './pages/DashboardPage';
-
-import indexRoutes from "./routes/index.jsx"
+/*
+import React from "react";
+import ReactDOM from "react-dom";
+import { createBrowserHistory } from "history";
+import { Router, Route, Switch } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "./assets/scss/paper-dashboard.css";
 import "./assets/demo/demo.css";
-import './App.css';
 
-const getBasename = () => {
-  return `/${process.env.PUBLIC_URL.split('/').pop()}`;
-};
+import indexRoutes from "./routes/index.jsx";
 
-         
+const hist = createBrowserHistory();
 
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter basename={getBasename()}>
-        <GAListener>
-          <Switch>
-
-            <LayoutRoute
-              exact
-              path="/"
-              layout={MainLayout}
-              component={DashboardPage}
-            />
-
-
-          </Switch>
-        </GAListener>
-      </BrowserRouter>
+      <Router history={hist}>
+      <Switch>
+        {indexRoutes.map((prop, key) => {
+          return <Route path={prop.path} key={key} component={prop.component} />;
+        })}
+      </Switch>
+    </Router>
     );
   }
 }
 
 export default App;
-*/
 
+*/
 
 import { STATE_LOGIN, STATE_SIGNUP } from './components/AuthForm';
 import GAListener from './components/GAListener';
@@ -233,4 +217,3 @@ const query = ({ width }) => {
 };
 
 export default componentQueries(query)(App);
-
