@@ -20,17 +20,18 @@ class AuthForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.props.onHandleSubmit(this.props.authState);
   };
 
   renderButtonText() {
     const { buttonText } = this.props;
 
     if (!buttonText && this.isLogin) {
-      return 'Login';
+      return 'Entrar';
     }
 
     if (!buttonText && this.isSignup) {
-      return 'Signup';
+      return 'Registrar';
     }
 
     return buttonText;
@@ -79,7 +80,7 @@ class AuthForm extends React.Component {
         <FormGroup check>
           <Label check>
             <Input type="checkbox" />{' '}
-            {this.isSignup ? 'Agree the terms and policy' : 'Remember me'}
+            {this.isSignup ? 'Concordo com os termos e políticas' : 'Lembre de mim'}
           </Label>
         </FormGroup>
         <hr />
@@ -92,15 +93,15 @@ class AuthForm extends React.Component {
         </Button>
 
         <div className="text-center pt-1">
-          <h6>or</h6>
+          <h6>ou</h6>
           <h6>
             {this.isSignup ? (
               <a href="#login" onClick={this.changeAuthState(STATE_LOGIN)}>
-                Login
+                Entrar
               </a>
             ) : (
               <a href="#signup" onClick={this.changeAuthState(STATE_SIGNUP)}>
-                Signup
+                Registrar
               </a>
             )}
           </h6>
@@ -125,6 +126,7 @@ AuthForm.propTypes = {
   confirmPasswordLabel: PropTypes.string,
   confirmPasswordInputProps: PropTypes.object,
   onLogoClick: PropTypes.func,
+  onHandleSubmit: PropTypes.func,
 };
 
 AuthForm.defaultProps = {
@@ -133,19 +135,20 @@ AuthForm.defaultProps = {
   usernameLabel: 'Email',
   usernameInputProps: {
     type: 'email',
-    placeholder: 'your@email.com',
+    placeholder: 'seu@email.com.br',
   },
-  passwordLabel: 'Password',
+  passwordLabel: 'Senha',
   passwordInputProps: {
     type: 'password',
-    placeholder: 'your password',
+    placeholder: 'informe sua senha',
   },
-  confirmPasswordLabel: 'Confirm Password',
+  confirmPasswordLabel: 'Confirmação de Senha',
   confirmPasswordInputProps: {
     type: 'password',
-    placeholder: 'confirm your password',
+    placeholder: 'confirme sua senha',
   },
   onLogoClick: () => {},
+  onHandleSubmit: () => {}
 };
 
 export default AuthForm;

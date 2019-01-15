@@ -12,7 +12,17 @@ class AuthPage extends React.Component {
   };
 
   handleLogoClick = () => {
-    this.props.history.push('/');
+    const url = 'http://www.rochellemassinhan.com.br';
+    var win = window.open(url, '_blank');
+    win.focus();
+  };
+
+  handleSubmit = authState => {
+    if (authState === STATE_LOGIN) {
+      this.props.history.push('/main');
+    } else {
+      this.props.history.push('/signuped');
+    }
   };
 
   render() {
@@ -29,6 +39,7 @@ class AuthPage extends React.Component {
               authState={this.props.authState}
               onChangeAuthState={this.handleAuthState}
               onLogoClick={this.handleLogoClick}
+              onHandleSubmit={this.handleSubmit}
             />
           </Card>
         </Col>

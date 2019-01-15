@@ -1,64 +1,20 @@
-/*
-import React from "react";
-import ReactDOM from "react-dom";
-import { createBrowserHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
+import React from 'react';
 
-import "bootstrap/dist/css/bootstrap.css";
-import "./assets/scss/paper-dashboard.css";
-import "./assets/demo/demo.css";
-
-import indexRoutes from "./routes/index.jsx";
-
-const hist = createBrowserHistory();
-
-class App extends React.Component {
-  render() {
-    return (
-      <Router history={hist}>
-      <Switch>
-        {indexRoutes.map((prop, key) => {
-          return <Route path={prop.path} key={key} component={prop.component} />;
-        })}
-      </Switch>
-    </Router>
-    );
-  }
-}
-
-export default App;
-
-*/
-
-import { STATE_LOGIN, STATE_SIGNUP } from './components/AuthForm';
 import GAListener from './components/GAListener';
 import { EmptyLayout, LayoutRoute, MainLayout } from './components/Layout';
-import AlertPage from './pages/AlertPage';
-import AuthModalPage from './pages/AuthModalPage';
-import AuthPage from './pages/AuthPage';
-import BadgePage from './pages/BadgePage';
-import ButtonGroupPage from './pages/ButtonGroupPage';
-import ButtonPage from './pages/ButtonPage';
-import CardPage from './pages/CardPage';
-import ChartPage from './pages/ChartPage';
-// pages
-import DashboardPage from './pages/DashboardPage';
-import DropdownPage from './pages/DropdownPage';
-import FormPage from './pages/FormPage';
-import InputGroupPage from './pages/InputGroupPage';
-import ModalPage from './pages/ModalPage';
-import ProgressPage from './pages/ProgressPage';
-import TablePage from './pages/TablePage';
-import TypographyPage from './pages/TypographyPage';
-import WidgetPage from './pages/WidgetPage';
-import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
 
+import AuthPage from './pages/AuthPage';
+import { STATE_LOGIN, STATE_SIGNUP } from './components/AuthForm';
+import MainPage from './pages/MainPage';
+import CompanyFormPage from './pages/CompanyFormPage';
+
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
 };
+
 
 class App extends React.Component {
   render() {
@@ -84,107 +40,17 @@ class App extends React.Component {
             />
             <LayoutRoute
               exact
-              path="/login-modal"
+              path="/main"
               layout={MainLayout}
-              component={AuthModalPage}
+              component={MainPage}
             />
             <LayoutRoute
-              exact
-              path="/"
-              layout={MainLayout}
-              component={DashboardPage}
-            />
-            <LayoutRoute
-              exact
-              path="/buttons"
-              layout={MainLayout}
-              component={ButtonPage}
-            />
-            <LayoutRoute
-              exact
-              path="/cards"
-              layout={MainLayout}
-              component={CardPage}
-            />
-            <LayoutRoute
-              exact
-              path="/widgets"
-              layout={MainLayout}
-              component={WidgetPage}
-            />
-            <LayoutRoute
-              exact
-              path="/typography"
-              layout={MainLayout}
-              component={TypographyPage}
-            />
-            <LayoutRoute
-              exact
-              path="/alerts"
-              layout={MainLayout}
-              component={AlertPage}
-            />
-            <LayoutRoute
-              exact
-              path="/tables"
-              layout={MainLayout}
-              component={TablePage}
-            />
-            <LayoutRoute
-              exact
-              path="/badges"
-              layout={MainLayout}
-              component={BadgePage}
-            />
-            <LayoutRoute
-              exact
-              path="/button-groups"
-              layout={MainLayout}
-              component={ButtonGroupPage}
-            />
-            <LayoutRoute
-              exact
-              path="/dropdowns"
-              layout={MainLayout}
-              component={DropdownPage}
-            />
-            <LayoutRoute
-              exact
-              path="/progress"
-              layout={MainLayout}
-              component={ProgressPage}
-            />
-            <LayoutRoute
-              exact
-              path="/modals"
-              layout={MainLayout}
-              component={ModalPage}
-            />
-            <LayoutRoute
-              exact
-              path="/forms"
-              layout={MainLayout}
-              component={FormPage}
-            />
-            <LayoutRoute
-              exact
-              path="/input-groups"
-              layout={MainLayout}
-              component={InputGroupPage}
-            />
-            <LayoutRoute
-              exact
-              path="/charts"
-              layout={MainLayout}
-              component={ChartPage}
-            />
-            <LayoutRoute
-              exact
-              path="/register"
-              layout={MainLayout}
-              component={AuthPage}
-            />
-            <Redirect to="/" />
+            exact
+            path="/companies"
+            layout={MainLayout}
+            component={CompanyFormPage}
+          />
+            <Redirect to="/login" />
           </Switch>
         </GAListener>
       </BrowserRouter>
@@ -217,3 +83,4 @@ const query = ({ width }) => {
 };
 
 export default componentQueries(query)(App);
+

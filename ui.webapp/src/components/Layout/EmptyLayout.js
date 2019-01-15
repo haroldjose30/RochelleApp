@@ -1,16 +1,6 @@
 import { Content } from '../Layout';
 import React from 'react';
 
-/*
-const EmptyLayout = ({ children, ...restProps }) => (
-  <main className="cr-app bg-light" {...restProps}>
-    <Content fluid onClick={this.handleContentClick}>
-      {children}
-    </Content>
-  </main>
-);
-*/
-
 const EmptyLayout = ({ children, ...restProps }) => (
   <main className="cr-app bg-light" {...restProps}>
     <Content fluid >
