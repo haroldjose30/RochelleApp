@@ -3,11 +3,12 @@ import PropTypes from '../utils/propTypes';
 
 import bn from '../utils/bemnames';
 
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem,Alert } from 'reactstrap';
 
 import Typography from './Typography';
 
 const bem = bn.create('page');
+
 
 const Page = ({
   title,
@@ -15,7 +16,9 @@ const Page = ({
   tag: Tag,
   className,
   children,
-  ...restProps
+  alertMessage,
+  alertColor,
+  ...restProps,
 }) => {
   const classes = bem.b('px-3', className);
 
@@ -41,6 +44,11 @@ const Page = ({
           </Breadcrumb>
         )}
       </div>
+
+      <Alert isOpen={alertMessage.length >0} color={alertColor}>
+       {alertMessage}
+      </Alert>
+
       {children}
     </Tag>
   );
@@ -50,6 +58,8 @@ Page.propTypes = {
   tag: PropTypes.component,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   className: PropTypes.string,
+  alertMessage:PropTypes.string,
+  alertColor:PropTypes.string,
   children: PropTypes.node,
   breadcrumbs: PropTypes.arrayOf(
     PropTypes.shape({
@@ -62,6 +72,8 @@ Page.propTypes = {
 Page.defaultProps = {
   tag: 'div',
   title: '',
+  alertMessage: '',
+  alertColor:'danger',
 };
 
 export default Page;

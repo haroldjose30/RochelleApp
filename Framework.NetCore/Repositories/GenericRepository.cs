@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Repositories.Base
 {
-    public class RepositoryGeneric<TEntity> : IRepositoryGeneric<TEntity> where TEntity : Entity
+    public class GenericRepository<TEntity> : IRepositoryGeneric<TEntity> where TEntity : Entity
     {
         public bool lAutoSaveChanges = true;
 
         protected readonly IDbContextGeneric dbContext;
         protected readonly DbSet<TEntity> dbSet;
 
-        public RepositoryGeneric(IDbContextGeneric _dbContext)
+        public GenericRepository(IDbContextGeneric _dbContext)
         {
 
             dbContext = _dbContext;
@@ -29,14 +29,21 @@ namespace Infra.Data.Repositories.Base
                             .AsNoTracking();
         }
 
-        public virtual async Task<TEntity> GetByIdAsync(string id)
+        public virtual async Task<TEntity> GetByIdAsync(ModelNotification modelError,string id)
         {
-          var resultado = await dbSet.Where(e => e.Deleted == false &&
+            var oEntity = await dbSet.Where(e => e.Deleted == false &&
                                     e.Id == id)
                             .AsNoTracking()
                             .FirstOrDefaultAsync();
 
-            return resultado;
+            if (oEntity == null)
+            {
+                modelError.Add($"registo {id} não localizado");
+                return null;
+            }
+
+
+            return oEntity;
         }
 
         public virtual async Task<TEntity> CreateAsync(TEntity entity)
@@ -71,14 +78,18 @@ namespace Infra.Data.Repositories.Base
             return entity;
         }
 
-        public virtual async Task<bool> DeleteAsync(TEntity _entity)
+        public virtual async Task<bool> DeleteAsync(ModelNotification modelNotification, TEntity _entity)
         {
-
-            var entity = await GetByIdAsync(_entity.Id);
+             var entity = await GetByIdAsync(modelNotification,_entity.Id);
 
 
             if (entity.Deleted)
-                throw new Exception("Registro já Deletado!");
+            {
+                modelNotification.Add("Registro já Deletado!");
+                //throw new Exception("Registro já Deletado!");
+                return false;
+            }
+
 
 
             if (entity == null)

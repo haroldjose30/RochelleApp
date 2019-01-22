@@ -7,9 +7,11 @@ import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
 
 import AuthPage from './pages/AuthPage';
-import { STATE_LOGIN, STATE_SIGNUP } from './components/AuthForm';
+import { STATE_LOGIN, STATE_SIGNUP } from './components/FormInputs/AuthForm';
 import MainPage from './pages/MainPage';
-import CompanyFormPage from './pages/CompanyFormPage';
+import CompanyListPage from './views/Company/CompanyListPage';
+import CompanyFormPage from './views/Company/CompanyFormPage';
+
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
@@ -42,15 +44,22 @@ class App extends React.Component {
               exact
               path="/main"
               layout={MainLayout}
-              component={MainPage}
-            />
+              component={MainPage}/>
+          
             <LayoutRoute
-            exact
-            path="/companies"
-            layout={MainLayout}
-            component={CompanyFormPage}
-          />
-            <Redirect to="/login" />
+              exact
+              path="/company"
+              layout={MainLayout}
+              component={CompanyListPage} />
+
+            <LayoutRoute
+              exact
+              path="/company/form"
+              layout={MainLayout}
+              component={CompanyFormPage} />
+
+
+          <Redirect to="/login" />
           </Switch>
         </GAListener>
       </BrowserRouter>

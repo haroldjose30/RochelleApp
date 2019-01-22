@@ -34,12 +34,12 @@ namespace Framework.NetStd.Services
             return entity;
         }
 
-        public virtual async Task<Boolean> DeleteAsync(TEntity entity)
+        public virtual async Task<Boolean> DeleteAsync(ModelNotification modelNotification,TEntity entity)
         {
             if (entity == null)
                 throw new ArgumentException("The id can't be empty.");
 
-            await repository.DeleteAsync(entity);
+            await repository.DeleteAsync(modelNotification,entity);
             return true;
         }
 
@@ -48,12 +48,17 @@ namespace Framework.NetStd.Services
             return await repository.GetAllAsync(); 
         }
 
-        public virtual async Task<TEntity> GetByIdAsync(string id)
+        public virtual async Task<TEntity> GetByIdAsync(ModelNotification modelNotification, string id)
         {
             if (id == string.Empty)
-                throw new ArgumentException("The id can't be empty.");
+            {
+                modelNotification.Add("id não pode ser vazio!");
+                //throw new ArgumentException("The id can't be empty.");
+                return null;
+            }
 
-            return await repository.GetByIdAsync(id);
+
+            return await repository.GetByIdAsync(modelNotification, id);
         }
 
         private void Validate(TEntity entity)

@@ -1,73 +1,53 @@
-import {
-  MdThumbUp,
-  MdThumbsUpDown,
-  MdLanguage,
-  MdLightbulbOutline,
-  MdPlayCircleOutline,
-  MdRadio,
-  MdSnooze,
-  MdMailOutline,
-} from 'react-icons/md';
+import React from 'react';
 
-export const iconWidgetsData = [
-  {
-    bgColor: 'primary',
-    icon: MdThumbUp,
-    title: 'Primary',
-    subtitle: 'widget subtitle',
-  },
-  {
-    bgColor: 'secondary',
-    icon: MdThumbsUpDown,
-    title: 'Secondary',
-    subtitle: 'widget subtitle',
-  },
-  {
-    bgColor: 'success',
-    icon: MdLanguage,
-    title: 'Success',
-    subtitle: 'widget subtitle',
-  },
-  {
-    bgColor: 'danger',
-    icon: MdLightbulbOutline,
-    title: 'Danger',
-    subtitle: 'widget subtitle',
-  },
-  {
-    bgColor: 'warning',
-    icon: MdPlayCircleOutline,
-    title: 'Warning',
-    subtitle: 'widget subtitle',
-  },
-  {
-    bgColor: 'info',
-    icon: MdRadio,
-    title: 'Info',
-    subtitle: 'widget subtitle',
-  },
-  {
-    bgColor: 'light',
-    icon: MdSnooze,
-    title: 'Light',
-    subtitle: 'widget subtitle',
-    inverse: false,
-  },
-  {
-    bgColor: 'dark',
-    icon: MdMailOutline,
-    title: 'Dark',
-    subtitle: 'widget subtitle',
-  },
-];
+import { Row, Col } from 'reactstrap';
 
-export const numberWidgetsData = [
-  { color: 'primary' },
-  { color: 'secondary' },
-  { color: 'success' },
-  { color: 'info' },
-  { color: 'warning' },
-  { color: 'danger' },
-  { color: 'light' },
-  { color: 'dark' },
-];
+import Page from '../components/Page';
+import { NumberWidget, IconWidget } from '../components/Widget';
+
+import { iconWidgetsData, numberWidgetsData } from '../demos/widgetPage';
+
+const WidgetPage = () => {
+  return (
+    <Page
+      className="WidgetPage"
+      title="Widgets"
+      breadcrumbs={[{ name: 'widgets', active: true }]}
+    >
+      <Row>
+        {numberWidgetsData.map(({ color }, index) => (
+          <Col key={index} lg={4} md={6} sm={6} xs={12} className="mb-3">
+            <NumberWidget
+              title="Total Profit"
+              subtitle="This month"
+              number="$17,800"
+              color={color}
+              progress={{
+                value: 75,
+                label: 'Last month',
+              }}
+            />
+          </Col>
+        ))}
+      </Row>
+
+      <Row>
+        {iconWidgetsData.map(
+          ({ bgColor, icon, title, subtitle, ...restProps }, index) => (
+            <Col key={index} lg={4} md={6} sm={6} xs={12} className="mb-3">
+              <IconWidget
+                bgColor={bgColor}
+                icon={icon}
+                title={title}
+                subtitle={subtitle}
+                {...restProps}
+              />
+            </Col>
+          )
+        )}
+      </Row>
+    </Page>
+  );
+};
+
+export default WidgetPage;

@@ -12,9 +12,9 @@ namespace Framework.NetStd.Services
 
         Task<TEntity> UpdateAsync(TEntity obj);
 
-        Task<Boolean> DeleteAsync(TEntity entity);
+        Task<Boolean> DeleteAsync(ModelNotification modelNotification,TEntity entity);
 
-        Task<TEntity> GetByIdAsync(string id);
+        Task<TEntity> GetByIdAsync(ModelNotification modelNotification, string id);
 
         Task<IQueryable<TEntity>> GetAllAsync();
     }

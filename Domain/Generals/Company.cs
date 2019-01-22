@@ -5,8 +5,6 @@ namespace Domain.Generals
 {
     public class Company:Entity
     {
-
-
         [JsonProperty]
         public string CompanyName { get; private set; }
         [JsonProperty]

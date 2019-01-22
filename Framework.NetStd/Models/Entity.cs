@@ -1,10 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 
 namespace Framework.NetStd.Models
 {
 
+    public class ModelNotification
+    {
+        public bool isValid => !this.Notifications.Any();
+
+        public static ModelNotification Create(string message = null)
+        {
+            ModelNotification oModelNotification = new ModelNotification();
+            if (!String.IsNullOrWhiteSpace(message)) oModelNotification.Add(message);
+
+            return oModelNotification;
+        }
+
+        private ModelNotification()
+        {
+            this.Notifications = new List<string>();
+        }
+
+        public List<string> Notifications { get; set; }
+
+        public void Add(string message)
+        {
+            if (!String.IsNullOrWhiteSpace(message)) this.Notifications.Add(message);
+        }
+    }
 
 
     public class Entity
@@ -22,6 +48,7 @@ namespace Framework.NetStd.Models
         [JsonProperty]
         public bool Deleted { get; protected set; } = false;
 
+
         public Entity(string id, string createdBy)
         {
             this.CreatedDate = GetDateTimeStr();
@@ -36,6 +63,10 @@ namespace Framework.NetStd.Models
 
             this.Id = id;
 
+        }
+
+        public Entity()
+        {
         }
 
         public virtual void Update(string cUser)

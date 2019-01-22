@@ -23,7 +23,7 @@ namespace WebApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            JsonWebTokenExtensions.Configure(services, Configuration);
+           //JsonWebTokenExtensions.Configure(services, Configuration);
 
             //... rest of services configuration
             services.AddSwaggerDocumentation();

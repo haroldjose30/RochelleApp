@@ -8,8 +8,7 @@ import Page from '../components/Page';
 
 class MainPage extends React.Component {
   componentDidMount() {
-    // this is needed, because InfiniteCalendar forces window scroll
-    window.scrollTo(0, 0);
+
   }
 
   render() {

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Repositories.Base
 {
-    public class RepositoryWithCompany<TEntity> : RepositoryGeneric<TEntity>, IRepositoryWithCompany<TEntity>
+    public class RepositoryWithCompany<TEntity> : GenericRepository<TEntity>, IRepositoryWithCompany<TEntity>
          where TEntity : EntityWithCompany
     {
         public RepositoryWithCompany(DbContextGeneric _dbContext) : base(_dbContext)

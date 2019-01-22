@@ -44,7 +44,7 @@ const navItems = [
 const navGenerals = [
   { to: '/customers', name: 'Clientes', exact: false, Icon: MdAssignmentInd },
   { to: '/products', name: 'Produtos/Serviços', exact: false, Icon: MdLocalSee },
-  { to: '/companies', name: 'Empresa', exact: false, Icon: MdBusiness },
+  { to: '/company', name: 'Empresa', exact: false, Icon: MdBusiness },
   { to: '/paramconfigurations', name: 'Configurações', exact: false, Icon: MdSettingsApplications },
 ];
 

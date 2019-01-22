@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using Domain.Identity;
+using Framework.NetStd.Models;
 using Framework.NetStd.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,9 +17,11 @@ namespace WebApi.Controllers
     public class LoginController: ControllerBase
     {
         IServiceGeneric<User> service;
+        ModelNotification modelNotification;
         public LoginController(IServiceGeneric<User> _service)
         {
             service = _service;
+            modelNotification = ModelNotification.Create();
         }
 
         [AllowAnonymous]
@@ -31,7 +34,7 @@ namespace WebApi.Controllers
             bool CredencialsValid = false;
             if (user != null && !String.IsNullOrWhiteSpace(user.Id))
             {
-                var usuarioBase = await service.GetByIdAsync(user.Id);
+                var usuarioBase = await service.GetByIdAsync(modelNotification,user.Id);
                 CredencialsValid = (usuarioBase != null &&
                     user.Id == usuarioBase.Id &&
                     user.Password == usuarioBase.Password);
