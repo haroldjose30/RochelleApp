@@ -31,10 +31,12 @@ namespace Infra.Data.Repositories.Base
 
         public virtual async Task<TEntity> GetByIdAsync(string id)
         {
-            return await dbSet.Where(e => e.Deleted == false &&
+          var resultado = await dbSet.Where(e => e.Deleted == false &&
                                     e.Id == id)
                             .AsNoTracking()
                             .FirstOrDefaultAsync();
+
+            return resultado;
         }
 
         public virtual async Task<TEntity> CreateAsync(TEntity entity)
