@@ -4,16 +4,17 @@ import Company from '../../models/Company';
 import GenericRepository from './GenericRepository';
 
 
-
-
 class CompanyFormPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {list: []}
+        this.state = {list: [],
+                      loading:true}
     }
 
-    componentDidMount() {
+    changeLoading = loading =>  this.setState({loading:loading})
 
+    componentDidMount() {
+        this.changeLoading(true);
         var companyRepository = new GenericRepository('Companies')
         companyRepository.get()
             .then(list => {
@@ -22,11 +23,15 @@ class CompanyFormPage extends React.Component {
                             list:list,
                             alertMessage:''
                         })
+                    
+                        this.changeLoading(false);
             })
             .catch(errors => {
                 this.setState({
                     alertMessage:errors.message
                 })
+
+                this.changeLoading(false);
             });
 
         }
@@ -52,6 +57,7 @@ class CompanyFormPage extends React.Component {
             onHandleEditClick={this.onHandleEditClick}
             list={this.state.list}
             alertMessage={this.state.alertMessage}
+            loading={this.state.loading}
         />
     );
   }

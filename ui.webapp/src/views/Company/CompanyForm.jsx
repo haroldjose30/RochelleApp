@@ -24,7 +24,9 @@ import ModalConfirm from '../Modal/ModalConfirm';
 const CompanyForm = props => {
 
   return (
-    <Page title="Empresa">
+    <Page 
+      title="Empresa"
+      loading={props.loading}>
      
         <Col xl={6} lg={12} md={12}>
           <Card>
@@ -112,6 +114,7 @@ CompanyForm.propTypes = {
   primaryHidden:PropTypes.bool,
   onModalStateChange:PropTypes.func, 
   onModalClick:PropTypes.func, 
+  loading:PropTypes.bool,
 };
 
 CompanyForm.defaultProps = {
@@ -124,6 +127,7 @@ CompanyForm.defaultProps = {
   modalState:false,
   onModalStateChange:() => {},
   onModalClick:() => {},
+  loading:false,
 };
 
 export default CompanyForm;

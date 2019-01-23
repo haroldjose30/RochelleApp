@@ -12,7 +12,8 @@ const CompanyList = props => {
     <Page
       title="Empresa"
       className="CompanyList"
-      alertMessage={props.alertMessage}>
+      alertMessage={props.alertMessage}
+      loading={props.loading}>
         <Card className="mb-3">
         <CardHeader>
             <Button outline color="primary" onClick={() => props.onHandleNewClick()}>Incluir</Button>
@@ -50,13 +51,15 @@ const CompanyList = props => {
     onHandleNewClick: PropTypes.func,
     list:PropTypes.array,
     alertMessage:PropTypes.string,
+    loading:PropTypes.bool,
   };
   
   CompanyList.defaultProps = {
     onHandleEditClick: () => {},
     onHandleNewClick: () => {},
     list: [],
-    alertMessage:''
+    alertMessage:'',
+    loading:false,
   };
 
 export default CompanyList;
