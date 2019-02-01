@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GOSTOU DAS MINHAS FOTINHAS OU FOI INDICADO POR ALGUEM?"
+            android:textSize="20sp"
+            android:layout_gravity="top"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:textColor="#2C3646"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/foto_ro"
+            android:scaleType="fitCenter"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAIBA COMO É O PROGRAMA DE RECOMPENSAS DA RÔ"
+        android:textSize="20sp"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textColor="#2C3646"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Basta acumular pontos e trocar por um produto ou serviço, é muito fácil e todos ganhamos!"
+            android:textSize="18sp"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/material_deep_teal_500"/>
+
+</LinearLayout>

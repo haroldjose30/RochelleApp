@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infra.Data\Infra.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Services\AllServices.cs" />
+    <Compile Remove="Commands\Company\CompanyHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Notifications\" />
+    <Folder Include="Pipelines\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+</Project>
