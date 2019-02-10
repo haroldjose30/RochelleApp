@@ -1,4 +1,5 @@
-﻿using Domain.Generals;
+﻿
+using Domain.Generals;
 using Domain.Generals.Base;
 using Newtonsoft.Json;
 

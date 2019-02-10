@@ -11,6 +11,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
     <PackageReference Include="MediatR" Version="6.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,16 +26,18 @@
     <Compile Remove="Migrations\RochelleDbContextModelSnapshot.cs" />
     <Compile Remove="Controllers\Base\RepositoryController.cs" />
     <Compile Remove="Infrastructure\Setup.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
-    <ProjectReference Include="..\ApplicationBusiness\ApplicationBusiness.csproj" />
-    <ProjectReference Include="..\Infra.CrossCutting.IoC\Infra.CrossCutting.IoC.csproj" />
+    <Compile Remove="Infrastructure\MediatorExtensions.cs" />
+    <Compile Remove="Infrastructure\loggerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />
     <Folder Include="Infrastructure\Jwt\" />
     <Folder Include="Infrastructure\Swagger\" />
     <Folder Include="Controllers\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationBusiness\ApplicationBusiness.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infra.CrossCutting.IoC\Infra.CrossCutting.IoC.csproj" />
   </ItemGroup>
 </Project>

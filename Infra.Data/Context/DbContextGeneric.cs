@@ -1,20 +1,23 @@
-﻿//referencia
-//https://medium.com/@alexalves_85598/criando-uma-api-em-net-core-baseado-na-arquitetura-ddd-2c6a409c686
-
-using System.Threading;
-using System.Threading.Tasks;
+﻿
 using Domain.Generals;
 using Domain.Identity;
 using Domain.PointsManager;
 using Domain.Store;
-using Framework.NetCore.Contexts;
+using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 
 namespace Infra.Data.Context
 {
-    public partial class DbContextGeneric : DbContext, IDbContextGeneric
+    public class DbContextGeneric : DbContext//,IDbContextGeneric
     {
+
+        public static readonly LoggerFactory EFLoggerFactory
+            = new LoggerFactory(new[] { new ConsoleLoggerProvider((_, __) => true, true) });
+
         public DbSet<Company> Companies { get; private set; }
+
         public DbSet<Customer> Customers { get; private set; }
         public DbSet<ParamConfiguration> ParamConfigurations { get; private set; }
         public DbSet<Product> Products { get; private set; }
@@ -31,6 +34,7 @@ namespace Infra.Data.Context
         public DbSet<StoreOrderItem> StoreOrderItems { get; private set; }
         public DbSet<StoreOrderStatus> StoreOrderStatus { get; private set; }
         public DbSet<StoreProduct> StoreProducts { get; private set; }
+             
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -38,12 +42,17 @@ namespace Infra.Data.Context
             {
                 optionsBuilder.UseMySql("Server=localhost;User Id=root;Password=MeuAmorzinho2018@;Database=Rochelledb_dev");
             }
+
+            optionsBuilder.UseLoggerFactory(EFLoggerFactory); // Warning: Do not create a new ILoggerFactory instance each time
+
+
+            base.OnConfiguring(optionsBuilder);
         }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        { 
-        
+        {
+            modelBuilder.Ignore<ValidationResult>();
         }
     }
 }

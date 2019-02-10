@@ -1,19 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
+using Domain.Generals.Companies.CommandHandlers;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
+   
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private IMediator Mediator { get; set; }
+        public ValuesController(IMediator mediator)
+        {
+            this.Mediator = mediator;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            //Mediator.Send(new OneWay());
             return new string[] { "value1", "value2" };
         }
 

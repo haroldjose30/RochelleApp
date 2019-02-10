@@ -7,6 +7,7 @@ using Domain.Generals.Base;
 
 namespace Domain.PointsManager
 {
+
     public class Invite : EntityWithCompany
     {
 
@@ -71,4 +72,6 @@ namespace Domain.PointsManager
         Expired,
         Canceled
     }
+
+  
 }

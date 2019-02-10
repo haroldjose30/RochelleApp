@@ -5,17 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
-    <ProjectReference Include="..\Infra.Data\Infra.Data.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Remove="Services\AllServices.cs" />
     <Compile Remove="Commands\Company\CompanyHandler.cs" />
+    <Compile Remove="Services\CustomerAppService.cs" />
+    <Compile Remove="Customers\AllCustomersImplementationscs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Notifications\" />
-    <Folder Include="Pipelines\" />
-    <Folder Include="Services\" />
+    <Folder Include="Companies\" />
+    <Folder Include="Customers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Domain.Core\Domain.Core.csproj" />
   </ItemGroup>
 </Project>

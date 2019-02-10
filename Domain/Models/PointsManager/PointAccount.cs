@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using Domain.Generals;
 using Domain.Generals.Base;
@@ -7,6 +8,7 @@ using Newtonsoft.Json;
 
 namespace Domain.PointsManager
 {
+
     public class PointAccount : EntityWithCompany
     {
         [JsonProperty]

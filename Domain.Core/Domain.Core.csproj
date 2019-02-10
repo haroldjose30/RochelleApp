@@ -13,6 +13,10 @@
     <Folder Include="Models\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Notifications\" />
+    <Folder Include="CommandHandlers\" />
+    <Folder Include="EventHandlers\" />
+    <Folder Include="Validations\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MediatR" Version="6.0.0" />

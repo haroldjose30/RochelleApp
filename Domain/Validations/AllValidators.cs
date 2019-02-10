@@ -1,10 +1,12 @@
-﻿using Domain.Generals;
+﻿/*
+using Domain.Generals;
 using Domain.PointsManager;
 using Domain.Store;
 using Framework.NetStd.Validators;
 
 namespace Domain.Validators
 {
+
     public class CustomerValidator : ValidatorGeneric<Customer> { };
     public class InviteValidator : ValidatorGeneric<Invite> { };
     public class ParamConfigurationValidator : ValidatorGeneric<ParamConfiguration> { };
@@ -19,3 +21,4 @@ namespace Domain.Validators
     public class StoreProductValidator : ValidatorGeneric<StoreProduct> { };
 
 }
+*/

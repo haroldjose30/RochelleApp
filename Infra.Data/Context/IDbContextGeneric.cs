@@ -3,11 +3,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using JetBrains.Annotations;
-using Microsoft.EntityFrameworkCore.Utilities;
 
-namespace Framework.NetCore.Contexts
+namespace Infra.Data.Context
 {
+    /*
     public interface IDbContextGeneric : IDisposable
     {
          DbSet<TEntity> Set<TEntity>() where TEntity : class;
@@ -15,6 +14,8 @@ namespace Framework.NetCore.Contexts
          EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
 
     }
+    */  
+     
 }
 
 

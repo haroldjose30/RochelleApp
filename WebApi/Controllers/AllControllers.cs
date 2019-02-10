@@ -1,30 +1,32 @@
-﻿using Domain.Generals;
-using Domain.PointsManager;
-using Domain.Store;
-using Framework.NetStd.Services;
-using MediatR;
+﻿using ApplicationBusiness.Services;
+using Domain.Generals;
 using WebApi.Controllers.Base;
 
 namespace WebApi.Controllers
 {
-    public class CompaniesController : GenericController<Company>
-    {
-        public CompaniesController(IMediator _mediator, IServiceGeneric<Company> _service) : base(_mediator,_service)
-        {
-
-        }
-    }
-
 
     public class CustomersController : GenericController<Customer>
     {
-        public CustomersController(IMediator _mediator, IServiceGeneric<Customer> _service) : base(_mediator, _service)
+        public CustomersController(IGenericService<Customer> _service) : base(_service)
         {
 
         }
     }
 
 
+
+    /*
+     
+    public class CompaniesController : GenericController<Company>
+    {
+        public CompaniesController( IMediator _mediator, 
+                                    IGenericService<Company> _service) : base(_mediator,_service)
+        {
+            Debug.WriteLine(_mediator);
+        }
+    }
+    
+   
     public class InvitesController : GenericController<Invite>
     {
         public InvitesController(IMediator _mediator, IServiceGeneric<Invite> _service) : base(_mediator, _service)
@@ -118,7 +120,7 @@ namespace WebApi.Controllers
         }
     }
 
-
+    */
 
 
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using Domain.Generals.Base;
 using Domain.Generals;

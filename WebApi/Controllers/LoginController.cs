@@ -1,17 +1,6 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Security.Principal;
-using System.Threading.Tasks;
-using Domain.Identity;
-using Framework.NetStd.Services;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using WebApi.Infrastructure.Jwt;
-
-namespace WebApi.Controllers
+﻿namespace WebApi.Controllers
 {
+    /*
     [Route("api/[controller]")]
     public class LoginController: ControllerBase
     {
@@ -82,4 +71,5 @@ namespace WebApi.Controllers
             }
         }
     }
+    */
 }

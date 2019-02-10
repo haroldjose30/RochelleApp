@@ -1,19 +1,29 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Reflection;
+using Domain.Generals.Companies.CommandHandlers;
+using MediatR;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using WebApi.Infrastructure;
-using WebApi.Infrastructure.Jwt;
+using Microsoft.Extensions.Logging;
+using Domain.Core.CommandHandlers;
+using Domain.Core.Models;
+using Domain.Generals;
+using Domain.Core.Commands;
 
 namespace WebApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly ILogger _logger;
+
+        public Startup(IConfiguration configuration, ILogger<Startup> logger)
         {
             Configuration = configuration;
+            _logger = logger;
         }
 
         public IConfiguration Configuration { get; }
@@ -22,6 +32,7 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
 
            //JsonWebTokenExtensions.Configure(services, Configuration);
 
@@ -50,6 +61,8 @@ namespace WebApi
 
                 //.... rest of app configuration
                 app.UseSwaggerDocumentation();
+
+                _logger.LogInformation("In Development environment");
             }
             else
             {
@@ -68,6 +81,25 @@ namespace WebApi
         {
             // Adding dependencies from another layers (isolated from Presentation)
             Infra.CrossCutting.IoC.NativeInjectorBootStrapper.RegisterServices(services);
+            ConfigureMediatR(services);
         }
+
+        public static void ConfigureMediatR(IServiceCollection services)
+        {
+            // if you have handlers/events in other assemblies
+            services.AddMediatR(
+                                    typeof(Startup).GetTypeInfo().Assembly,
+                                    typeof(Command).GetTypeInfo().Assembly,
+                                     typeof(RegisterNewCompanyCommandHandler).GetTypeInfo().Assembly,
+                                    typeof(RegisterNewGenericCommandHandler<Entity>).GetTypeInfo().Assembly
+                                 );
+
+        }
+
+
+
+
     }
+
+   
 }

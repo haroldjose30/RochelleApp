@@ -25,15 +25,14 @@ namespace Domain.Store
     }
 
 
-    /*exemplos default:
-     - Cancelado
-     - Pendente
-     - Solicitado
-     - Aprovado
-     - Enviado
-     - Entregue
-     - Recebido
-     - Finalizado
-    */
+    //exemplos default:
+    // - Cancelado
+    // - Pendente
+    // - Solicitado
+    // - Aprovado
+    // - Enviado
+    // - Entregue
+    // - Recebido
+    // - Finalizado
 
 }

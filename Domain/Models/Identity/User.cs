@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace Domain.Identity
 {
+
     public class User:EntityWithCompany
     {
        
@@ -42,6 +43,7 @@ namespace Domain.Identity
 
 
     }
+     
 
 
 }

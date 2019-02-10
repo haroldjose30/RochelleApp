@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
+
 namespace Domain.Core.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        bool Commit();
+        Task<bool> CommitAsync();
     }
 }

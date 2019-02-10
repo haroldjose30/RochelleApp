@@ -3,7 +3,7 @@ using Domain.Core.Events;
 
 namespace Domain.Core.Notifications
 {
-    public class DomainNotification : Event
+    public class DomainNotification : EventNotification
     {
         public Guid DomainNotificationId { get; private set; }
         public string Key { get; private set; }

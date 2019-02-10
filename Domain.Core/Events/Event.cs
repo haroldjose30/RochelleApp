@@ -1,25 +1,22 @@
 ﻿using System;
-using Domain.Core.Models;
 
 namespace Domain.Core.Events
 {
-    public abstract class Event<TEntity> : Message where TEntity : Entity
+    public abstract class EventRequest : MessageRequest
     {
-        public TEntity entity { get; private set; }
         public DateTime Timestamp { get; private set; }
 
-        protected Event(TEntity _entity)
+        protected EventRequest()
         {
-            entity = _entity;
             Timestamp = DateTime.Now;
         }
     }
 
-    public abstract class Event : Message
+    public abstract class EventNotification : MessageNotification
     {
         public DateTime Timestamp { get; private set; }
 
-        protected Event()
+        protected EventNotification()
         {
             Timestamp = DateTime.Now;
         }
