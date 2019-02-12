@@ -1,0 +1,52 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{86AB5C04-0591-496C-8F38-BDEB9780ECEF}"
+	ProjectSection(SolutionItems) = preProject
+		Documents\Locamail __ Bem-vindo a Uber Harold Jose.pdf = Documents\Locamail __ Bem-vindo a Uber Harold Jose.pdf
+		Documents\RochelleApp_UML.mdj = Documents\RochelleApp_UML.mdj
+		Documents\RochelleApp-FluxoAdmin.jpg = Documents\RochelleApp-FluxoAdmin.jpg
+		Documents\RochelleApp-FluxoIndicado.jpg = Documents\RochelleApp-FluxoIndicado.jpg
+		Documents\RochelleApp-Fluxonao indicado.jpg = Documents\RochelleApp-Fluxonao indicado.jpg
+		Documents\RochelleApp.jpg = Documents\RochelleApp.jpg
+		Documents\RochelleApp.xml = Documents\RochelleApp.xml
+		Documents\Sketch_App.sketch = Documents\Sketch_App.sketch
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Presentations", "1-Presentations", "{09791D04-B95D-43FA-B081-93257FC96DE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Services", "2-Services", "{BADBD22B-6FFC-47AC-BFA7-A6E6CA2A732A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.AndroidApp", "UI.AndroidApp\UI.AndroidApp.csproj", "{D0CCFC58-AEC0-4EFA-802F-CD79DC288A49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Tests", "3-Tests", "{89764631-6789-4455-A804-9C0596BF85DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.UnitTest", "UnitTest\Domain.UnitTest.csproj", "{6205E395-2EBD-4528-9FF7-131AFF57FD52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{CE0E072C-C1FA-4067-A0C7-4168DD5EF4ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0CCFC58-AEC0-4EFA-802F-CD79DC288A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0CCFC58-AEC0-4EFA-802F-CD79DC288A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0CCFC58-AEC0-4EFA-802F-CD79DC288A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0CCFC58-AEC0-4EFA-802F-CD79DC288A49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6205E395-2EBD-4528-9FF7-131AFF57FD52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6205E395-2EBD-4528-9FF7-131AFF57FD52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6205E395-2EBD-4528-9FF7-131AFF57FD52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6205E395-2EBD-4528-9FF7-131AFF57FD52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE0E072C-C1FA-4067-A0C7-4168DD5EF4ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE0E072C-C1FA-4067-A0C7-4168DD5EF4ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE0E072C-C1FA-4067-A0C7-4168DD5EF4ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE0E072C-C1FA-4067-A0C7-4168DD5EF4ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D0CCFC58-AEC0-4EFA-802F-CD79DC288A49} = {09791D04-B95D-43FA-B081-93257FC96DE0}
+		{6205E395-2EBD-4528-9FF7-131AFF57FD52} = {89764631-6789-4455-A804-9C0596BF85DE}
+		{CE0E072C-C1FA-4067-A0C7-4168DD5EF4ED} = {BADBD22B-6FFC-47AC-BFA7-A6E6CA2A732A}
+	EndGlobalSection
+EndGlobal
