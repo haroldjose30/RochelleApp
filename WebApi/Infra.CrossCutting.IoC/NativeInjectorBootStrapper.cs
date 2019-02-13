@@ -12,6 +12,7 @@ using Infra.Data.Repositories;
 using Infra.Data.Repositories.Base;
 using Infra.Data.UoW;
 using Microsoft.Extensions.DependencyInjection;
+using MediatR;
 
 namespace Infra.CrossCutting.IoC
 {
@@ -67,7 +68,7 @@ namespace Infra.CrossCutting.IoC
 
             // Domain - Events
             //services.AddScoped<IRequestHandler<Domain.Core.Commands.RegisterNewGenericCommand<Domain.Generals.Customer>>, RegisterNewGenericCommandHandler<Customer>>();
-            //services.AddScoped<INotificationHandler<CustomerRegisteredEvent>, CustomerEventHandler>();
+            //services.AddScoped<INotificationHandler<CustomerRegisteredEvent>, CustomerRegisteredEventHandler>();
             //services.AddScoped<INotificationHandler<CustomerUpdatedEvent>, CustomerEventHandler>();
             //services.AddScoped<INotificationHandler<CustomerRemovedEvent>, CustomerEventHandler>();
 
