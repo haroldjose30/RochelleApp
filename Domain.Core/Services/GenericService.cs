@@ -1,9 +1,13 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Threading;
+using System;
 using System.Collections.Generic;
 using Domain.Core.Commands;
 using Domain.Core.Events;
 using Domain.Core.Interfaces;
 using Domain.Core.Models;
+using MediatR;
 
 namespace Domain.Core.Services
 {
@@ -12,20 +16,17 @@ namespace Domain.Core.Services
 
         private readonly IRepository<TEntity> _repository;
         private readonly IMediatorHandler Bus;
+         private readonly IMediator mediator;
 
-        public GenericService(IRepository<TEntity> repository, IMediatorHandler bus)
+        public GenericService(IRepository<TEntity> repository, IMediatorHandler bus,IMediator _mediator)
         {
             _repository = repository;
             Bus = bus;
+            mediator = _mediator;
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-
-            var oGenericRegisteredEvent = new GenericRegisteredEvent<TEntity>(null);
-            Bus.PublishEvent<GenericRegisteredEvent<TEntity>>(oGenericRegisteredEvent);
-
-
             return _repository.GetAll();
         }
 
