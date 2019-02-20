@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Infra.CrossCutting.IoC</RootNamespace>
+    <AssemblyName>Infra.CrossCutting.IoC</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infra.CrossCutting.Bus\2.3-Infra.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\Infra.Data\2.4-Infra.Data.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\ApplicationBusiness\2.2-ApplicationBusiness.csproj" />
+  </ItemGroup>
+</Project>

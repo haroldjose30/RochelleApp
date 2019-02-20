@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout 
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:cardview="http://schemas.android.com/apk/res-auto"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+  
+ <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+              
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:text="Extrato de Pontos" />
+            
+               <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:text="Saldo: 500 pt" />
+            
+   
+           
+             
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                cardview:cardElevation="4dp"
+                android:layout_margin="10dp">
+                
+                    
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:columnCount="2"
+                    android:rowCount="1"
+                    android:orientation="vertical">
+                        
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:paddingTop="20dp"
+                        android:text="-1000 pts"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+                    
+                    
+                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="fill"
+                        android:paddingTop="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingLeft="20dp"
+                        android:text="troca de pontos na loja"
+                        android:textColor="@color/grey_700"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+          
+                        />
+            
+                  
+                </GridLayout>
+                   
+            </android.support.v7.widget.CardView>
+       
+
+             
+            
+                        
+            
+             
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                cardview:cardElevation="4dp"
+                android:layout_margin="10dp">
+                
+                    
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:columnCount="2"
+                    android:rowCount="1"
+                    android:orientation="vertical">
+                        
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:paddingTop="20dp"
+                        android:text="+1589 pts"
+                        android:textColor="@android:color/holo_blue_dark"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+                    
+                    
+                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="fill"
+                        android:paddingTop="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingLeft="20dp"
+                        android:text="por aquisiçao de produto ou serviço"
+                        android:textColor="@color/grey_700"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+          
+                        />
+            
+                  
+                </GridLayout>
+                   
+            </android.support.v7.widget.CardView>
+       
+
+             
+            
+            
+            
+            
+            
+            
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                cardview:cardElevation="4dp"
+                android:layout_margin="10dp">
+                
+                    
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:columnCount="2"
+                    android:rowCount="1"
+                    android:orientation="vertical">
+                        
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:paddingTop="20dp"
+                        android:text="+75 pts"
+                        android:textColor="@android:color/holo_blue_dark"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+                    
+                    
+                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="fill"
+                        android:paddingTop="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingLeft="20dp"
+                        android:text="Pelo Fulano completar o cadastro."
+                        android:textColor="@color/grey_700"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+          
+                        />
+            
+                  
+                </GridLayout>
+                   
+            </android.support.v7.widget.CardView>
+       
+
+            
+ 
+            
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                cardview:cardElevation="4dp"
+                android:layout_margin="10dp">
+                
+                    
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:columnCount="2"
+                    android:rowCount="1"
+                    android:orientation="vertical">
+                        
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:paddingTop="20dp"
+                        android:text="+25 pts"
+                        android:textColor="@android:color/holo_blue_dark"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+                    
+                    
+                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="fill"
+                        android:paddingTop="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingLeft="20dp"
+                        android:text="Pelo envio do convite para Fulano de Tal."
+                        android:textColor="@color/grey_700"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+          
+                        />
+            
+                  
+                </GridLayout>
+                   
+            </android.support.v7.widget.CardView>
+       
+
+            
+            
+ 
+        </LinearLayout>
+    </ScrollView>       
+     
+
+
+</RelativeLayout>
