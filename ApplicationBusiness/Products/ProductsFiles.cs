@@ -7,13 +7,35 @@ using Framework.Core.Interfaces;
 using Domain.Generals;
 using MediatR;
 using Framework.Core.Notifications;
+using Framework.Core.Services;
+using System;
+using System.Collections.Generic;
+
+namespace ApplicationBusiness.Products.Services
+{
+    public class ProductService : GenericService<Product>
+    {
+        public ProductService(IRepository<Product> repository, IMediatorHandler _Bus, IMediator _mediator, IServiceProvider _serviceProvider) : base(repository, _Bus, _mediator, _serviceProvider)
+        {
+        }
+
+        public override Task<IEnumerable<Product>> GetAll()
+        {
+            return base.GetAll();
+        }
+    }
+
+}
+
+
+
+
+
 
 namespace ApplicationBusiness.Products.CommandHandlers
 {
     public class RegisterNewProductCommandHandler : RegisterNewGenericCommandHandler<Product>
    {
-      
-
         public RegisterNewProductCommandHandler(IRepository<Product> _Repository, IUnitOfWork _uow, IMediatorHandler _Bus, INotificationHandler<DomainNotification> notifications) : base(_Repository, _uow, _Bus, notifications)
         {
         }

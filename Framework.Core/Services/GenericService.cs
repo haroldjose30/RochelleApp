@@ -27,7 +27,7 @@ namespace Framework.Core.Services
             serviceProvider = _serviceProvider;
         }
 
-        public async Task<IEnumerable<TEntity>>  GetAll()
+        public virtual async Task<IEnumerable<TEntity>>  GetAll()
         {
             return _repository.GetAll();
         }
