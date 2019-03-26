@@ -6,17 +6,17 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Infra.Data.Migrations
+namespace _2._4_Infra.Data.Core.Migrations
 {
     [DbContext(typeof(DbContextGeneric))]
-    [Migration("20190111213655_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20190326015941_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.0-rtm-35687")
+                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Domain.Generals.Company", b =>
@@ -24,13 +24,7 @@ namespace Infra.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Address");
-
-                    b.Property<string>("City");
-
                     b.Property<string>("CompanyName");
-
-                    b.Property<string>("Complement");
 
                     b.Property<string>("CorporateNumber");
 
@@ -40,21 +34,11 @@ namespace Infra.Data.Migrations
 
                     b.Property<bool>("Deleted");
 
-                    b.Property<string>("District");
-
                     b.Property<string>("FantasyName");
 
                     b.Property<string>("ModifiedBy");
 
                     b.Property<string>("ModifiedDate");
-
-                    b.Property<string>("Phone");
-
-                    b.Property<string>("State");
-
-                    b.Property<string>("StateRegistration");
-
-                    b.Property<string>("ZipCode");
 
                     b.HasKey("Id");
 

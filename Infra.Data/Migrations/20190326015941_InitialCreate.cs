@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Infra.Data.Migrations
+namespace _2._4_Infra.Data.Core.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,15 +19,7 @@ namespace Infra.Data.Migrations
                     Deleted = table.Column<bool>(nullable: false),
                     CompanyName = table.Column<string>(nullable: true),
                     FantasyName = table.Column<string>(nullable: true),
-                    CorporateNumber = table.Column<string>(nullable: true),
-                    StateRegistration = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    District = table.Column<string>(nullable: true),
-                    Complement = table.Column<string>(nullable: true),
-                    State = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    ZipCode = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true)
+                    CorporateNumber = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
