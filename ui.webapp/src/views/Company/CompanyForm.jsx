@@ -26,7 +26,8 @@ const CompanyForm = props => {
   return (
     <Page 
       title="Empresa"
-      loading={props.loading}>
+      loading={props.loading}
+      alertMessage={props.alertMessage}>
      
         <Col xl={6} lg={12} md={12}>
           <Card>

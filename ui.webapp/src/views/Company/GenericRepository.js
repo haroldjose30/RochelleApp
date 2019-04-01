@@ -1,129 +1,121 @@
-//var postRequest = new Request(urlResource, options('POST'));
-//var putRequest = new Request(urlResource, options('PUT'));
-//var deleteRequest = new Request(urlResource, options('DELETE'));
-
 class GenericRepository {
-   
-    constructor(resource,urlBase='/api/') {
+
+    constructor(resource, urlBase = '/api/') {
         this._urlBase = urlBase
         this._resource = resource
-        this._urlResource = urlBase+resource
+        this._urlResource = urlBase + resource
     };
-
-     _defaultHeaders = new Headers({
-        "Content-Type": "application/json; charset=utf-8",
-     });
-
-
-    _options = method => {
-        return {method: method,
-                headers: this._defaultHeaders,
-                mode: 'cors'}
-    }
 
 
     get = async () => {
-        const getRequest = new Request(this._urlResource,this._options('GET'));
-        const response = await this._callApi(getRequest)
-        return response
+        return fetch(this._urlResource)
+            .then(response => response.json())
+            .then(data => {
+                console.log('data is', data);
+                return data;
+            })
+            .catch(error => console.log('error is', error));
+
     };
 
 
     getById = async (id) => {
-        const request = new Request(`${this._urlResource}/${id}`,this._options('GET'));
-        const response = await this._callApi(request)
-        return response
-    }
 
-
-
-     post = async (company) => {
-       
-        var newHeaders = {
-            ...this._options('POST'),
-            body: JSON.stringify(company)
-        }
-        
-        const request = new Request(this._urlResource,newHeaders);
-        const response = await this._callApi(request)
-        console.log(response);
-        return response
     };
 
-     put = function(company, callback) {
-        /*
-        fetch(urlResource, {
-            headers: { "Content-Type": "application/json; charset=utf-8" },
-            method: 'PUT',
-            body: JSON.stringify(company)
+
+    post = async (model) => {
+
+        let resStatus = 0;
+        return fetch(this._urlResource, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify(model)
         })
-        */
+            .then(res => {
+                resStatus = res.status
+                switch (resStatus) {
+                    case 500:
+                    console.log('error500:',res);
+                        return res;
+                        break
+                    default:
+                        return res.json();
+                        break
+                }
+            })
+            .then(data => {
+                switch (resStatus) {
+                    case 200:
+                        return data;
+                        break
+                    case 400:
+                        throw Error(data.errors);
+                        break
+                    case 500:
+                        console.log('error500:',data);
+                        throw Error(`Erro ao tentar acessar ${this._urlResource}. Status:${data.statusText}`);
+                        break
+                    default:
+                        throw Error(`Erro ao tentar acessar ${this._urlResource}. unhandled`);
+                        break
+                }
+            })
     };
 
-     delete = function(company, callback) {
+    put = async (model) => {
 
-       /*
-        fetch(urlResource, { 
-            method: 'DELETE' 
-        });
-        */ 
-
+        console.log('json:', JSON.stringify(model));
+       
+        let resStatus = 0;
+        return fetch(this._urlResource, {
+            method: 'PUT',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify(model)
+        })
+            .then(res => {
+                resStatus = res.status
+                switch (resStatus) {
+                    case 500:
+                    console.log('error500:',res.json());
+                        return res;
+                        break
+                    default:
+                        return res.json();
+                        break
+                }
+            })
+            .then(data => {
+                switch (resStatus) {
+                    case 200:
+                        return data;
+                        break
+                    case 400:
+                        throw Error(data.errors);
+                        break
+                    case 500:
+                    console.log('error500:',data);
+                        throw Error(`Erro ao tentar acessar ${this._urlResource}. Status:${data.statusText}`);
+                        break
+                    default:
+                        throw Error(`Erro ao tentar acessar ${this._urlResource}. unhandled`);
+                        break
+                }
+            })
     };
 
-
-     _callApi = async (getRequest) => {
-        const response = await fetch(getRequest);
-        var body = {}
-    
-        try {
-            console.log('response.status');
-            console.log(response.status);
-
-             if (response.status >= 200 && response.status <= 299) {
-                body = await response.json();
-                console.log('body=200');
-                console.log(body);
-                return body
-             }
-            else{
-                    response.text().then(function (text) {
-                        console.log('response.text');
-                        console.log(text);
-                    });
+    delete = function (model) {
 
 
-                    body = await response.json();
-                    console.log('body<>200');
-                    console.log(body);
-                    var message = ''
-                    if (body.notifications === undefined)
-                        message = `Erro desconhecido ao tentar acessar ${this._urlResource}. Status:${response.statusText}`
-                    else {
-                        body.notifications.forEach(erro => {
-                            message += erro+'\n'
-                        });
-                    }
-                      
-                    //console.log('message');
-                    //console.log(message);
-                    throw Error(message);
-            }
-            
-             
-        } catch (error) {
-            console.log('error');
-            console.log(error);
-
-            
-            if (error.message !== 'JSON.parse: unexpected character at line 1 column 1 of the JSON data') 
-                throw Error(error.message);
-            else
-                throw Error(`Erro ao tentar acessar ${this._urlResource}. Status:${response.statusText}`);
-        }
-      
     };
 
 
 };
- 
- export default GenericRepository;
+
+export default GenericRepository;

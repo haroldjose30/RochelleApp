@@ -28,6 +28,8 @@ namespace WebApi.Controllers.Base
 
         protected new IActionResult Response(object result = null)
         {
+
+            /* orignal code from template
             if (IsValidOperation())
             {
                 return Ok(new
@@ -42,6 +44,23 @@ namespace WebApi.Controllers.Base
                 success = false,
                 errors = notificationHandler.GetNotifications().Select(n => n.Value)
             });
+            */
+
+            if (IsValidOperation())
+            {
+                return Ok(result);
+            }
+
+            var ObsBadRequest = new
+            {
+                success = false,
+                errors =  notificationHandler.GetNotifications().Select(n => n.Value)
+            };
+
+           
+
+
+            return BadRequest(ObsBadRequest);
         }
 
         protected void NotifyModelStateErrors()
