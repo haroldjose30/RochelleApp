@@ -20,18 +20,32 @@ namespace Framework.Core.Commands
 
         public override bool IsValid()
         {
-            IRemoveGenericCommandValidation<TEntity> validation = (IRemoveGenericCommandValidation<TEntity>)serviceProvider.GetService(typeof(IRegisterNewGenericCommandValidation<TEntity>));
-
-            if (validation == null)
-                validation = new RemoveGenericCommandValidation<TEntity>();
-
-            if (validation != null)
+            try
             {
-                ValidationResult = validation.Validate(this);
-                return ValidationResult.IsValid;
+                IRemoveGenericCommandValidation<TEntity> validation = (IRemoveGenericCommandValidation<TEntity>)serviceProvider.GetService(typeof(IRegisterNewGenericCommandValidation<TEntity>));
+
+                if (validation == null)
+                    validation = new RemoveGenericCommandValidation<TEntity>();
+
+                if (validation != null)
+                {
+                    ValidationResult = validation.Validate(this);
+                    return ValidationResult.IsValid;
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ValidationResult = new FluentValidation.Results.ValidationResult();
+                ValidationResult.Errors.Add(new FluentValidation.Results.ValidationFailure("UpdateGenericCommand", ex.Message));
+
             }
 
-            return true;
+            return false;
+           
 
         }
 

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Domain.Generals
 {
-    public class Company:Entity
+    public class Company : Entity
     {
         [JsonProperty]
         public string CompanyName { get; protected set; }

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Pages\Private\" />
+    <Folder Include="Pages\Private\Generals\" />
+    <Folder Include="Pages\Private\Generals\Companies\" />
+    <Folder Include="Pages\Public\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Pages\Companies\Details.cshtml" />
+    <Content Remove="Pages\Generals\Companies\Delete.cshtml" />
+    <Content Remove="Pages\Companies\Details.cshtml" />
+    <Content Remove="Pages\Private\Generals\Companies\Delete.cshtml" />
+    <Content Remove="Pages\Private\Generals\Companies\Details.cshtml" />
+  </ItemGroup>
+</Project>
