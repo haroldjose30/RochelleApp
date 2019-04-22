@@ -21,7 +21,7 @@ namespace WebApp.Pages.Companies
         }
 
         [BindProperty]
-        public CompanyVM CompanyVM { get; set; }
+        public CompanyViewModel CompanyVM { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {

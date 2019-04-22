@@ -12,6 +12,12 @@ namespace Domain.Generals
         [JsonProperty]
         public string CorporateNumber { get; protected set; }
 
+
+        public Company()
+        { 
+        
+        }
+
         public Company(string companyName, string fantasyName, string corporateNumber, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
         {
             CompanyName = companyName;

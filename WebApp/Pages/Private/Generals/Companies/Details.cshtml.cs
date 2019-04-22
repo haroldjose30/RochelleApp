@@ -19,7 +19,7 @@ namespace WebApp.Pages.Companies
             _context = context;
         }
 
-        public CompanyVM CompanyVM { get; set; }
+        public CompanyViewModel CompanyVM { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {

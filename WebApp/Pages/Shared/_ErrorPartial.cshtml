@@ -1,0 +1,11 @@
+﻿<div style="color:red">
+    <ul>
+        @if (Model.errorMessage != null && @Model.errorMessage.Errors != null)
+        {
+            @foreach (var erro in @Model.errorMessage.Errors)
+            {
+                <li>@erro</li>
+            }
+        }
+    </ul>
+</div>

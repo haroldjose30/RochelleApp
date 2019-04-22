@@ -23,7 +23,6 @@ namespace Framework.Core.Models
         public ValidationResult ValidationResult { get; protected set; }
 
 
-
         public Entity(string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted)
         {
             if (string.IsNullOrWhiteSpace(createdDate))
@@ -50,6 +49,10 @@ namespace Framework.Core.Models
 
             this.Id = id;
 
+        }
+
+        public Entity()
+        {
         }
 
         public virtual bool Update(string cUser)

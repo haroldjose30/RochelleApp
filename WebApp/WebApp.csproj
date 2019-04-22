@@ -12,6 +12,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.6" />
+    <PackageReference Include="Refit" Version="4.6.107" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +23,9 @@
     <Folder Include="Pages\Private\Generals\" />
     <Folder Include="Pages\Private\Generals\Companies\" />
     <Folder Include="Pages\Public\" />
+    <Folder Include="Services\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Pages\Private\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Companies\Details.cshtml" />
@@ -27,5 +33,8 @@
     <Content Remove="Pages\Companies\Details.cshtml" />
     <Content Remove="Pages\Private\Generals\Companies\Delete.cshtml" />
     <Content Remove="Pages\Private\Generals\Companies\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 </Project>

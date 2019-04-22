@@ -1,29 +1,36 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+using Domain.Generals;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
+using Refit;
 using WebApp.Areas.Identity.Data;
+using WebApp.Constants;
 using WebApp.Models;
+using WebApp.Services;
 
 namespace WebApp.Pages.Companies
 {
     public class IndexModel : PageModel
     {
-        private readonly WebApp.Areas.Identity.Data.WebAppIdentityDbContext _context;
+        private readonly IMapper _mapper;
 
-        public IndexModel(WebApp.Areas.Identity.Data.WebAppIdentityDbContext context)
+        public IndexModel(IMapper mapper)
         {
-            _context = context;
+            _mapper = mapper;
         }
 
-        public IList<CompanyVM> CompanyVM { get;set; }
+        public List<CompanyViewModel> CompanyVM { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync()       
         {
-            CompanyVM = await _context.CompanyVM.ToListAsync();
+            //get data from WebApi
+            var companyRestApi = RestService.For<ICompanyRestApi>(RestApiConstants.UrlBase);
+            var companies = await companyRestApi.GetAll();
+
+            //Convert Data from WebApi
+            CompanyVM = _mapper.Map<List<Company>, List<CompanyViewModel>>(companies);
+
         }
     }
 }

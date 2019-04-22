@@ -12,7 +12,7 @@ namespace WebApp.Areas.Identity.Data
     public class WebAppIdentityDbContext : IdentityDbContext<IdentityUser>
     {
 
-        public DbSet<CompanyVM> CompanyVM { get; private set; }
+        public DbSet<CompanyViewModel> CompanyVM { get; private set; }
 
         public WebAppIdentityDbContext(DbContextOptions<WebAppIdentityDbContext> options)
             : base(options)
@@ -27,6 +27,6 @@ namespace WebApp.Areas.Identity.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<WebApp.Models.CompanyVM> Company { get; set; }
+        public DbSet<WebApp.Models.CompanyViewModel> Company { get; set; }
     }
 }

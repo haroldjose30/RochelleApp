@@ -1,22 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Domain.Generals;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using WebApp.Areas.Identity.Data;
+using Refit;
+using WebApp.Constants;
 using WebApp.Models;
+using WebApp.Pages.Private.Base;
+using WebApp.Services;
 
 namespace WebApp.Pages.Companies
 {
-    public class CreateModel : PageModel
+    public class CreateModel : GenericPageModelModel
     {
-        private readonly WebApp.Areas.Identity.Data.WebAppIdentityDbContext _context;
+        private readonly IMapper _mapper;
 
-        public CreateModel(WebApp.Areas.Identity.Data.WebAppIdentityDbContext context)
+        public CreateModel(IMapper mapper)
         {
-            _context = context;
+            _mapper = mapper;
         }
 
         public IActionResult OnGet()
@@ -25,19 +25,43 @@ namespace WebApp.Pages.Companies
         }
 
         [BindProperty]
-        public CompanyVM CompanyVM { get; set; }
+        public CompanyViewModel CompanyVM { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.CompanyVM.Add(CompanyVM);
-            await _context.SaveChangesAsync();
+            //Convert Data from WebApi
+            CompanyVM.CreatedBy = User.Identity.Name;
+            var companie  = _mapper.Map<CompanyViewModel,Company >(CompanyVM);
 
-            return RedirectToPage("./Index");
+           
+            try
+            {
+                //post data to WebApi
+                var companyRestApi = RestService.For<ICompanyRestApi>(RestApiConstants.UrlBase);
+                var companies = await companyRestApi.Add(companie);
+
+                return RedirectToPage("./Index");
+            }
+            catch (ApiException ex)
+            {
+                errorMessage = await ex.GetContentAsAsync<ErrorMessage>();
+
+                return Page();
+            }
+
+
+
+
+
         }
     }
+
+   
+
 }
