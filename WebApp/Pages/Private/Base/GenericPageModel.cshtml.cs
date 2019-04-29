@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WebApp.Pages.Private.Base
 {
-    public class GenericPageModelModel : PageModel
+    public class GenericPageModel : PageModel
     {
 
         [BindProperty]

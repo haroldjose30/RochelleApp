@@ -9,6 +9,7 @@ namespace Framework.Core.Validations
     {
         public RegisterNewGenericCommandValidation()
         {
+            ValidateId();
             ValidateCreatedBy();
         }
 

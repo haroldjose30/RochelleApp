@@ -25,16 +25,16 @@ namespace Domain.PointsManager
 
       
 
-        public Invite(string code, DateTime? expirationDate, string customerFromId, string customerToId, InviteStatus inviteStatus,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            Code = code;
-            ExpirationDate = expirationDate;
-            CustomerFromId = customerFromId;
-            //CustomerFrom = customerFrom;
-            CustomerToId = customerToId;
-            //CustomerTo = customerTo;
-            InviteStatus = inviteStatus;
-        }
+        //public Invite(string code, DateTime? expirationDate, string customerFromId, string customerToId, InviteStatus inviteStatus,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
+        //{
+        //    Code = code;
+        //    ExpirationDate = expirationDate;
+        //    CustomerFromId = customerFromId;
+        //    //CustomerFrom = customerFrom;
+        //    CustomerToId = customerToId;
+        //    //CustomerTo = customerTo;
+        //    InviteStatus = inviteStatus;
+        //}
 
        
         private static DateTime? CalcExpirationDate()

@@ -19,26 +19,21 @@ namespace Framework.Core.Models
         public string ModifiedBy { get; protected set; } = string.Empty;
         [JsonProperty]
         public bool Deleted { get; protected set; } = false;
-     
-        public ValidationResult ValidationResult { get; protected set; }
+
+        public ValidationResult ValidationResult { get; protected set; } = new ValidationResult();
 
 
-        public Entity(string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted)
+        public virtual bool Create(string id, string createdBy, string createdDate)
         {
             if (string.IsNullOrWhiteSpace(createdDate))
                 this.CreatedDate = GetDateTimeStr();
             else
                 this.CreatedDate = createdDate;
 
-            if (string.IsNullOrWhiteSpace(modifiedDate))
-                this.ModifiedDate = GetDateTimeStr();
-            else
-                this.ModifiedDate = modifiedDate;
-
-            this.ModifiedBy = modifiedBy;
-
+                this.ModifiedDate = this.CreatedDate;
+         
            
-            this.Deleted = deleted;
+            this.Deleted = false;
             this.CreatedBy = createdBy;
             this.ModifiedDate = CreatedDate;
             this.ModifiedBy = createdBy;
@@ -48,6 +43,9 @@ namespace Framework.Core.Models
                 id = this.GetNewId();
 
             this.Id = id;
+
+
+            return true;
 
         }
 
@@ -59,7 +57,13 @@ namespace Framework.Core.Models
         {
 
             if (this.Deleted)
-                throw new Exception("nao é permitido alterar um registro deletado");
+            {
+                string cMsg = "nao é permitido alterar um registro deletado";
+                ValidationResult.Errors.Add(new ValidationFailure("Entity.Update", cMsg));
+                throw new Exception(cMsg);
+            }
+
+               
 
             this.ModifiedDate = GetDateTimeStr();
             this.ModifiedBy = cUser;
@@ -70,7 +74,12 @@ namespace Framework.Core.Models
         {
 
             if (this.Deleted)
-                throw new Exception("nao é permitido excluir um registro já deletado");
+            {
+                string cMsg = "nao é permitido excluir um registro já deletado";
+                ValidationResult.Errors.Add(new ValidationFailure("Entity.Update", cMsg));
+                throw new Exception(cMsg);
+            }
+        
 
             this.ModifiedDate = GetDateTimeStr();
             this.ModifiedBy = cUser;

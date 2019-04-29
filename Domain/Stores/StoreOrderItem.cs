@@ -20,13 +20,13 @@ namespace Domain.Store
         [JsonProperty]
         public Decimal ValuePoint { get; private set; }
 
-        public StoreOrderItem(string productId, Decimal quantity, Decimal valuePoint,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            ProductId = productId;
-            //Product = product;
-            Quantity = quantity;
-            ValuePoint = valuePoint;
-        }
+        //public StoreOrderItem(string productId, Decimal quantity, Decimal valuePoint,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
+        //{
+        //    ProductId = productId;
+        //    //Product = product;
+        //    Quantity = quantity;
+        //    ValuePoint = valuePoint;
+        //}
 
 
     }

@@ -21,12 +21,12 @@ namespace Domain.PointsManager
         public List<PointAccountDetail> Items { get; private set; }
        
        
-        public PointAccount(string customerId, Decimal amount ,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            this.CustomerId = customerId;
-            this.Amount = amount;
-            this.Items = new List<PointAccountDetail>();
-        }
+        //public PointAccount(string customerId, Decimal amount ,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
+        //{
+        //    this.CustomerId = customerId;
+        //    this.Amount = amount;
+        //    this.Items = new List<PointAccountDetail>();
+        //}
 
         public void AddPoints(PointAccountDetail _PointAccountDetail )
         {

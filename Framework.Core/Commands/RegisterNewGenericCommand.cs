@@ -17,26 +17,39 @@ namespace Framework.Core.Commands
         {
             try
             {
+                //execute action to mark as created register
+                entity.Create(entity.Id, entity.CreatedBy, entity.CreatedDate);
+
+                //verify if entity was valid
+                ValidationResult = entity.ValidationResult;
+
+                //try to locate specific validator from dependence injection
                 IRegisterNewGenericCommandValidation<TEntity> validation = (IRegisterNewGenericCommandValidation<TEntity>)serviceProvider.GetService(typeof(IRegisterNewGenericCommandValidation<TEntity>));
 
+                //if not exists an especific validator, instance default validator
                 if (validation == null)
                     validation = new RegisterNewGenericCommandValidation<TEntity>();
 
                 if (validation != null)
                 {
-                    ValidationResult = validation.Validate(this);
-                    return ValidationResult.IsValid;
+                    //execute validation process
+                    var ValidationResultAux = validation.Validate(this);
+
+                    //add errors on the default validation result if exists
+                    foreach (var item in ValidationResultAux.Errors)
+                    {
+                        ValidationResult.Errors.Add(item);
+                    }
                 }
 
-
-
-                return true;
+                //return if validation was ok
+                return ValidationResult.IsValid;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 ValidationResult = new FluentValidation.Results.ValidationResult();
-                ValidationResult.Errors.Add(new FluentValidation.Results.ValidationFailure("UpdateGenericCommand", ex.Message));
+                ValidationResult.Errors.Add(new FluentValidation.Results.ValidationFailure("RegisterNewGenericCommand", ex.Message));
 
             }
 

@@ -35,7 +35,7 @@ namespace WebApi.Controllers.Base
         //[ProducesResponseType(404)]
         public virtual async Task<IActionResult> Get(string id)
         {
-            var entity = service.GetById(id);
+            var entity = await service.GetById(id);
             return Response(entity);
         }
     
@@ -50,7 +50,7 @@ namespace WebApi.Controllers.Base
                 return Response(entity);
             }
 
-            var oEntity = await service.RegisterAsync(entity);
+             var oEntity = await service.RegisterAsync(entity);
 
             return Response(oEntity);
         }

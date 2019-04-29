@@ -10,7 +10,7 @@ using WebApp.Services;
 
 namespace WebApp.Pages.Companies
 {
-    public class CreateModel : GenericPageModelModel
+    public class CreateModel : GenericPageModel
     {
         private readonly IMapper _mapper;
 
@@ -51,7 +51,6 @@ namespace WebApp.Pages.Companies
             catch (ApiException ex)
             {
                 errorMessage = await ex.GetContentAsAsync<ErrorMessage>();
-
                 return Page();
             }
 

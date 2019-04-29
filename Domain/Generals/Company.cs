@@ -13,17 +13,13 @@ namespace Domain.Generals
         public string CorporateNumber { get; protected set; }
 
 
-        public Company()
-        { 
-        
-        }
 
-        public Company(string companyName, string fantasyName, string corporateNumber, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            CompanyName = companyName;
-            FantasyName = fantasyName;
-            CorporateNumber = corporateNumber;
-        }
+        //public Company(string companyName, string fantasyName, string corporateNumber, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
+        //{
+        //    CompanyName = companyName;
+        //    FantasyName = fantasyName;
+        //    CorporateNumber = corporateNumber;
+        //}
 
         public bool Update(string companyName, string fantasyName, string corporateNumber, string modifiedBy)
         {

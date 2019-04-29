@@ -10,7 +10,7 @@ namespace Framework.Core.Validations
         protected void ValidateId()
         {
             RuleFor(c => c.entity.Id)
-                .NotEqual(string.Empty)
+                .NotEmpty()
                 .WithMessage("Id deve ser informado");
         }
        

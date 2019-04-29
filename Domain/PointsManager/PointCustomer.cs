@@ -14,10 +14,10 @@ namespace Domain.PointsManager
         [JsonProperty]
         public int InvitesQuantity { get; private set; }
 
-        public PointCustomer(string customerId, int invitesQuantity,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            this.CustomerId = customerId;
-            this.InvitesQuantity = invitesQuantity;
-        }
+        //public PointCustomer(string customerId, int invitesQuantity,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
+        //{
+        //    this.CustomerId = customerId;
+        //    this.InvitesQuantity = invitesQuantity;
+        //}
     }
 }

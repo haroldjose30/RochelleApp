@@ -14,14 +14,6 @@ namespace Domain.Store
         [JsonProperty]
         public int Sequence { get; set; }
 
-
-        public StoreOrderStatus(string name, string description, int sequence,string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            Name = name;
-            Description = description;
-            Sequence = sequence;
-        }
-
     }
 
 

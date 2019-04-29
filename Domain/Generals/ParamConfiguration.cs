@@ -14,13 +14,13 @@ namespace Domain.Generals
         [JsonProperty]
         public ParamConfigurationType Type { get; set; }
 
-        public ParamConfiguration(string name, string description, string value, ParamConfigurationType type,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            Name = name;
-            Description = description;
-            Value = value;
-            Type = type;
-        }
+        //public ParamConfiguration(string name, string description, string value, ParamConfigurationType type,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
+        //{
+        //    Name = name;
+        //    Description = description;
+        //    Value = value;
+        //    Type = type;
+        //}
 
        
     }

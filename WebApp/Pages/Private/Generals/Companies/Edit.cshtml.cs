@@ -2,22 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Domain.Generals;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Refit;
 using WebApp.Areas.Identity.Data;
+using WebApp.Constants;
 using WebApp.Models;
+using WebApp.Pages.Private.Base;
+using WebApp.Services;
 
 namespace WebApp.Pages.Companies
 {
-    public class EditModel : PageModel
+    public class EditModel : GenericPageModel
     {
-        private readonly WebApp.Areas.Identity.Data.WebAppIdentityDbContext _context;
+        private readonly IMapper _mapper;
 
-        public EditModel(WebApp.Areas.Identity.Data.WebAppIdentityDbContext context)
+        public EditModel(IMapper mapper)
         {
-            _context = context;
+            _mapper = mapper;
         }
 
         [BindProperty]
@@ -30,14 +36,23 @@ namespace WebApp.Pages.Companies
                 return NotFound();
             }
 
-            CompanyVM = await _context.CompanyVM.FirstOrDefaultAsync(m => m.Id == id);
+            var companyRestApi = RestService.For<ICompanyRestApi>(RestApiConstants.UrlBase);
+            var companie = await companyRestApi.GetById(id);
 
-            if (CompanyVM == null)
+            if (companie == null)
             {
                 return NotFound();
             }
+
+            CompanyVM = _mapper.Map<Company, CompanyViewModel>(companie);
+
             return Page();
         }
+
+
+
+
+
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -46,30 +61,24 @@ namespace WebApp.Pages.Companies
                 return Page();
             }
 
-            _context.Attach(CompanyVM).State = EntityState.Modified;
-
+          
             try
             {
-                await _context.SaveChangesAsync();
+                parei aqui
+                //o view model deve conter todos os campos pois caso contrario ira limpar os campos que nao forem carregados
+                var companie = _mapper.Map<CompanyViewModel,Company>(CompanyVM);
+                var companyRestApi = RestService.For<ICompanyRestApi>(RestApiConstants.UrlBase);
+                await companyRestApi.Update(companie);
+
             }
-            catch (DbUpdateConcurrencyException)
+            catch (ApiException ex)
             {
-                if (!CompanyVMExists(CompanyVM.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                errorMessage = await ex.GetContentAsAsync<ErrorMessage>();
+                return Page();
             }
+
 
             return RedirectToPage("./Index");
-        }
-
-        private bool CompanyVMExists(string id)
-        {
-            return _context.CompanyVM.Any(e => e.Id == id);
         }
     }
 }

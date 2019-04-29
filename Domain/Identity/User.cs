@@ -25,16 +25,16 @@ namespace Domain.Identity
         public Customer Customer { get; private set; }
 
 
-        public User(string name, string email, string login, string password, RegisterState state, string customerId,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            Name = name;
-            Email = email;
-            Login = login;
-            Password = password;
-            State = state;
-            CustomerId = customerId;
-            //Customer = customer;
-        }
+        //public User(string name, string email, string login, string password, RegisterState state, string customerId,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
+        //{
+        //    Name = name;
+        //    Email = email;
+        //    Login = login;
+        //    Password = password;
+        //    State = state;
+        //    CustomerId = customerId;
+        //    //Customer = customer;
+        //}
        
         public bool LoginIsValid(string cLogin,string cPassword)
         {

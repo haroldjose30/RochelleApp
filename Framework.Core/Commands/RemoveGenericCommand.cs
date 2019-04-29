@@ -40,7 +40,7 @@ namespace Framework.Core.Commands
             {
                 Console.WriteLine(ex.Message);
                 ValidationResult = new FluentValidation.Results.ValidationResult();
-                ValidationResult.Errors.Add(new FluentValidation.Results.ValidationFailure("UpdateGenericCommand", ex.Message));
+                ValidationResult.Errors.Add(new FluentValidation.Results.ValidationFailure("RemoveGenericCommand", ex.Message));
 
             }
 

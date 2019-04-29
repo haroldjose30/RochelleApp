@@ -27,17 +27,17 @@ namespace Domain.PointsManager
         public DateTime? Expiration { get; private set; }
 
 
-        public PointAccountDetail(DateTime date, Decimal value, string history, string customerId, string document, PointExtractType pointExtractType, DateTime? expiration ,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            Date = date;
-            Value = value;
-            History = history;
-            CustomerId = customerId;
-            //Customer = customer;
-            Document = document;
-            PointExtractType = pointExtractType;
-            Expiration = expiration;
-        }
+        //public PointAccountDetail(DateTime date, Decimal value, string history, string customerId, string document, PointExtractType pointExtractType, DateTime? expiration ,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
+        //{
+        //    Date = date;
+        //    Value = value;
+        //    History = history;
+        //    CustomerId = customerId;
+        //    //Customer = customer;
+        //    Document = document;
+        //    PointExtractType = pointExtractType;
+        //    Expiration = expiration;
+        //}
 
        
 

@@ -15,12 +15,12 @@ namespace Domain.Generals
         [JsonProperty]
         public string Email { get; set; }
 
-        public Customer(string name, DateTime birthDate, string document, string email,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            Name = name;
-            BirthDate = birthDate;
-            Document = document;
-            Email = email;
-        }
+        //public Customer(string name, DateTime birthDate, string document, string email,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
+        //{
+        //    Name = name;
+        //    BirthDate = birthDate;
+        //    Document = document;
+        //    Email = email;
+        //}
     }
 }

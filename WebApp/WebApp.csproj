@@ -31,7 +31,6 @@
     <Content Remove="Pages\Companies\Details.cshtml" />
     <Content Remove="Pages\Generals\Companies\Delete.cshtml" />
     <Content Remove="Pages\Companies\Details.cshtml" />
-    <Content Remove="Pages\Private\Generals\Companies\Delete.cshtml" />
     <Content Remove="Pages\Private\Generals\Companies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>

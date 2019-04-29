@@ -16,13 +16,13 @@ namespace Domain.PointsManager
 
 
 
-        public PointRule(string name, double pointToGain, RegisterState registerState, PointRuleType pointRuleType,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            Name = name;
-            PointToGain = pointToGain;
-            RegisterState = registerState;
-            PointRuleType = pointRuleType;
-        }
+        //public PointRule(string name, double pointToGain, RegisterState registerState, PointRuleType pointRuleType,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
+        //{
+        //    Name = name;
+        //    PointToGain = pointToGain;
+        //    RegisterState = registerState;
+        //    PointRuleType = pointRuleType;
+        //}
 
 
     }

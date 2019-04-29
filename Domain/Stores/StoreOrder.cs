@@ -24,15 +24,15 @@ namespace Domain.Store
         [JsonProperty]
         public List<StoreOrderItem> Items { get; set; }
 
-        public StoreOrder(DateTime date, string customerFromId, string storeOrderStatusId,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        {
-            this.Date = date;
-            this.CustomerFromId = customerFromId;
-            //CustomerFrom = customerFrom;
-            this.StoreOrderStatusId = storeOrderStatusId;
-            //StoreOrderStatus = storeOrderStatus;
-            this.Items = new List<StoreOrderItem>();
-        }
+        //public StoreOrder(DateTime date, string customerFromId, string storeOrderStatusId,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
+        //{
+        //    this.Date = date;
+        //    this.CustomerFromId = customerFromId;
+        //    //CustomerFrom = customerFrom;
+        //    this.StoreOrderStatusId = storeOrderStatusId;
+        //    //StoreOrderStatus = storeOrderStatus;
+        //    this.Items = new List<StoreOrderItem>();
+        //}
 
        
 

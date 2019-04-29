@@ -7,7 +7,7 @@ namespace Framework.Core.Commands
     public abstract class Command : MessageRequest
     {
         public DateTime Timestamp { get; private set; }
-        public ValidationResult ValidationResult { get; set; }
+        public ValidationResult ValidationResult { get; set; } = new ValidationResult();
 
         protected Command()
         {

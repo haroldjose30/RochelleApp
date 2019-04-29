@@ -8,7 +8,7 @@ namespace ApplicationBusiness.Companies.Validations
     {
         protected void ValidateCompanyName()
         {
-            RuleFor(a => a.entity.CompanyName)
+            RuleFor(a =>  a.entity.CompanyName)
                .NotEmpty()
                .WithMessage("Razão social deve ser informado!");
         }
