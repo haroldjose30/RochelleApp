@@ -11,6 +11,9 @@
 <div>
     <h4>CompanyVM</h4>
     <hr />
+
+    <partial name="_ErrorPartial" />
+
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CompanyVM.CompanyName)
@@ -31,7 +34,7 @@
             @Html.DisplayFor(model => model.CompanyVM.CorporateNumber)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="CompanyVM.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

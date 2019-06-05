@@ -17,12 +17,6 @@ namespace Framework.Core.Commands
         {
             try
             {
-                //execute action to mark as created register
-                entity.Create(entity.Id, entity.CreatedBy, entity.CreatedDate);
-
-                //verify if entity was valid
-                ValidationResult = entity.ValidationResult;
-
                 //try to locate specific validator from dependence injection
                 IRegisterNewGenericCommandValidation<TEntity> validation = (IRegisterNewGenericCommandValidation<TEntity>)serviceProvider.GetService(typeof(IRegisterNewGenericCommandValidation<TEntity>));
 

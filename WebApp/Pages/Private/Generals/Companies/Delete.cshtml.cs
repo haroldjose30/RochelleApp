@@ -2,22 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Domain.Generals;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Refit;
 using WebApp.Areas.Identity.Data;
+using WebApp.Constants;
 using WebApp.Models;
+using WebApp.Pages.Private.Base;
+using WebApp.Services;
 
 namespace WebApp.Pages.Companies
 {
-    public class DeleteModel : PageModel
+    public class DeleteModel : GenericPageModel
     {
-        private readonly WebApp.Areas.Identity.Data.WebAppIdentityDbContext _context;
+        private readonly IMapper _mapper;
 
-        public DeleteModel(WebApp.Areas.Identity.Data.WebAppIdentityDbContext context)
+        public DeleteModel(IMapper mapper)
         {
-            _context = context;
+            _mapper = mapper;
         }
+
 
         [BindProperty]
         public CompanyViewModel CompanyVM { get; set; }
@@ -29,7 +36,26 @@ namespace WebApp.Pages.Companies
                 return NotFound();
             }
 
-            CompanyVM = await _context.CompanyVM.FirstOrDefaultAsync(m => m.Id == id);
+
+            try
+            {
+                var companyRestApi = RestService.For<ICompanyRestApi>(RestApiConstants.UrlBase);
+                var companie = await companyRestApi.GetById(id);
+
+                if (companie == null)
+                {
+                    return NotFound();
+                }
+
+                CompanyVM = _mapper.Map<Company, CompanyViewModel>(companie);
+
+            }
+            catch (ApiException ex)
+            {
+                errorMessage = await ex.GetContentAsAsync<ErrorMessage>();
+                return Page();
+            }
+
 
             if (CompanyVM == null)
             {
@@ -45,12 +71,17 @@ namespace WebApp.Pages.Companies
                 return NotFound();
             }
 
-            CompanyVM = await _context.CompanyVM.FindAsync(id);
-
-            if (CompanyVM != null)
+            try
             {
-                _context.CompanyVM.Remove(CompanyVM);
-                await _context.SaveChangesAsync();
+                //instance WebApi
+                var companyRestApi = RestService.For<ICompanyRestApi>(RestApiConstants.UrlBase);
+           
+                await companyRestApi.Remove(CompanyVM.Id, User.Identity.Name);
+            }
+            catch (ApiException ex)
+            {
+                errorMessage = await ex.GetContentAsAsync<ErrorMessage>();
+                return Page();
             }
 
             return RedirectToPage("./Index");

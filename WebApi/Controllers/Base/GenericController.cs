@@ -71,7 +71,7 @@ namespace WebApi.Controllers.Base
         }
 
         //[Authorize("Bearer")]
-        [HttpDelete]
+        [HttpDelete("{id}/{deletedBy}")]
         public virtual async Task<IActionResult> Delete(string id, string deletedBy)
         {
              var lOk = await service.RemoveAsync(id,deletedBy);

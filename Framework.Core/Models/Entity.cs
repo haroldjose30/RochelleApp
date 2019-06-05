@@ -51,6 +51,7 @@ namespace Framework.Core.Models
 
         public Entity()
         {
+
         }
 
         public virtual bool Update(string cUser)
@@ -60,7 +61,8 @@ namespace Framework.Core.Models
             {
                 string cMsg = "nao é permitido alterar um registro deletado";
                 ValidationResult.Errors.Add(new ValidationFailure("Entity.Update", cMsg));
-                throw new Exception(cMsg);
+                return false;
+                //throw new Exception(cMsg);
             }
 
                
@@ -77,7 +79,8 @@ namespace Framework.Core.Models
             {
                 string cMsg = "nao é permitido excluir um registro já deletado";
                 ValidationResult.Errors.Add(new ValidationFailure("Entity.Update", cMsg));
-                throw new Exception(cMsg);
+                return false;
+                //throw new Exception(cMsg);
             }
         
 

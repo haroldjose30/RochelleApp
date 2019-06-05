@@ -22,6 +22,13 @@ namespace Framework.Core.CommandHandlers
         {
             Debug.WriteLine("RegisterNewGenericCommand");
 
+            //execute action to mark as created register
+            request.entity.Create(request.entity.Id, request.entity.CreatedBy, request.entity.CreatedDate);
+
+            //verify if entity was valid
+            request.ValidationResult = request.entity.ValidationResult;
+
+
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);

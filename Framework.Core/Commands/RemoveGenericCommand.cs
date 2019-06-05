@@ -5,16 +5,19 @@ using Framework.Core.Validations;
 
 namespace Framework.Core.Commands
 {
-    public class RemoveGenericCommand<TEntity> : GenericCommand<TEntity> where TEntity : Entity
+    public class RemoveGenericCommand<TEntity> : GenericCommand<TEntity> where TEntity : Entity, new()
     {
-        public string Id { get; set; }
-        public string RemovedBy { get; set; }
+        //public string Id { get; set; }
+        //public string RemovedBy { get; set; }
         IServiceProvider serviceProvider;
 
-        public RemoveGenericCommand(string id, string removedBy, IServiceProvider _serviceProvider) : base(null)
+        public RemoveGenericCommand(string id, string removedBy, IServiceProvider _serviceProvider) : base(new TEntity())
         {
-            Id = id;
-            RemovedBy = removedBy;
+            //this.Entity = new TEntity();
+            entity.Create(id, removedBy, "");
+
+            //Id = id;
+            //RemovedBy = removedBy;
             serviceProvider = _serviceProvider;
         }
 
@@ -22,7 +25,7 @@ namespace Framework.Core.Commands
         {
             try
             {
-                IRemoveGenericCommandValidation<TEntity> validation = (IRemoveGenericCommandValidation<TEntity>)serviceProvider.GetService(typeof(IRegisterNewGenericCommandValidation<TEntity>));
+                IRemoveGenericCommandValidation<TEntity> validation = (IRemoveGenericCommandValidation<TEntity>)serviceProvider.GetService(typeof(IRemoveGenericCommandValidation<TEntity>));
 
                 if (validation == null)
                     validation = new RemoveGenericCommandValidation<TEntity>();

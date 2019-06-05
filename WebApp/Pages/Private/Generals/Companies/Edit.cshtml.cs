@@ -36,17 +36,29 @@ namespace WebApp.Pages.Companies
                 return NotFound();
             }
 
-            var companyRestApi = RestService.For<ICompanyRestApi>(RestApiConstants.UrlBase);
-            var companie = await companyRestApi.GetById(id);
-
-            if (companie == null)
+         
+            try
             {
-                return NotFound();
+                var companyRestApi = RestService.For<ICompanyRestApi>(RestApiConstants.UrlBase);
+                var company = await companyRestApi.GetById(id);
+
+                if (company == null)
+                {
+                    return NotFound();
+                }
+
+                CompanyVM = _mapper.Map<Company, CompanyViewModel>(company);
+
+            }
+            catch (ApiException ex)
+            {
+                errorMessage = await ex.GetContentAsAsync<ErrorMessage>();
+                return Page();
             }
 
-            CompanyVM = _mapper.Map<Company, CompanyViewModel>(companie);
 
             return Page();
+
         }
 
 
@@ -64,12 +76,18 @@ namespace WebApp.Pages.Companies
           
             try
             {
-                parei aqui
-                //o view model deve conter todos os campos pois caso contrario ira limpar os campos que nao forem carregados
-                var companie = _mapper.Map<CompanyViewModel,Company>(CompanyVM);
-                var companyRestApi = RestService.For<ICompanyRestApi>(RestApiConstants.UrlBase);
-                await companyRestApi.Update(companie);
+                //update current user
+                CompanyVM.ModifiedBy = User.Identity.Name;
 
+                //instance WebApi
+                var companyRestApi = RestService.For<ICompanyRestApi>(RestApiConstants.UrlBase);
+
+                //get the original data from database
+                var company = await companyRestApi.GetById(CompanyVM.Id);
+
+                //Do automapper to update data from database model
+                company = _mapper.Map<CompanyViewModel,Company>(CompanyVM, company);
+                await companyRestApi.Update(company);
             }
             catch (ApiException ex)
             {

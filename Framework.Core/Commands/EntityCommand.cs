@@ -13,8 +13,9 @@ namespace Framework.Core.Commands
 
     public class GenericCommand<TEntity> : Command where TEntity : Entity
     {
-        public TEntity entity  { get; set; }
-     
+        public TEntity entity { get; set; }
+
+
         public GenericCommand(TEntity _entity)
         {
             entity = _entity;

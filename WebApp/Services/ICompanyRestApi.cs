@@ -20,8 +20,8 @@ namespace WebApp.Services
         [Put("/Companies")]
         Task<Company> Update(Company company);
 
-        [Delete("/Companies/{id")]
-        Task<bool> Remove(string id);
+        [Delete("/Companies/{id}/{deletedBy}")]
+        Task<bool> Remove(string id,string deletedBy);
     }
    
 }

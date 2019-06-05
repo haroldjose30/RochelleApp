@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Framework.Core.Services
 {
-    public class GenericService<TEntity> : IGenericService<TEntity> where TEntity : Entity
+    public class GenericService<TEntity> : IGenericService<TEntity> where TEntity : Entity, new()
     {
 
         private readonly IRepository<TEntity> _repository;

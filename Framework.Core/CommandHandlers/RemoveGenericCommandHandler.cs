@@ -11,7 +11,7 @@ using MediatR;
 
 namespace Framework.Core.CommandHandlers
 {
-   public class RemoveGenericCommandHandler<TEntity> : CommandHandler, IRequestHandler<RemoveGenericCommand<TEntity>> where TEntity : Entity
+   public class RemoveGenericCommandHandler<TEntity> : CommandHandler, IRequestHandler<RemoveGenericCommand<TEntity>> where TEntity : Entity, new()
     {
         IRepository<TEntity> repository;
 
@@ -24,14 +24,7 @@ namespace Framework.Core.CommandHandlers
         {
             Debug.WriteLine("RemoveGenericCommand");
 
-
-            if (!request.IsValid())
-            {
-                NotifyValidationErrors(request);
-                return new Unit();
-            }
-
-            repository.Remove(request.Id);
+            repository.Remove(request.entity.Id, request.entity.ModifiedBy);
 
             if (await CommitAsync())
             {

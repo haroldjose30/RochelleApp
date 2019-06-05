@@ -12,7 +12,7 @@ namespace Framework.Core.Interfaces
         TEntity GetById(string id);
         IQueryable<TEntity> GetAll();
         TEntity Update(TEntity obj);
-        bool Remove(string id);
+        bool Remove(string id, string removedBy);
         Task<int> SaveChangesAsync();
     }
 }

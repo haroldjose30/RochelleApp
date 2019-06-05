@@ -37,6 +37,7 @@ namespace WebApp.Pages.Companies
 
             //Convert Data from WebApi
             CompanyVM.CreatedBy = User.Identity.Name;
+            CompanyVM.ModifiedBy = CompanyVM.CreatedBy;
             var companie  = _mapper.Map<CompanyViewModel,Company >(CompanyVM);
 
            

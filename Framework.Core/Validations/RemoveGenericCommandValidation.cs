@@ -6,7 +6,7 @@ using Framework.Core.Models;
 
 namespace Framework.Core.Validations
 {
-    public class RemoveGenericCommandValidation<TEntity> : GenericValidation<TEntity> , IRemoveGenericCommandValidation<TEntity> where TEntity : Entity
+    public class RemoveGenericCommandValidation<TEntity> : GenericValidation<TEntity> , IRemoveGenericCommandValidation<TEntity> where TEntity : Entity, new()
     {
         public RemoveGenericCommandValidation()
         {

@@ -4,7 +4,7 @@ using Framework.Core.Models;
 
 namespace Framework.Core.Interfaces
 {
-    public interface IRemoveGenericCommandValidation<TEntity> where TEntity : Entity
+    public interface IRemoveGenericCommandValidation<TEntity> where TEntity : Entity , new()
     {
         ValidationResult Validate(RemoveGenericCommand<TEntity> removeGenericCommand);
     }

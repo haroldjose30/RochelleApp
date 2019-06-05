@@ -24,7 +24,13 @@ namespace Framework.Core.CommandHandlers
         {
             Debug.WriteLine("UpdateGenericCommand");
 
+            //execute action to mark as created register
+            request.entity.Update(request.entity.ModifiedBy);
 
+            //verify if entity was valid
+            request.ValidationResult = request.entity.ValidationResult;
+
+            repository.Update(request.entity);
 
             if (!request.IsValid())
             {
