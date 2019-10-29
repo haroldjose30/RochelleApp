@@ -1,0 +1,14 @@
+POST http://localhost:5000/api/Companies
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/api/Companies
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+###
+

@@ -1,3 +1,6 @@
 
 # Default ignored files
 /.idea.RochelleApp/.idea/workspace.xml
+# Datasource local storage ignored files
+/.idea.RochelleApp/.idea/dataSources/
+/.idea.RochelleApp/.idea/dataSources.local.xml

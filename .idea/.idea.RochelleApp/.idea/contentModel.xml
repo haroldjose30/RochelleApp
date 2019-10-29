@@ -2,277 +2,269 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$PROJECT_DIR$" t="IncludeFlat">
-      <e p="0-Shared" t="Include" />
+      <e p="0-Shared" t="Include">
+        <e p="Domain" t="IncludeRecursive">
+          <e p="Base" t="Include">
+            <e p="EntityWithCompany.cs" t="Include" />
+            <e p="RegisterState.cs" t="Include" />
+          </e>
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="ClassDiagrams" t="Include">
+            <e p="General.cd" t="Include" />
+            <e p="PointsManager.cd" t="Include" />
+            <e p="Store.cd" t="Include" />
+          </e>
+          <e p="Domain.csproj" t="IncludeRecursive" />
+          <e p="Generals" t="Include">
+            <e p="Company.cs" t="Include" />
+            <e p="Customer.cs" t="Include" />
+            <e p="ParamConfiguration.cs" t="Include" />
+            <e p="Product.cs" t="Include" />
+          </e>
+          <e p="Identity" t="Include">
+            <e p="TokenConfigurations.cs" t="Include" />
+            <e p="User.cs" t="Include" />
+          </e>
+          <e p="Interfaces" t="Include">
+            <e p="ICompanyRepository.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.1" t="Include">
+                <e p="Domain.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="PointsManager" t="Include">
+            <e p="Invite.cs" t="Include" />
+            <e p="PointAccount.cs" t="Include" />
+            <e p="PointAccountDetail.cs" t="Include" />
+            <e p="PointCustomer.cs" t="Include" />
+            <e p="PointRule.cs" t="Include" />
+          </e>
+          <e p="Stores" t="Include">
+            <e p="StoreOrder.cs" t="Include" />
+            <e p="StoreOrderItem.cs" t="Include" />
+            <e p="StoreOrderStatus.cs" t="Include" />
+            <e p="StoreProduct.cs" t="Include" />
+          </e>
+        </e>
+      </e>
       <e p="1-FrontEnd" t="Include" />
-      <e p="2-BackEnd" t="Include" />
-      <e p="3-Framework" t="Include" />
+      <e p="2-BackEnd" t="Include">
+        <e p="2.1-WebApi" t="IncludeRecursive">
+          <e p="2.1-WebApi.csproj" t="IncludeRecursive" />
+          <e p="appsettings.Development.json" t="Include" />
+          <e p="appsettings.json" t="Include" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Controllers" t="Include">
+            <e p="AllControllers.cs" t="Include" />
+            <e p="Base" t="Include">
+              <e p="ApiController.cs" t="Include" />
+              <e p="GenericController.cs" t="Include" />
+            </e>
+            <e p="ValuesController.cs" t="Include" />
+            <e p="WeatherForecastController.cs" t="Include" />
+          </e>
+          <e p="Infrastructure" t="Include">
+            <e p="Jwt" t="Include">
+              <e p="JsonWebTokenExtensions.cs" t="Include" />
+              <e p="SigningConfigurations.cs" t="Include" />
+            </e>
+            <e p="Swagger" t="Include">
+              <e p="SwaggerServiceExtensions.cs" t="Include" />
+            </e>
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp3.0" t="Include">
+                <e p="2.1-WebApi.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Program.cs" t="Include" />
+          <e p="Properties" t="Include">
+            <e p="launchSettings.json" t="Include" />
+          </e>
+          <e p="Startup.cs" t="Include" />
+          <e p="WeatherForecast.cs" t="Include" />
+        </e>
+        <e p="2.2-ApplicationBusiness" t="IncludeRecursive">
+          <e p="2.2-ApplicationBusiness.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Companies" t="Include">
+            <e p="CommandHandlers" t="Include">
+              <e p="RegisterNewCompanyCommandHandler.cs" t="Include" />
+              <e p="RemoveCompanyCommandHandler.cs" t="Include" />
+              <e p="UpdateCompanyCommandHandler.cs" t="Include" />
+            </e>
+            <e p="Commands" t="Include" />
+            <e p="EventHandles" t="Include">
+              <e p="CompanyRegisteredEventHandler.cs" t="Include" />
+              <e p="CompanyRemovedEventHandler.cs" t="Include" />
+              <e p="CompanyUpdatedEventHandler.cs" t="Include" />
+            </e>
+            <e p="Events" t="Include" />
+            <e p="Services" t="Include" />
+            <e p="Validations" t="Include">
+              <e p="CompanyValidation.cs" t="Include" />
+              <e p="RegisterNewCompanyCommandValidation.cs" t="Include" />
+              <e p="RemoveCompanyCommandValidation.cs" t="Include" />
+              <e p="UpdateCompanyCommandValidation.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Customers" t="Include">
+            <e p="CommandHandlers" t="Include">
+              <e p="RegisterNewCustomerCommandHandler.cs" t="Include" />
+              <e p="RemoveCustomerCommandHandler.cs" t="Include" />
+              <e p="UpdateCustomerCommandHandler.cs" t="Include" />
+            </e>
+            <e p="Commands" t="Include" />
+            <e p="EventHandles" t="Include">
+              <e p="CustomerRegisteredEventHandler.cs" t="Include" />
+              <e p="CustomerRemovedEventHandler.cs" t="Include" />
+              <e p="CustomerUpdatedEventHandler.cs" t="Include" />
+            </e>
+            <e p="Events" t="Include" />
+            <e p="Services" t="Include" />
+            <e p="Validations" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp3.0" t="Include">
+                <e p="2.2-ApplicationBusiness.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Products" t="Include">
+            <e p="ProductsFiles.cs" t="Include" />
+          </e>
+        </e>
+        <e p="2.3-Infra.CrossCutting.Bus" t="IncludeRecursive">
+          <e p="2.3-Infra.CrossCutting.Bus.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="InMemoryBus.cs" t="Include" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp3.0" t="Include">
+                <e p="2.3-Infra.CrossCutting.Bus.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="2.4-Infra.Data" t="IncludeRecursive">
+          <e p="2.4-Infra.Data.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Context" t="Include">
+            <e p="DbContextGeneric.cs" t="Include" />
+            <e p="IDbContextGeneric.cs" t="Include" />
+          </e>
+          <e p="Migrations" t="Include">
+            <e p="20191029050515_InitialCreate.cs" t="Include" />
+            <e p="20191029050515_InitialCreate.Designer.cs" t="Include" />
+            <e p="DbContextGenericModelSnapshot.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp3.0" t="Include">
+                <e p="2.4-Infra.Data.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Repositories" t="Include">
+            <e p="Base" t="Include">
+              <e p="IRepositoryWithCompany.cs" t="Include" />
+              <e p="Repository.cs" t="Include" />
+              <e p="RepositoryWithCompany.cs" t="Include" />
+            </e>
+            <e p="CompanyRepository.cs" t="Include" />
+            <e p="IAllRepositories.cs" t="Include" />
+          </e>
+          <e p="UoW" t="Include">
+            <e p="UnitOfWork.cs" t="Include" />
+          </e>
+        </e>
+        <e p="2.5-Infra.CrossCutting.IoC" t="IncludeRecursive">
+          <e p="2.5-Infra.CrossCutting.IoC.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="NativeInjectorBootStrapper.cs" t="Include" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp3.0" t="Include">
+                <e p="2.5-Infra.CrossCutting.IoC.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="3-Framework" t="Include">
+        <e p="Framework.Core" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="CommandHandlers" t="Include">
+            <e p="RegisterNewGenericCommandHandler.cs" t="Include" />
+            <e p="RemoveGenericCommandHandler.cs" t="Include" />
+            <e p="UpdateGenericCommandHandler.cs" t="Include" />
+          </e>
+          <e p="Commands" t="Include">
+            <e p="Command.cs" t="Include" />
+            <e p="CommandHandler.cs" t="Include" />
+            <e p="EntityCommand.cs" t="Include" />
+            <e p="RegisterNewGenericCommand.cs" t="Include" />
+            <e p="RemoveGenericCommand.cs" t="Include" />
+            <e p="UpdateGenericCommand.cs" t="Include" />
+          </e>
+          <e p="EventHandlers" t="Include">
+            <e p="GenericRegisteredEventHandler.cs" t="Include" />
+            <e p="GenericRemovedEventHandler.cs" t="Include" />
+            <e p="GenericUpdatedEventHandler.cs" t="Include" />
+          </e>
+          <e p="Events" t="Include">
+            <e p="Event.cs" t="Include" />
+            <e p="GenericRegisteredEvent.cs" t="Include" />
+            <e p="GenericRemovedEvent.cs" t="Include" />
+            <e p="GenericUpdatedEvent.cs" t="Include" />
+            <e p="Message.cs" t="Include" />
+          </e>
+          <e p="Framework.Core.csproj" t="IncludeRecursive" />
+          <e p="Interfaces" t="Include">
+            <e p="IMediatorHandler.cs" t="Include" />
+            <e p="IRegisterNewGenericCommandValidation.cs" t="Include" />
+            <e p="IRemoveGenericCommandValidation.cs" t="Include" />
+            <e p="IRepository.cs" t="Include" />
+            <e p="IUnitOfWork.cs" t="Include" />
+            <e p="IUpdateGenericCommandValidation.cs" t="Include" />
+          </e>
+          <e p="Models" t="Include">
+            <e p="Entity.cs" t="Include" />
+            <e p="EntityReflexion.cs" t="Include" />
+          </e>
+          <e p="Notifications" t="Include">
+            <e p="DomainNotification.cs" t="Include" />
+            <e p="DomainNotificationHandler.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.1" t="Include">
+                <e p="Framework.Core.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Services" t="Include">
+            <e p="GenericService.cs" t="Include" />
+            <e p="IGenericService.cs" t="Include" />
+          </e>
+          <e p="Validations" t="Include">
+            <e p="GenericValidation.cs" t="Include" />
+            <e p="RegisterNewGenericCommandValidation.cs" t="Include" />
+            <e p="RemoveGenericCommandValidation.cs" t="Include" />
+            <e p="UpdateGenericCommandValidation.cs" t="Include" />
+          </e>
+        </e>
+      </e>
       <e p="4-Tests" t="Include" />
       <e p="5-Documents" t="Include" />
-      <e p="ApplicationBusiness" t="IncludeRecursive">
-        <e p="2.2-ApplicationBusiness.csproj" t="IncludeRecursive" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="Companies" t="Include">
-          <e p="CommandHandlers" t="Include">
-            <e p="RegisterNewCompanyCommandHandler.cs" t="Include" />
-            <e p="RemoveCompanyCommandHandler.cs" t="Include" />
-            <e p="UpdateCompanyCommandHandler.cs" t="Include" />
-          </e>
-          <e p="Commands" t="Include" />
-          <e p="EventHandles" t="Include">
-            <e p="CompanyRegisteredEventHandler.cs" t="Include" />
-            <e p="CompanyRemovedEventHandler.cs" t="Include" />
-            <e p="CompanyUpdatedEventHandler.cs" t="Include" />
-          </e>
-          <e p="Events" t="Include" />
-          <e p="Services" t="Include" />
-          <e p="Validations" t="Include">
-            <e p="CompanyValidation.cs" t="Include" />
-            <e p="RegisterNewCompanyCommandValidation.cs" t="Include" />
-            <e p="RemoveCompanyCommandValidation.cs" t="Include" />
-            <e p="UpdateCompanyCommandValidation.cs" t="Include" />
-          </e>
-        </e>
-        <e p="Customers" t="Include">
-          <e p="CommandHandlers" t="Include">
-            <e p="RegisterNewCustomerCommandHandler.cs" t="Include" />
-            <e p="RemoveCustomerCommandHandler.cs" t="Include" />
-            <e p="UpdateCustomerCommandHandler.cs" t="Include" />
-          </e>
-          <e p="Commands" t="Include" />
-          <e p="EventHandles" t="Include">
-            <e p="CustomerRegisteredEventHandler.cs" t="Include" />
-            <e p="CustomerRemovedEventHandler.cs" t="Include" />
-            <e p="CustomerUpdatedEventHandler.cs" t="Include" />
-          </e>
-          <e p="Events" t="Include" />
-          <e p="Services" t="Include" />
-          <e p="Validations" t="Include" />
-        </e>
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
-              <e p="2.2-ApplicationBusiness.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Products" t="Include">
-          <e p="ProductsFiles.cs" t="Include" />
-        </e>
-      </e>
-      <e p="Documents/Locamail __ Bem-vindo a Uber Harold Jose.pdf" t="Include" />
-      <e p="Documents/RochelleApp-FluxoAdmin.jpg" t="Include" />
-      <e p="Documents/RochelleApp-FluxoIndicado.jpg" t="Include" />
-      <e p="Documents/RochelleApp-Fluxonao indicado.jpg" t="Include" />
-      <e p="Documents/RochelleApp.jpg" t="Include" />
-      <e p="Documents/RochelleApp.xml" t="Include" />
-      <e p="Documents/RochelleApp_UML.mdj" t="Include" />
-      <e p="Documents/Sketch_App.sketch" t="Include" />
-      <e p="Domain" t="IncludeRecursive">
-        <e p="Base" t="Include">
-          <e p="EntityWithCompany.cs" t="Include" />
-          <e p="RegisterState.cs" t="Include" />
-        </e>
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="ClassDiagrams" t="Include">
-          <e p="General.cd" t="Include" />
-          <e p="PointsManager.cd" t="Include" />
-          <e p="Store.cd" t="Include" />
-        </e>
-        <e p="Domain.csproj" t="IncludeRecursive" />
-        <e p="Generals" t="Include">
-          <e p="Company.cs" t="Include" />
-          <e p="Customer.cs" t="Include" />
-          <e p="ParamConfiguration.cs" t="Include" />
-          <e p="Product.cs" t="Include" />
-        </e>
-        <e p="Identity" t="Include">
-          <e p="TokenConfigurations.cs" t="Include" />
-          <e p="User.cs" t="Include" />
-        </e>
-        <e p="Interfaces" t="Include">
-          <e p="ICompanyRepository.cs" t="Include" />
-        </e>
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
-              <e p="Domain.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="PointsManager" t="Include">
-          <e p="Invite.cs" t="Include" />
-          <e p="PointAccount.cs" t="Include" />
-          <e p="PointAccountDetail.cs" t="Include" />
-          <e p="PointCustomer.cs" t="Include" />
-          <e p="PointRule.cs" t="Include" />
-        </e>
-        <e p="Stores" t="Include">
-          <e p="StoreOrder.cs" t="Include" />
-          <e p="StoreOrderItem.cs" t="Include" />
-          <e p="StoreOrderStatus.cs" t="Include" />
-          <e p="StoreProduct.cs" t="Include" />
-        </e>
-      </e>
-      <e p="Framework.Core" t="IncludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="CommandHandlers" t="Include">
-          <e p="RegisterNewGenericCommandHandler.cs" t="Include" />
-          <e p="RemoveGenericCommandHandler.cs" t="Include" />
-          <e p="UpdateGenericCommandHandler.cs" t="Include" />
-        </e>
-        <e p="Commands" t="Include">
-          <e p="Command.cs" t="Include" />
-          <e p="CommandHandler.cs" t="Include" />
-          <e p="EntityCommand.cs" t="Include" />
-          <e p="RegisterNewGenericCommand.cs" t="Include" />
-          <e p="RemoveGenericCommand.cs" t="Include" />
-          <e p="UpdateGenericCommand.cs" t="Include" />
-        </e>
-        <e p="EventHandlers" t="Include">
-          <e p="GenericRegisteredEventHandler.cs" t="Include" />
-          <e p="GenericRemovedEventHandler.cs" t="Include" />
-          <e p="GenericUpdatedEventHandler.cs" t="Include" />
-        </e>
-        <e p="Events" t="Include">
-          <e p="Event.cs" t="Include" />
-          <e p="GenericRegisteredEvent.cs" t="Include" />
-          <e p="GenericRemovedEvent.cs" t="Include" />
-          <e p="GenericUpdatedEvent.cs" t="Include" />
-          <e p="Message.cs" t="Include" />
-        </e>
-        <e p="Framework.Core.csproj" t="IncludeRecursive" />
-        <e p="Interfaces" t="Include">
-          <e p="IMediatorHandler.cs" t="Include" />
-          <e p="IRegisterNewGenericCommandValidation.cs" t="Include" />
-          <e p="IRemoveGenericCommandValidation.cs" t="Include" />
-          <e p="IRepository.cs" t="Include" />
-          <e p="IUnitOfWork.cs" t="Include" />
-          <e p="IUpdateGenericCommandValidation.cs" t="Include" />
-        </e>
-        <e p="Models" t="Include">
-          <e p="Entity.cs" t="Include" />
-          <e p="EntityReflexion.cs" t="Include" />
-        </e>
-        <e p="Notifications" t="Include">
-          <e p="DomainNotification.cs" t="Include" />
-          <e p="DomainNotificationHandler.cs" t="Include" />
-        </e>
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
-              <e p="Framework.Core.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Services" t="Include">
-          <e p="GenericService.cs" t="Include" />
-          <e p="IGenericService.cs" t="Include" />
-        </e>
-        <e p="Validations" t="Include">
-          <e p="GenericValidation.cs" t="Include" />
-          <e p="RegisterNewGenericCommandValidation.cs" t="Include" />
-          <e p="RemoveGenericCommandValidation.cs" t="Include" />
-          <e p="UpdateGenericCommandValidation.cs" t="Include" />
-        </e>
-      </e>
-      <e p="Infra.CrossCutting.Bus" t="IncludeRecursive">
-        <e p="2.3-Infra.CrossCutting.Bus.csproj" t="IncludeRecursive" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="InMemoryBus.cs" t="Include" />
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
-              <e p="2.3-Infra.CrossCutting.Bus.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-      </e>
-      <e p="Infra.CrossCutting.IoC" t="IncludeRecursive">
-        <e p="2.5-Infra.CrossCutting.IoC.csproj" t="IncludeRecursive" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="NativeInjectorBootStrapper.cs" t="Include" />
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
-              <e p="2.5-Infra.CrossCutting.IoC.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-      </e>
-      <e p="Infra.Data" t="IncludeRecursive">
-        <e p="2.4-Infra.Data.csproj" t="IncludeRecursive" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="Context" t="Include">
-          <e p="DbContextGeneric.cs" t="Include" />
-          <e p="IDbContextGeneric.cs" t="Include" />
-        </e>
-        <e p="Migrations" t="Include" />
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
-              <e p="2.4-Infra.Data.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Repositories" t="Include">
-          <e p="Base" t="Include">
-            <e p="IRepositoryWithCompany.cs" t="Include" />
-            <e p="Repository.cs" t="Include" />
-            <e p="RepositoryWithCompany.cs" t="Include" />
-          </e>
-          <e p="CompanyRepository.cs" t="Include" />
-          <e p="IAllRepositories.cs" t="Include" />
-        </e>
-        <e p="UoW" t="Include">
-          <e p="UnitOfWork.cs" t="Include" />
-        </e>
-      </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="RochelleApp.sln" t="IncludeFlat" />
-      <e p="UI.AndroidApp" t="IncludeRecursive">
-        <e p="UI.AndroidApp.csproj" t="IncludeRecursive" />
-      </e>
-      <e p="UnitTest" t="IncludeRecursive">
-        <e p="Domain.UnitTest.csproj" t="IncludeRecursive" />
-      </e>
-      <e p="WebApi" t="IncludeRecursive">
-        <e p="2.1-WebApi.csproj" t="IncludeRecursive" />
-        <e p="appsettings.Development.json" t="Include" />
-        <e p="appsettings.json" t="Include" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="Controllers" t="Include">
-          <e p="AllControllers.cs" t="Include" />
-          <e p="Base" t="Include">
-            <e p="ApiController.cs" t="Include" />
-            <e p="GenericController.cs" t="Include" />
-          </e>
-          <e p="ValuesController.cs" t="Include" />
-        </e>
-        <e p="Infrastructure" t="Include">
-          <e p="Jwt" t="Include">
-            <e p="JsonWebTokenExtensions.cs" t="Include" />
-            <e p="SigningConfigurations.cs" t="Include" />
-          </e>
-          <e p="Swagger" t="Include">
-            <e p="SwaggerServiceExtensions.cs" t="Include" />
-          </e>
-        </e>
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netcoreapp2.2" t="Include">
-              <e p="2.1-WebApi.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Program.cs" t="Include" />
-        <e p="Properties" t="Include">
-          <e p="launchSettings.json" t="Include" />
-        </e>
-        <e p="Startup.cs" t="Include" />
-      </e>
-      <e p="WebApp" t="IncludeRecursive">
-        <e p="WebApp.csproj" t="IncludeRecursive" />
-      </e>
     </e>
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_RochelleApp.-1511863594.00" t="ExcludeRecursive" />

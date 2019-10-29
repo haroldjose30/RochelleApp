@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Base\" />
+    <Folder Include="ClassDiagrams\" />
+    <Folder Include="Generals\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Identity\" />
+    <Folder Include="PointsManager\" />
+    <Folder Include="Stores\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\3-Framework\Framework.Core\Framework.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Validations\AllValidators.cs" />
+    <Compile Remove="Validations\IValidatorGeneric.cs" />
+  </ItemGroup>
+</Project>
