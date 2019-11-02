@@ -12,7 +12,6 @@
   <ItemGroup>
     <Folder Include="Companies\" />
     <Folder Include="Customers\" />
-    <Folder Include="Companies\Services\" />
     <Folder Include="Customers\CommandHandlers\" />
     <Folder Include="Customers\Commands\" />
     <Folder Include="Customers\EventHandles\" />
@@ -20,8 +19,6 @@
     <Folder Include="Customers\Services\" />
     <Folder Include="Customers\Validations\" />
     <Folder Include="Products\" />
-    <Folder Include="Companies\Events\" />
-    <Folder Include="Companies\Commands\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\0-Shared\Domain\Domain.csproj" />

@@ -28,7 +28,7 @@ namespace Framework.Core.CommandHandlers
             request.entity.Update(request.entity.ModifiedBy);
 
             //verify if entity was valid
-            request.ValidationResult = request.entity.ValidationResult;
+            request.ValidationResult = request.entity.ValidationResult();
 
             await repository.Update(request.entity);
 

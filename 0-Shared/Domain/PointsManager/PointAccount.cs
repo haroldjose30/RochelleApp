@@ -33,7 +33,7 @@ namespace Domain.PointsManager
             if (_PointAccountDetail.Value <= 0)
             {
                 ValidationFailure oValidationFailure = new ValidationFailure("Value", "Valor deve ser maior que zero");
-                ValidationResult.Errors.Add(oValidationFailure);
+                _ValidationResult.Errors.Add(oValidationFailure);
 
                 return;
             }
@@ -47,7 +47,7 @@ namespace Domain.PointsManager
             if (_PointAccountDetail.Value >= 0)
             {
                 ValidationFailure oValidationFailure = new ValidationFailure("Value", "Valor deve ser menor que zero");
-                ValidationResult.Errors.Add(oValidationFailure);
+                _ValidationResult.Errors.Add(oValidationFailure);
 
                 return;
             }

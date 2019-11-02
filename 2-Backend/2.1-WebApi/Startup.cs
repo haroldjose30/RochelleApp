@@ -14,9 +14,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 using WebApi.Infrastructure;
 
-namespace WebApi3
+namespace WebApi
 {
     public class Startup
     {
@@ -32,7 +33,11 @@ namespace WebApi3
         {
             // .NET Native DI Abstraction
             RegisterServices(services);
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson();
+
+
+
         }
         
         readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";

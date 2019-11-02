@@ -98,14 +98,11 @@
               <e p="RemoveCompanyCommandHandler.cs" t="Include" />
               <e p="UpdateCompanyCommandHandler.cs" t="Include" />
             </e>
-            <e p="Commands" t="Include" />
             <e p="EventHandles" t="Include">
               <e p="CompanyRegisteredEventHandler.cs" t="Include" />
               <e p="CompanyRemovedEventHandler.cs" t="Include" />
               <e p="CompanyUpdatedEventHandler.cs" t="Include" />
             </e>
-            <e p="Events" t="Include" />
-            <e p="Services" t="Include" />
             <e p="Validations" t="Include">
               <e p="CompanyValidation.cs" t="Include" />
               <e p="RegisterNewCompanyCommandValidation.cs" t="Include" />

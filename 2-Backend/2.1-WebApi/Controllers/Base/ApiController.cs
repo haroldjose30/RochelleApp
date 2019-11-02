@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using Framework.Core.Notifications;
 using MediatR;
@@ -12,29 +13,30 @@ namespace WebApi.Controllers.Base
 {
     public abstract class ApiController : ControllerBase
     {
-        private readonly DomainNotificationHandler notificationHandler;
+        private readonly DomainNotificationHandler _notificationHandler;
 
-        protected ApiController(INotificationHandler<DomainNotification> _notificationHandler)
+        protected ApiController(INotificationHandler<DomainNotification> notificationHandler)
         {
-            notificationHandler = (DomainNotificationHandler)_notificationHandler;
+            this._notificationHandler = (DomainNotificationHandler)notificationHandler;
         }
 
-        protected IEnumerable<DomainNotification> Notifications => notificationHandler.GetNotifications();
+        protected IEnumerable<DomainNotification> Notifications => _notificationHandler.GetNotifications();
 
         protected bool IsValidOperation()
         {
-            return (!notificationHandler.HasNotifications());
+            return (!_notificationHandler.HasNotifications());
         }
 
         protected new IActionResult Response(object result = null)
         {
 
-            /* orignal code from template
+            
             if (IsValidOperation())
             {
                 return Ok(new
                 {
                     success = true,
+                    statusCode = 200,
                     data = result
                 });
             }
@@ -42,25 +44,9 @@ namespace WebApi.Controllers.Base
             return BadRequest(new
             {
                 success = false,
-                errors = notificationHandler.GetNotifications().Select(n => n.Value)
+                statusCode =400,
+                errors = _notificationHandler.GetNotifications().Select(n => n.Value)
             });
-            */
-
-            if (IsValidOperation())
-            {
-                return Ok(result);
-            }
-
-            var ObsBadRequest = new
-            {
-                success = false,
-                errors =  notificationHandler.GetNotifications().Select(n => n.Value)
-            };
-
-           
-
-
-            return BadRequest(ObsBadRequest);
         }
 
         protected void NotifyModelStateErrors()
@@ -82,7 +68,7 @@ namespace WebApi.Controllers.Base
 
         protected void NotifyError(string code, string message)
         {
-            notificationHandler.Handle(new DomainNotification(code, message), CancellationToken.None);
+            _notificationHandler.Handle(new DomainNotification(code, message), CancellationToken.None);
         }
 
         protected void AddIdentityErrors(IdentityResult result)

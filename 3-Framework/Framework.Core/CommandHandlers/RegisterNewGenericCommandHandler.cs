@@ -26,7 +26,7 @@ namespace Framework.Core.CommandHandlers
             request.entity.Create(request.entity.Id, request.entity.CreatedBy, request.entity.CreatedDate);
 
             //verify if entity was valid
-            request.ValidationResult = request.entity.ValidationResult;
+            request.ValidationResult = request.entity.ValidationResult();
 
 
             if (!request.IsValid())
