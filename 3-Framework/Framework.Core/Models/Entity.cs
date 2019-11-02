@@ -19,9 +19,14 @@ namespace Framework.Core.Models
         public string ModifiedBy { get; protected set; } = string.Empty;
         [JsonProperty]
         public bool Deleted { get; protected set; } = false;
+       
+        
+        protected ValidationResult _ValidationResult { get; set; } = new ValidationResult();
 
-        public ValidationResult ValidationResult { get; protected set; } = new ValidationResult();
-
+        public ValidationResult ValidationResult()
+        {
+            return _ValidationResult;
+        }
 
         public virtual bool Create(string id, string createdBy, string createdDate)
         {
@@ -60,7 +65,7 @@ namespace Framework.Core.Models
             if (this.Deleted)
             {
                 string cMsg = "nao é permitido alterar um registro deletado";
-                ValidationResult.Errors.Add(new ValidationFailure("Entity.Update", cMsg));
+                _ValidationResult.Errors.Add(new ValidationFailure("Entity.Update", cMsg));
                 return false;
                 //throw new Exception(cMsg);
             }
@@ -78,7 +83,7 @@ namespace Framework.Core.Models
             if (this.Deleted)
             {
                 string cMsg = "nao é permitido excluir um registro já deletado";
-                ValidationResult.Errors.Add(new ValidationFailure("Entity.Update", cMsg));
+                _ValidationResult.Errors.Add(new ValidationFailure("Entity.Update", cMsg));
                 return false;
                 //throw new Exception(cMsg);
             }

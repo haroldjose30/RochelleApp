@@ -8,15 +8,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.Base
 {
-
-    [Route("api/[controller]")]
+    [ApiController]
+    [Route("[controller]")]
     public class GenericController<TEntity> : ApiController where TEntity : Entity
     {
-         protected readonly IGenericService<TEntity> service;
+         protected readonly IGenericService<TEntity> _service;
        
-        public GenericController(IGenericService<TEntity> _service, INotificationHandler<DomainNotification> _notificationHandler) : base(_notificationHandler)
+        public GenericController(IGenericService<TEntity> service, INotificationHandler<DomainNotification> notificationHandler) : base(notificationHandler)
         {
-            service = _service;
+            this._service = service;
         }
 
         //[Authorize("Bearer")]
@@ -25,7 +25,7 @@ namespace WebApi.Controllers.Base
         //[ProducesResponseType(404)]
         public virtual async Task<IActionResult> Get()
         {
-            var entities = await service.GetAll();
+            var entities = await _service.GetAll();
             return Response(entities);
         }
 
@@ -35,14 +35,14 @@ namespace WebApi.Controllers.Base
         //[ProducesResponseType(404)]
         public virtual async Task<IActionResult> Get(string id)
         {
-            var entity = await service.GetById(id);
+            var entity = await _service.GetById(id);
             return Response(entity);
         }
     
 
         //[Authorize("Bearer")]
         [HttpPost]
-        public virtual async Task<IActionResult> Post([FromBody]TEntity entity)
+        public virtual async Task<IActionResult> Post(TEntity entity)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +50,7 @@ namespace WebApi.Controllers.Base
                 return Response(entity);
             }
 
-             var oEntity = await service.RegisterAsync(entity);
+             var oEntity = await _service.RegisterAsync(entity);
 
             return Response(oEntity);
         }
@@ -66,15 +66,15 @@ namespace WebApi.Controllers.Base
                 return Response(entity);
             }
 
-            var oEntity = await service.UpdateAsync(entity);
+            var oEntity = await _service.UpdateAsync(entity);
             return Response(oEntity);
         }
 
         //[Authorize("Bearer")]
-        [HttpDelete("{id}/{deletedBy}")]
-        public virtual async Task<IActionResult> Delete(string id, string deletedBy)
+        [HttpDelete()]
+        public virtual async Task<IActionResult> Delete([FromQuery]string id, [FromQuery]string deletedBy)
         {
-             var lOk = await service.RemoveAsync(id,deletedBy);
+             var lOk = await _service.RemoveAsync(id,deletedBy);
             return Response(lOk);
         }
     }
