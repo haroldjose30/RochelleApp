@@ -1,0 +1,16 @@
+{
+    "short_name": "App Admin",
+    "name": "App Admin",
+    "icons": [
+      {
+        "src": "/logo.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ],
+    "start_url": "/?utm_source=a2hs",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#FFFFFF"
+  }

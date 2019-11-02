@@ -1,0 +1,80 @@
+select {
+  background: none;
+}
+
+.spin-icon {
+  -webkit-animation: spin-icon 2s infinite linear;
+  animation: spin-icon 2s infinite linear;
+}
+
+@-webkit-keyframes spin-icon {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin-icon {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+.dropdown {
+  height: 38px !important;
+}
+
+.status {
+  width: 40px;
+}
+
+.action-button {
+  width: 120px;
+}
+
+.table-add {
+  margin-bottom: 73px;
+}
+
+.add-row {
+  border: 0 solid #dee2e6;
+  height: 90px;
+}
+
+.filter-row {
+  border: 0 solid #dee2e6;
+  background-color: whitesmoke;
+}
+
+.filtered-input {
+  border-color: #007bff;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.filter-dropdown {
+  background-color: white;
+}
+
+.extra-column-wrapper:empty {
+  display: none;
+}
+
+.feather-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+.button-up {
+  display: block;
+  margin-bottom: 3px;
+}
