@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "statusCode": 200,
+  "data": [
+    {
+      "companyName": "Admin",
+      "fantasyName": "Admin",
+      "corporateNumber": "Admin",
+      "id": "admin",
+      "createdDate": "20191103 00:15:35",
+      "createdBy": "Admin",
+      "modifiedDate": "20191103 00:15:35",
+      "modifiedBy": "Admin",
+      "deleted": false
+    }
+  ]
+}

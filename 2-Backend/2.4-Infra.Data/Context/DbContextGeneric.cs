@@ -1,12 +1,9 @@
-﻿
-using Domain.Generals;
+﻿using Domain.Generals;
 using Domain.Identity;
 using Domain.PointsManager;
 using Domain.Store;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
 
 namespace Infra.Data.Context
 {
@@ -53,6 +50,31 @@ namespace Infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Ignore<ValidationResult>();
+
+            InsertDefaultData(modelBuilder);
+
+          
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+        private void InsertDefaultData(ModelBuilder modelBuilder)
+        {
+            //add the default company for first login
+            var companyAdmin = new Company();
+            companyAdmin.Create("Admin", "Admin", "Admin","Admin","admin");
+            
+             
+            modelBuilder.Entity<Company>()
+                .HasData(companyAdmin);
+            
+            //add the default user for first login
+            var userAdmin = new User();
+            userAdmin.Create("Admin","Admin", "admin@admin.com", "Admin","Admin","Admin");
+
+            modelBuilder.Entity<User>()
+                .HasData(userAdmin);
+
         }
     }
 }

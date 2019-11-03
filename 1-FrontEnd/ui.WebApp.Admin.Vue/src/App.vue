@@ -73,13 +73,13 @@ export default {
   mounted () {
     feather.replace()
 
-    let token = Vue.localStorage.get('Sense.OEE.Admin.Token')
+    let token = Vue.localStorage.get('App.Admin.Token')
 
     if (token == null) {
       this.$refs.loginModal.show()
     }
 
-    this.username = Vue.localStorage.get('Sense.OEE.Admin.Username')
+    this.username = Vue.localStorage.get('App.Admin.Username')
 
     this.$api.setErrorHandler(json => {
       for (let key in json) {
@@ -116,8 +116,8 @@ export default {
 
   methods: {
     loginSuccessful (username, token) {
-      Vue.localStorage.set('Sense.OEE.Admin.Token', token)
-      Vue.localStorage.set('Sense.OEE.Admin.Username', username)
+      Vue.localStorage.set('App.Admin.Token', token)
+      Vue.localStorage.set('App.Admin.Username', username)
 
       this.$api.setToken(token)
       this.username = username

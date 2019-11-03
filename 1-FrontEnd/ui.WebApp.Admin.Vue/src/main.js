@@ -45,7 +45,7 @@ $.extend(true, $.fn.datetimepicker.defaults, {
 Vue.use(datePicker)
 
 Vue.prototype.$api = new Api(Config.API_URL)
-let token = Vue.localStorage.get('Sense.OEE.Admin.Token')
+let token = Vue.localStorage.get('App.Admin.Token')
 
 if (token) {
   Vue.prototype.$api.setToken(token)

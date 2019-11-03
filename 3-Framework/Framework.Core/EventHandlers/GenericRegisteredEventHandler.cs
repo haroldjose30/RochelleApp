@@ -1,12 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
-using Framework.Core.Events;
-using Framework.Core.Models;
-using MediatR;
-
-namespace Framework.Core.EventHandlers
+﻿namespace Framework.Core.EventHandlers
 {
     // public class GenericRegisteredEventHandler<TEntity> : INotificationHandler<GenericRegisteredEvent<TEntity>> where TEntity : Entity
     // {

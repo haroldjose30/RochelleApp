@@ -63,17 +63,18 @@ export default {
         let password = this.$data.password
 
         this.$api.call({
-          module: 'Authentication',
-          method: 'GenerateToken',
-          parameters: {
-            authentication: {
-              user_name: username,
-              password: password
-            }
+          module: 'Authentication/GenerateToken',
+          method: 'post',
+          body: {
+              Login: username,
+              Password: password
           },
           success: data => {
+            console.log("data",data);
+            
             this.$refs.loginModal.hide()
-            this.$emit('loginSuccessful', username, data.access_token)
+            this.$emit('loginSuccessful', username, data.data.accessToken)
+            //this.$api.setToken(data.data.accessToken)
           },
           error: () => {
             this.loginError = true

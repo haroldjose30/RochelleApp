@@ -14,7 +14,7 @@ namespace Framework.Core.Commands
         public RemoveGenericCommand(string id, string removedBy, IServiceProvider _serviceProvider) : base(new TEntity())
         {
             //this.Entity = new TEntity();
-            entity.Create(id, removedBy, "");
+            entity.Create(removedBy,id);
 
             //Id = id;
             //RemovedBy = removedBy;

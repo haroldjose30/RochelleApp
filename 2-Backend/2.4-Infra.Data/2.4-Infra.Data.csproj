@@ -4,11 +4,11 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RootNamespace>Infra.Data</RootNamespace>
     <AssemblyName>Infra.Data</AssemblyName>
+    <LangVersion>latestmajor</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Context\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Repositories\" />
     <Folder Include="UoW\" />
   </ItemGroup>
@@ -21,9 +21,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.0.0" />
     <PackageReference Include="FluentValidation" Version="8.5.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0-rc1.final" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Repositories\AllRepositories.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\0-Shared\Domain\Domain.csproj" />

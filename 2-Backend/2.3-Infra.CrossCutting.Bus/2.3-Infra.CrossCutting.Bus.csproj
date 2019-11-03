@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RootNamespace>Infra.CrossCutting.Bus</RootNamespace>
     <AssemblyName>Infra.CrossCutting.Bus</AssemblyName>
+    <LangVersion>latestmajor</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

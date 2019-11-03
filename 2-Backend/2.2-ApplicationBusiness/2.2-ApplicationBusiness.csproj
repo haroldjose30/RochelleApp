@@ -4,24 +4,20 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RootNamespace>ApplicationBusiness</RootNamespace>
     <AssemblyName>ApplicationBusiness</AssemblyName>
+    <LangVersion>latestmajor</LangVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Class1.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Companies\" />
-    <Folder Include="Customers\" />
-    <Folder Include="Customers\CommandHandlers\" />
-    <Folder Include="Customers\Commands\" />
-    <Folder Include="Customers\EventHandles\" />
-    <Folder Include="Customers\Events\" />
-    <Folder Include="Customers\Services\" />
-    <Folder Include="Customers\Validations\" />
-    <Folder Include="Products\" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\0-Shared\Domain\Domain.csproj" />
     <ProjectReference Include="..\..\3-Framework\Framework.Core\Framework.Core.csproj" />
+    <ProjectReference Include="..\2.4-Infra.Data\2.4-Infra.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Customers\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Customers\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Customers\**" />
   </ItemGroup>
 </Project>

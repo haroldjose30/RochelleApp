@@ -37,6 +37,13 @@ export default class Api {
     myHeaders.append("Accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
 
+    if (this.token)
+      myHeaders.append("Authorization", `Bearer ${this.token}`);
+
+
+    console.log("token",this.token);
+    
+
     var myInit = {
       method: options.method,
       headers: myHeaders,

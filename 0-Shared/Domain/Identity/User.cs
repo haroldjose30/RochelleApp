@@ -1,5 +1,4 @@
 ﻿using Domain.Base;
-using Domain.Generals;
 using Newtonsoft.Json;
 
 namespace Domain.Identity
@@ -19,31 +18,32 @@ namespace Domain.Identity
         public string Password { get; private set; }
         [JsonProperty]
         public RegisterState State { get; private set; }
-        [JsonProperty]
-        public string CustomerId { get; private set; }
-        [JsonProperty]
-        public Customer Customer { get; private set; }
-
-
-        //public User(string name, string email, string login, string password, RegisterState state, string customerId,string companyId, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(companyId, id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        //{
-        //    Name = name;
-        //    Email = email;
-        //    Login = login;
-        //    Password = password;
-        //    State = state;
-        //    CustomerId = customerId;
-        //    //Customer = customer;
-        //}
-       
-        public bool LoginIsValid(string cLogin,string cPassword)
+      
+        
+        public bool Create(string companyId, string name, string email, string login, string password,string by)
         {
-            return this.Login.Equals(cLogin) && this.Password.Equals(cPassword);
+            Name = name;
+            Email = email;
+            Login = login;
+            Password = password;
+            State = RegisterState.Enabled;
+            return base.Create(companyId,by);
+        }
+        
+        
+        public bool Update(string name, string email, string login, string password, RegisterState state,string by)
+        {
+            Name = name;
+            Email = email;
+            Login = login;
+            Password = password;
+            State = state;
+            return base.Update(by);
         }
 
-
+        public void ProtectPassword()
+        {
+            this.Password = "******";
+        }
     }
-     
-
-
 }

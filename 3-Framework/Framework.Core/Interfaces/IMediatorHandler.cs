@@ -1,9 +1,6 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Framework.Core.Commands;
 using Framework.Core.Events;
-using Framework.Core.Models;
-using MediatR;
 
 namespace Framework.Core.Interfaces
 {

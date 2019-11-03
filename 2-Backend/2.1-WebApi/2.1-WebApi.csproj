@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.0</TargetFramework>
+        <LangVersion>latestmajor</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -10,6 +11,7 @@
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.0.0" />
+      <PackageReference Include="Swashbuckle" Version="5.6.0" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
       <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.0.0-rc4" />
       <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0-rc4" />
@@ -23,5 +25,7 @@
       <ProjectReference Include="..\2.5-Infra.CrossCutting.IoC\2.5-Infra.CrossCutting.IoC.csproj" />
     </ItemGroup>
 
-
+    <ItemGroup>
+      <Compile Remove="Controllers\TestController.cs" />
+    </ItemGroup>
 </Project>

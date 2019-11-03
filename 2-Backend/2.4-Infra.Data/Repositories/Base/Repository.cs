@@ -11,7 +11,7 @@ namespace Infra.Data.Repositories.Base
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
         private readonly DbContextGeneric _db;
-        private readonly DbSet<TEntity> _dbSet;
+        protected readonly DbSet<TEntity> _dbSet;
 
         public Repository(DbContextGeneric context)
         {

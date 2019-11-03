@@ -1,5 +1,4 @@
-﻿using System;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using Framework.Core.Commands;
 using Framework.Core.Interfaces;
 using Framework.Core.Models;

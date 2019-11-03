@@ -1,15 +1,14 @@
 ﻿using System.Threading.Tasks;
-using Framework.Core.Interfaces;
 using Framework.Core.Models;
 using Framework.Core.Notifications;
 using Framework.Core.Services;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.Base
 {
-    [ApiController]
-    [Route("[controller]")]
+   
     public class GenericController<TEntity> : ApiController where TEntity : Entity
     {
          protected readonly IGenericService<TEntity> _service;
@@ -19,7 +18,7 @@ namespace WebApi.Controllers.Base
             this._service = service;
         }
 
-        //[Authorize("Bearer")]
+        [Authorize("Bearer")]
         [HttpGet]
         //[ProducesResponseType(200, Type = typeof(List<Entity>))]
         //[ProducesResponseType(404)]
@@ -29,7 +28,7 @@ namespace WebApi.Controllers.Base
             return Response(entities);
         }
 
-        //[Authorize("Bearer")]
+        [Authorize("Bearer")]
         [HttpGet("{id}")]
         //[ProducesResponseType(200, Type = typeof(Entity))]
         //[ProducesResponseType(404)]
@@ -40,7 +39,7 @@ namespace WebApi.Controllers.Base
         }
     
 
-        //[Authorize("Bearer")]
+        [Authorize("Bearer")]
         [HttpPost]
         public virtual async Task<IActionResult> Post(TEntity entity)
         {
@@ -55,7 +54,7 @@ namespace WebApi.Controllers.Base
             return Response(oEntity);
         }
 
-        //[Authorize("Bearer")]
+        [Authorize("Bearer")]
         [HttpPut]
         public virtual async Task<IActionResult> Put([FromBody]TEntity entity)
         {
@@ -70,7 +69,7 @@ namespace WebApi.Controllers.Base
             return Response(oEntity);
         }
 
-        //[Authorize("Bearer")]
+        [Authorize("Bearer")]
         [HttpDelete()]
         public virtual async Task<IActionResult> Delete([FromQuery]string id, [FromQuery]string deletedBy)
         {

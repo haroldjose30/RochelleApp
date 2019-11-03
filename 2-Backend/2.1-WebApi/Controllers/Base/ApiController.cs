@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Threading;
+using Framework.Core.Models;
 using Framework.Core.Notifications;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace WebApi.Controllers.Base
 {
+    [ApiController]
+    [Route("[controller]")]
     public abstract class ApiController : ControllerBase
     {
         private readonly DomainNotificationHandler _notificationHandler;
@@ -70,14 +72,16 @@ namespace WebApi.Controllers.Base
         {
             _notificationHandler.Handle(new DomainNotification(code, message), CancellationToken.None);
         }
-
-        protected void AddIdentityErrors(IdentityResult result)
+        
+        protected void NotifyError(Entity entity)
         {
-            foreach (var error in result.Errors)
+            foreach (var error in entity.GetValidationResult().Errors)
             {
-                NotifyError(result.ToString(), error.Description);
+                NotifyError(error.ErrorCode, error.ErrorMessage);
             }
         }
+
+       
     }
 }
  

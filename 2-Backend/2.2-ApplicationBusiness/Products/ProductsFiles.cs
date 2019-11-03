@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿/*
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Framework.Core.CommandHandlers;
@@ -103,3 +104,4 @@ namespace ApplicationBusiness.Products.EventHandles
         }
     }
 }
+*/

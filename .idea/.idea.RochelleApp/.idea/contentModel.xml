@@ -59,12 +59,13 @@
           <e p="bin" t="ExcludeRecursive" />
           <e p="Controllers" t="Include">
             <e p="AllControllers.cs" t="Include" />
+            <e p="AuthenticationController.cs" t="Include" />
             <e p="Base" t="Include">
               <e p="ApiController.cs" t="Include" />
               <e p="GenericController.cs" t="Include" />
             </e>
-            <e p="ValuesController.cs" t="Include" />
-            <e p="WeatherForecastController.cs" t="Include" />
+            <e p="CompaniesController.cs" t="Include" />
+            <e p="UsersController.cs" t="Include" />
           </e>
           <e p="Infrastructure" t="Include">
             <e p="Jwt" t="Include">
@@ -87,10 +88,13 @@
             <e p="launchSettings.json" t="Include" />
           </e>
           <e p="Startup.cs" t="Include" />
-          <e p="WeatherForecast.cs" t="Include" />
         </e>
         <e p="2.2-ApplicationBusiness" t="IncludeRecursive">
           <e p="2.2-ApplicationBusiness.csproj" t="IncludeRecursive" />
+          <e p="Authentication" t="Include">
+            <e p="AuthenticationService.cs" t="Include" />
+            <e p="IAuthenticationService.cs" t="Include" />
+          </e>
           <e p="bin" t="ExcludeRecursive" />
           <e p="Companies" t="Include">
             <e p="CommandHandlers" t="Include">
@@ -109,22 +113,6 @@
               <e p="RemoveCompanyCommandValidation.cs" t="Include" />
               <e p="UpdateCompanyCommandValidation.cs" t="Include" />
             </e>
-          </e>
-          <e p="Customers" t="Include">
-            <e p="CommandHandlers" t="Include">
-              <e p="RegisterNewCustomerCommandHandler.cs" t="Include" />
-              <e p="RemoveCustomerCommandHandler.cs" t="Include" />
-              <e p="UpdateCustomerCommandHandler.cs" t="Include" />
-            </e>
-            <e p="Commands" t="Include" />
-            <e p="EventHandles" t="Include">
-              <e p="CustomerRegisteredEventHandler.cs" t="Include" />
-              <e p="CustomerRemovedEventHandler.cs" t="Include" />
-              <e p="CustomerUpdatedEventHandler.cs" t="Include" />
-            </e>
-            <e p="Events" t="Include" />
-            <e p="Services" t="Include" />
-            <e p="Validations" t="Include" />
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
@@ -157,8 +145,8 @@
             <e p="IDbContextGeneric.cs" t="Include" />
           </e>
           <e p="Migrations" t="Include">
-            <e p="20191029050515_InitialCreate.cs" t="Include" />
-            <e p="20191029050515_InitialCreate.Designer.cs" t="Include" />
+            <e p="20191103001536_InitialCreate.cs" t="Include" />
+            <e p="20191103001536_InitialCreate.Designer.cs" t="Include" />
             <e p="DbContextGenericModelSnapshot.cs" t="Include" />
           </e>
           <e p="obj" t="ExcludeRecursive">
@@ -175,7 +163,9 @@
               <e p="RepositoryWithCompany.cs" t="Include" />
             </e>
             <e p="CompanyRepository.cs" t="Include" />
-            <e p="IAllRepositories.cs" t="Include" />
+            <e p="ICompanyRepository.cs" t="Include" />
+            <e p="IUserRepository.cs" t="Include" />
+            <e p="UserRepository.cs" t="Include" />
           </e>
           <e p="UoW" t="Include">
             <e p="UnitOfWork.cs" t="Include" />
@@ -265,5 +255,7 @@
     </e>
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_RochelleApp.-1511863594.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
   </component>
 </project>

@@ -12,19 +12,19 @@ namespace Framework.Core.Services
     {
 
         private readonly IRepository<TEntity> _repository;
-        private readonly IMediatorHandler Bus;
+        private readonly IMediatorHandler _bus;
         private readonly IMediator mediator;
-        private readonly IServiceProvider serviceProvider;
+        private readonly IServiceProvider _serviceProvider;
 
         public GenericService(IRepository<TEntity> repository, 
-                              IMediatorHandler _Bus,
-                              IMediator _mediator,
-                              IServiceProvider _serviceProvider)
+                              IMediatorHandler bus,
+                              IMediator mediator,
+                              IServiceProvider serviceProvider)
         {
             _repository = repository;
-            Bus = _Bus;
-            mediator = _mediator;
-            serviceProvider = _serviceProvider;
+            _bus = bus;
+            this.mediator = mediator;
+            this._serviceProvider = serviceProvider;
         }
 
         public virtual async Task<IEnumerable<TEntity>>  GetAll()
@@ -39,23 +39,23 @@ namespace Framework.Core.Services
 
         public async Task<TEntity> RegisterAsync(TEntity entity)
         {
-            var oRegisterNewGenericCommand = new RegisterNewGenericCommand<TEntity>(entity, serviceProvider);
-            await Bus.SendCommand(oRegisterNewGenericCommand);
+            var oRegisterNewGenericCommand = new RegisterNewGenericCommand<TEntity>(entity, _serviceProvider);
+            await _bus.SendCommand(oRegisterNewGenericCommand);
             return entity;
 
         }
 
         public async Task<TEntity> UpdateAsync(TEntity entity)
         {
-            var oUpdateGenericCommand = new UpdateGenericCommand<TEntity>(entity, serviceProvider);
-            await Bus.SendCommand(oUpdateGenericCommand);
+            var oUpdateGenericCommand = new UpdateGenericCommand<TEntity>(entity, _serviceProvider);
+            await _bus.SendCommand(oUpdateGenericCommand);
             return entity;
         }
 
         public async Task<bool>  RemoveAsync(string id, string removedBy)
         {
-            var removeCommand = new RemoveGenericCommand<TEntity>(id, removedBy, serviceProvider);
-            await Bus.SendCommand(removeCommand);
+            var removeCommand = new RemoveGenericCommand<TEntity>(id, removedBy, _serviceProvider);
+            await _bus.SendCommand(removeCommand);
             return false;
         }
 

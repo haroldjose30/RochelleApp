@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Framework.Core.Commands;
@@ -28,7 +27,7 @@ namespace Framework.Core.CommandHandlers
             request.entity.Update(request.entity.ModifiedBy);
 
             //verify if entity was valid
-            request.ValidationResult = request.entity.ValidationResult();
+            request.ValidationResult = request.entity.GetValidationResult();
 
             await repository.Update(request.entity);
 

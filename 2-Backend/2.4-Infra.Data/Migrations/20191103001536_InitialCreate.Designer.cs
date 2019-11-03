@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Data.Migrations
 {
     [DbContext(typeof(DbContextGeneric))]
-    [Migration("20191029050515_InitialCreate")]
+    [Migration("20191103001536_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,6 +51,20 @@ namespace Infra.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "admin",
+                            CompanyName = "Admin",
+                            CorporateNumber = "Admin",
+                            CreatedBy = "Admin",
+                            CreatedDate = "20191103 00:15:35",
+                            Deleted = false,
+                            FantasyName = "Admin",
+                            ModifiedBy = "Admin",
+                            ModifiedDate = "20191103 00:15:35"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Generals.Customer", b =>
@@ -190,9 +204,6 @@ namespace Infra.Data.Migrations
                     b.Property<string>("CreatedDate")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("varchar(255)");
-
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
 
@@ -221,9 +232,24 @@ namespace Infra.Data.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("CustomerId");
-
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "20191103 00:15:36AdminAdmin",
+                            CompanyId = "Admin",
+                            CreatedBy = "Admin",
+                            CreatedDate = "20191103 00:15:36",
+                            Deleted = false,
+                            Email = "admin@admin.com",
+                            Login = "Admin",
+                            ModifiedBy = "Admin",
+                            ModifiedDate = "20191103 00:15:36",
+                            Name = "Admin",
+                            Password = "Admin",
+                            State = 1
+                        });
                 });
 
             modelBuilder.Entity("Domain.PointsManager.Invite", b =>
@@ -644,10 +670,6 @@ namespace Infra.Data.Migrations
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId");
-
-                    b.HasOne("Domain.Generals.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("Domain.PointsManager.Invite", b =>

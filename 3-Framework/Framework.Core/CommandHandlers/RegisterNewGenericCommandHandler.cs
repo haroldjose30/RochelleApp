@@ -23,10 +23,10 @@ namespace Framework.Core.CommandHandlers
             Debug.WriteLine("RegisterNewGenericCommand");
 
             //execute action to mark as created register
-            request.entity.Create(request.entity.Id, request.entity.CreatedBy, request.entity.CreatedDate);
+            request.entity.Create( request.entity.CreatedBy,request.entity.Id);
 
             //verify if entity was valid
-            request.ValidationResult = request.entity.ValidationResult();
+            request.ValidationResult = request.entity.GetValidationResult();
 
 
             if (!request.IsValid())

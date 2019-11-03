@@ -12,16 +12,12 @@ namespace Domain.Base
         public string CompanyId { get; protected set; }
         [JsonProperty]
         public Company Company { get; protected set; }
-
-        //public EntityWithCompany(string companyId, string id, string createdBy, string createdDate) : base(id, createdBy, createdDate)
-        //{
-        //    this.CompanyId = companyId;
-        //    //if id is empyty, get new id automaticaly
-        //    if (string.IsNullOrWhiteSpace(id))
-        //        id = this.GetNewId();
-
-        //}
-
+        
+        protected bool Create(string companyId,string by,string id = null)
+        {
+            CompanyId = companyId;
+            return base.Create(by, id);
+        }
         protected override string GetNewId()
         {
             return GetDateTimeStr() + this.CompanyId+ this.CreatedBy;

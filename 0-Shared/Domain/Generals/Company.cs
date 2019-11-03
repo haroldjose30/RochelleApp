@@ -12,27 +12,22 @@ namespace Domain.Generals
         [JsonProperty]
         public string CorporateNumber { get; protected set; }
 
-
-
-        //public Company(string companyName, string fantasyName, string corporateNumber, string id, string createdBy, string createdDate, string modifiedBy, string modifiedDate, bool deleted) : base(id, createdBy, createdDate, modifiedBy, modifiedDate, deleted)
-        //{
-        //    CompanyName = companyName;
-        //    FantasyName = fantasyName;
-        //    CorporateNumber = corporateNumber;
-        //}
-
-        public bool Update(string companyName, string fantasyName, string corporateNumber, string modifiedBy)
+        public bool Create(string companyName, string fantasyName, string corporateNumber,string by, string id = null)
         {
-            var lUpdated = base.Update(modifiedBy);
-            if (lUpdated)
-            {
-                CompanyName = companyName;
-                FantasyName = fantasyName;
-                CorporateNumber = corporateNumber;
-            }
-
-            return lUpdated;
+            CompanyName = companyName;
+            FantasyName = fantasyName;
+            CorporateNumber = corporateNumber;
+            return base.Create(by, id);
         }
+
+        public bool Update(string companyName, string fantasyName, string corporateNumber, string by)
+        {
+            CompanyName = companyName;
+            FantasyName = fantasyName;
+            CorporateNumber = corporateNumber;
+            return base.Update(by);
+        }
+        
     }
 
 }

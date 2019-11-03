@@ -153,6 +153,34 @@ namespace Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreatedDate = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    ModifiedDate = table.Column<string>(nullable: true),
+                    ModifiedBy = table.Column<string>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false),
+                    CompanyId = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Login = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    State = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Companies_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Companies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Invites",
                 columns: table => new
                 {
@@ -293,41 +321,6 @@ namespace Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    CreatedDate = table.Column<string>(nullable: true),
-                    CreatedBy = table.Column<string>(nullable: true),
-                    ModifiedDate = table.Column<string>(nullable: true),
-                    ModifiedBy = table.Column<string>(nullable: true),
-                    Deleted = table.Column<bool>(nullable: false),
-                    CompanyId = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    Login = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    State = table.Column<int>(nullable: false),
-                    CustomerId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Companies_CompanyId",
-                        column: x => x.CompanyId,
-                        principalTable: "Companies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Users_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "StoreProducts",
                 columns: table => new
                 {
@@ -441,6 +434,16 @@ namespace Infra.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Companies",
+                columns: new[] { "Id", "CompanyName", "CorporateNumber", "CreatedBy", "CreatedDate", "Deleted", "FantasyName", "ModifiedBy", "ModifiedDate" },
+                values: new object[] { "admin", "Admin", "Admin", "Admin", "20191103 00:15:35", false, "Admin", "Admin", "20191103 00:15:35" });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "CompanyId", "CreatedBy", "CreatedDate", "Deleted", "Email", "Login", "ModifiedBy", "ModifiedDate", "Name", "Password", "State" },
+                values: new object[] { "20191103 00:15:36AdminAdmin", "Admin", "Admin", "20191103 00:15:36", false, "admin@admin.com", "Admin", "Admin", "20191103 00:15:36", "Admin", "Admin", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_CompanyId",
@@ -556,11 +559,6 @@ namespace Infra.Data.Migrations
                 name: "IX_Users_CompanyId",
                 table: "Users",
                 column: "CompanyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_CustomerId",
-                table: "Users",
-                column: "CustomerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

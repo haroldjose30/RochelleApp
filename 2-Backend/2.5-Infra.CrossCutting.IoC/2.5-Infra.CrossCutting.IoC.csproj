@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RootNamespace>Infra.CrossCutting.IoC</RootNamespace>
     <AssemblyName>Infra.CrossCutting.IoC</AssemblyName>
+    <LangVersion>latestmajor</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,5 +1,4 @@
-﻿using System;
-namespace Domain.Identity
+﻿namespace Domain.Identity
 {
     public class TokenConfigurations
     {

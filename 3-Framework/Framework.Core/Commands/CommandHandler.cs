@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Framework.Core.Interfaces;
 using Framework.Core.Notifications;
 using MediatR;

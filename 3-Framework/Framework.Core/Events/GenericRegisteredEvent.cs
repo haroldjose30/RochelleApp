@@ -1,5 +1,4 @@
-﻿using System;
-using Framework.Core.Models;
+﻿using Framework.Core.Models;
 
 namespace Framework.Core.Events
 {
