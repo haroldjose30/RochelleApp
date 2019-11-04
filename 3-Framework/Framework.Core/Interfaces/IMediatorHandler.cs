@@ -6,7 +6,7 @@ namespace Framework.Core.Interfaces
 {
     public interface IMediatorHandler
     {
-        Task SendCommand<TComand>(TComand command) where TComand : Command;
+        Task SendCommand<TCommand>(TCommand command) where TCommand : Command;
         Task PublishEvent<T>(T @event) where T : EventNotification;
     }
 }

@@ -1,6 +1,12 @@
-﻿namespace ApplicationBusiness.Companies.Validations
+﻿using Domain.Generals;
+using FluentValidation.Results;
+using Framework.Core.Commands;
+using Framework.Core.Interfaces;
+
+namespace ApplicationBusiness.Companies.Validations
 {
-    public class UpdateCompanyCommandValidation : CompanyValidation
+    
+    public class UpdateCompanyCommandValidation : CompanyValidation,IUpdateGenericCommandValidation<Company>
     {
         public UpdateCompanyCommandValidation()
         {
@@ -9,6 +15,11 @@
             ValidateFantasyName();
             ValidateCorporateNumber();
             ValidateModifiedBy();
+        }
+
+        public ValidationResult Validate(UpdateGenericCommand<Company> updateGenericCommand)
+        {
+            return base.Validate(updateGenericCommand);
         }
     }
 }

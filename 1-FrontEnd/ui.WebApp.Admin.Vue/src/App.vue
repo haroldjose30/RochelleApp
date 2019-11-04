@@ -124,7 +124,7 @@ export default {
     },
 
     logoutSuccessful () {
-      Vue.localStorage.remove('Sense.OEE.Admin.Token')
+      Vue.localStorage.remove('App.Admin.Token')
       this.$refs.loginModal.show()
       this.username = null
     },

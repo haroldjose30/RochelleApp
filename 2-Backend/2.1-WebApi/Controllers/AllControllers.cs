@@ -1,12 +1,15 @@
-﻿namespace WebApi.Controllers
+﻿using Domain.Generals;
+using Framework.Core.Notifications;
+using Framework.Core.Services;
+using MediatR;
+using WebApi.Controllers.Base;
+
+namespace WebApi.Controllers
 {
+   
+
     /*
-    public class CustomersController : GenericController<Customer>
-    {
-        public CustomersController(IGenericService<Customer> service, INotificationHandler<DomainNotification> notifications) : base(service, notifications)
-        {
-        }
-    }
+
 
 
     public class InvitesController : GenericController<Invite>
@@ -17,12 +20,7 @@
     }
 
 
-    public class ParamConfigurationsController : GenericController<ParamConfiguration>
-    {
-        public ParamConfigurationsController(IGenericService<ParamConfiguration> service, INotificationHandler<DomainNotification> notifications) : base(service, notifications)
-        {
-        }
-    }
+    
 
     public class PointAccountController : GenericController<PointAccount>
     {
@@ -54,12 +52,7 @@
         }
     }
 
-    public class ProductsController : GenericController<Product>
-    {
-        public ProductsController(IGenericService<Product> service, INotificationHandler<DomainNotification> notifications) : base(service, notifications)
-        {
-        }
-    }
+  
 
 
     public class StoreOrdersController : GenericController<StoreOrder>

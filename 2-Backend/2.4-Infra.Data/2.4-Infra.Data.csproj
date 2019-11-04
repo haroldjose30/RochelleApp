@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Context\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Migrations\" />
     <Folder Include="UoW\" />
   </ItemGroup>
   <ItemGroup>

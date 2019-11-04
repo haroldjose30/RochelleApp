@@ -8,21 +8,21 @@ namespace ApplicationBusiness.Companies.Validations
     {
         protected void ValidateCompanyName()
         {
-            RuleFor(a =>  a.entity.CompanyName)
+            RuleFor(a =>  a.Entity.CompanyName)
                .NotEmpty()
                .WithMessage("Razão social deve ser informado!");
         }
 
         protected void ValidateFantasyName()
         {
-            RuleFor(a => a.entity.FantasyName)
+            RuleFor(a => a.Entity.FantasyName)
                .NotEmpty()
                .WithMessage("Nome da fantasia deve ser informado!");
         }
 
         protected void ValidateCorporateNumber()
         {
-            RuleFor(a => a.entity.CorporateNumber)
+            RuleFor(a => a.Entity.CorporateNumber)
              .NotEmpty()
              .WithMessage("Cpf/Cnpj deve ser informado!");
         }

@@ -10,7 +10,7 @@ namespace ApplicationBusiness.Companies.CommandHandlers
     {
 
 
-        public UpdateCompanyCommandHandler(IRepository<Company> _Repository, IUnitOfWork _uow, IMediatorHandler _Bus, INotificationHandler<DomainNotification> notifications) : base(_Repository, _uow, _Bus, notifications)
+        public UpdateCompanyCommandHandler(IGenericRepository<Company> genericRepository, IUnitOfWork _uow, IMediatorHandler _Bus, INotificationHandler<DomainNotification> notifications) : base(genericRepository, _uow, _Bus, notifications)
         {
         }
     }

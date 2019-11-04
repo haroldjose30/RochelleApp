@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Framework.Core.Models;
 using Framework.Core.Notifications;
 using Framework.Core.Services;
@@ -18,7 +19,7 @@ namespace WebApi.Controllers.Base
             this._service = service;
         }
 
-        [Authorize("Bearer")]
+        //[Authorize("Bearer")]
         [HttpGet]
         //[ProducesResponseType(200, Type = typeof(List<Entity>))]
         //[ProducesResponseType(404)]
@@ -28,18 +29,18 @@ namespace WebApi.Controllers.Base
             return Response(entities);
         }
 
-        [Authorize("Bearer")]
+        //[Authorize("Bearer")]
         [HttpGet("{id}")]
         //[ProducesResponseType(200, Type = typeof(Entity))]
         //[ProducesResponseType(404)]
-        public virtual async Task<IActionResult> Get(string id)
+        public virtual async Task<IActionResult> Get(Guid id)
         {
             var entity = await _service.GetById(id);
             return Response(entity);
         }
     
 
-        [Authorize("Bearer")]
+        //[Authorize("Bearer")]
         [HttpPost]
         public virtual async Task<IActionResult> Post(TEntity entity)
         {
@@ -49,12 +50,12 @@ namespace WebApi.Controllers.Base
                 return Response(entity);
             }
 
-             var oEntity = await _service.RegisterAsync(entity);
+             var oEntity = await _service.Create(entity);
 
             return Response(oEntity);
         }
 
-        [Authorize("Bearer")]
+        //[Authorize("Bearer")]
         [HttpPut]
         public virtual async Task<IActionResult> Put([FromBody]TEntity entity)
         {
@@ -65,15 +66,15 @@ namespace WebApi.Controllers.Base
                 return Response(entity);
             }
 
-            var oEntity = await _service.UpdateAsync(entity);
+            var oEntity = await _service.Update(entity);
             return Response(oEntity);
         }
 
-        [Authorize("Bearer")]
+        //[Authorize("Bearer")]
         [HttpDelete()]
-        public virtual async Task<IActionResult> Delete([FromQuery]string id, [FromQuery]string deletedBy)
+        public virtual async Task<IActionResult> Delete([FromQuery]Guid id, [FromQuery]string deletedBy)
         {
-             var lOk = await _service.RemoveAsync(id,deletedBy);
+             var lOk = await _service.Delete(id,deletedBy);
             return Response(lOk);
         }
     }

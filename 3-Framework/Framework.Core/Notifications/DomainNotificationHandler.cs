@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Framework.Core.Notifications
 {
-    public class DomainNotificationHandler : INotificationHandler<DomainNotification>
+    public sealed class DomainNotificationHandler : INotificationHandler<DomainNotification>
     {
 
         public Guid Id;
@@ -20,12 +20,12 @@ namespace Framework.Core.Notifications
             domainNotifications = new List<DomainNotification>();
         }
 
-        public virtual List<DomainNotification> GetNotifications()
+        public List<DomainNotification> GetNotifications()
         {
             return domainNotifications;
         }
 
-        public virtual bool HasNotifications()
+        public bool HasNotifications()
         {
             return GetNotifications().Any();
         }

@@ -3,6 +3,7 @@ using System;
 using Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infra.Data.Migrations
 {
@@ -18,8 +19,9 @@ namespace Infra.Data.Migrations
 
             modelBuilder.Entity("Domain.Generals.Company", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CompanyName")
                         .HasColumnType("longtext");
@@ -52,28 +54,29 @@ namespace Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "admin",
+                            Id = new Guid("29511eb8-1137-446f-90aa-d6947d4c9eae"),
                             CompanyName = "Admin",
                             CorporateNumber = "Admin",
                             CreatedBy = "Admin",
-                            CreatedDate = "20191103 00:15:35",
+                            CreatedDate = "20191103 23:58:50",
                             Deleted = false,
                             FantasyName = "Admin",
                             ModifiedBy = "Admin",
-                            ModifiedDate = "20191103 00:15:35"
+                            ModifiedDate = "20191103 23:58:50"
                         });
                 });
 
             modelBuilder.Entity("Domain.Generals.Customer", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -108,11 +111,12 @@ namespace Infra.Data.Migrations
 
             modelBuilder.Entity("Domain.Generals.ParamConfiguration", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -150,11 +154,12 @@ namespace Infra.Data.Migrations
 
             modelBuilder.Entity("Domain.Generals.Product", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -189,11 +194,12 @@ namespace Infra.Data.Migrations
 
             modelBuilder.Entity("Domain.Identity.User", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -234,15 +240,15 @@ namespace Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "20191103 00:15:36AdminAdmin",
-                            CompanyId = "Admin",
+                            Id = new Guid("799318fc-f931-4c9c-b924-e87a9b104c67"),
+                            CompanyId = new Guid("29511eb8-1137-446f-90aa-d6947d4c9eae"),
                             CreatedBy = "Admin",
-                            CreatedDate = "20191103 00:15:36",
+                            CreatedDate = "20191103 23:58:50",
                             Deleted = false,
                             Email = "admin@admin.com",
                             Login = "Admin",
                             ModifiedBy = "Admin",
-                            ModifiedDate = "20191103 00:15:36",
+                            ModifiedDate = "20191103 23:58:50",
                             Name = "Admin",
                             Password = "Admin",
                             State = 1
@@ -251,14 +257,15 @@ namespace Infra.Data.Migrations
 
             modelBuilder.Entity("Domain.PointsManager.Invite", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Code")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -267,10 +274,16 @@ namespace Infra.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("CustomerFromId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("CustomerFromId1")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CustomerToId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("CustomerToId1")
+                        .HasColumnType("char(36)");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
@@ -291,23 +304,24 @@ namespace Infra.Data.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("CustomerFromId");
+                    b.HasIndex("CustomerFromId1");
 
-                    b.HasIndex("CustomerToId");
+                    b.HasIndex("CustomerToId1");
 
                     b.ToTable("Invites");
                 });
 
             modelBuilder.Entity("Domain.PointsManager.PointAccount", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -316,7 +330,10 @@ namespace Infra.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("CustomerId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("CustomerId1")
+                        .HasColumnType("char(36)");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
@@ -331,18 +348,19 @@ namespace Infra.Data.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerId1");
 
                     b.ToTable("PointAccounts");
                 });
 
             modelBuilder.Entity("Domain.PointsManager.PointAccountDetail", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -351,7 +369,10 @@ namespace Infra.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("CustomerId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("CustomerId1")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime(6)");
@@ -374,8 +395,8 @@ namespace Infra.Data.Migrations
                     b.Property<string>("ModifiedDate")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("PointAccountId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid?>("PointAccountId")
+                        .HasColumnType("char(36)");
 
                     b.Property<int>("PointExtractType")
                         .HasColumnType("int");
@@ -387,7 +408,7 @@ namespace Infra.Data.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerId1");
 
                     b.HasIndex("PointAccountId");
 
@@ -396,11 +417,12 @@ namespace Infra.Data.Migrations
 
             modelBuilder.Entity("Domain.PointsManager.PointCustomer", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -409,7 +431,10 @@ namespace Infra.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("CustomerId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("CustomerId1")
+                        .HasColumnType("char(36)");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
@@ -427,18 +452,19 @@ namespace Infra.Data.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerId1");
 
                     b.ToTable("PointCustomers");
                 });
 
             modelBuilder.Entity("Domain.PointsManager.PointRule", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -476,11 +502,12 @@ namespace Infra.Data.Migrations
 
             modelBuilder.Entity("Domain.Store.StoreOrder", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -489,7 +516,10 @@ namespace Infra.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("CustomerFromId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("CustomerFromId1")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime(6)");
@@ -504,26 +534,30 @@ namespace Infra.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("StoreOrderStatusId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("StoreOrderStatusId1")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("CustomerFromId");
+                    b.HasIndex("CustomerFromId1");
 
-                    b.HasIndex("StoreOrderStatusId");
+                    b.HasIndex("StoreOrderStatusId1");
 
                     b.ToTable("StoreOrders");
                 });
 
             modelBuilder.Entity("Domain.Store.StoreOrderItem", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -541,13 +575,19 @@ namespace Infra.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("ProductId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("ProductId1")
+                        .HasColumnType("char(36)");
 
                     b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("StoreOrderId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("StoreOrderId1")
+                        .HasColumnType("char(36)");
 
                     b.Property<decimal>("ValuePoint")
                         .HasColumnType("decimal(65,30)");
@@ -556,17 +596,18 @@ namespace Infra.Data.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductId1");
 
-                    b.HasIndex("StoreOrderId");
+                    b.HasIndex("StoreOrderId1");
 
                     b.ToTable("StoreOrderItems");
                 });
 
             modelBuilder.Entity("Domain.Store.StoreOrderStatus", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -599,11 +640,12 @@ namespace Infra.Data.Migrations
 
             modelBuilder.Entity("Domain.Store.StoreProduct", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
@@ -620,8 +662,8 @@ namespace Infra.Data.Migrations
                     b.Property<string>("ModifiedDate")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("ProductId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<Guid?>("ProductId")
+                        .HasColumnType("char(36)");
 
                     b.Property<int>("RegisterState")
                         .HasColumnType("int");
@@ -645,65 +687,79 @@ namespace Infra.Data.Migrations
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Generals.ParamConfiguration", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Generals.Product", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Identity.User", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.PointsManager.Invite", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Generals.Customer", "CustomerFrom")
                         .WithMany()
-                        .HasForeignKey("CustomerFromId");
+                        .HasForeignKey("CustomerFromId1");
 
                     b.HasOne("Domain.Generals.Customer", "CustomerTo")
                         .WithMany()
-                        .HasForeignKey("CustomerToId");
+                        .HasForeignKey("CustomerToId1");
                 });
 
             modelBuilder.Entity("Domain.PointsManager.PointAccount", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Generals.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId1");
                 });
 
             modelBuilder.Entity("Domain.PointsManager.PointAccountDetail", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Generals.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId1");
 
                     b.HasOne("Domain.PointsManager.PointAccount", null)
                         .WithMany("Items")
@@ -714,55 +770,65 @@ namespace Infra.Data.Migrations
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Generals.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId1");
                 });
 
             modelBuilder.Entity("Domain.PointsManager.PointRule", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Store.StoreOrder", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Generals.Customer", "CustomerFrom")
                         .WithMany()
-                        .HasForeignKey("CustomerFromId");
+                        .HasForeignKey("CustomerFromId1");
 
                     b.HasOne("Domain.Store.StoreOrderStatus", "StoreOrderStatus")
                         .WithMany()
-                        .HasForeignKey("StoreOrderStatusId");
+                        .HasForeignKey("StoreOrderStatusId1");
                 });
 
             modelBuilder.Entity("Domain.Store.StoreOrderItem", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Store.StoreProduct", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId1");
 
                     b.HasOne("Domain.Store.StoreOrder", "StoreOrder")
                         .WithMany("Items")
-                        .HasForeignKey("StoreOrderId");
+                        .HasForeignKey("StoreOrderId1");
                 });
 
             modelBuilder.Entity("Domain.Store.StoreProduct", b =>
                 {
                     b.HasOne("Domain.Generals.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Generals.Product", "Product")
                         .WithMany()

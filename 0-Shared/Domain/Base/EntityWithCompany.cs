@@ -1,4 +1,5 @@
-﻿using Domain.Generals;
+﻿using System;
+using Domain.Generals;
 using Framework.Core.Models;
 using Newtonsoft.Json;
 
@@ -9,20 +10,16 @@ namespace Domain.Base
        
 
         [JsonProperty]
-        public string CompanyId { get; protected set; }
+        public Guid CompanyId { get; protected set; }
         [JsonProperty]
         public Company Company { get; protected set; }
         
-        protected bool Create(string companyId,string by,string id = null)
+        protected bool Create(Guid companyId,string by,Guid id = default)
         {
             CompanyId = companyId;
             return base.Create(by, id);
         }
-        protected override string GetNewId()
-        {
-            return GetDateTimeStr() + this.CompanyId+ this.CreatedBy;
-        }
-
+        
     }
 
 

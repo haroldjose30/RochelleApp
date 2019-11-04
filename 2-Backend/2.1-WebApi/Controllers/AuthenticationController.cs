@@ -49,11 +49,11 @@ namespace WebApi.Controllers
                 return Response(model);
          
             ClaimsIdentity identity = new ClaimsIdentity(
-                new GenericIdentity(user.Id, "Login"),
+                new GenericIdentity(user.Id.ToString(), "Login"),
                 new[]
                 {
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-                    new Claim(JwtRegisteredClaimNames.UniqueName, user.Id)
+                    new Claim(JwtRegisteredClaimNames.UniqueName, user.Id.ToString())
                 }
             );
 

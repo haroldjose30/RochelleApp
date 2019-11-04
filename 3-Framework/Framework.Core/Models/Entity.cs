@@ -9,17 +9,17 @@ namespace Framework.Core.Models
     {
         
         [JsonProperty]
-        public string Id { get; protected set; } = string.Empty;
+        public Guid Id { get; protected set; }
         [JsonProperty]
-        public string CreatedDate { get; protected set; } = string.Empty;
+        public string CreatedDate { get; protected set; } 
         [JsonProperty]
-        public string CreatedBy { get; protected set; } = string.Empty;
+        public string CreatedBy { get; protected set; }
         [JsonProperty]
-        public string ModifiedDate { get; protected set; } = string.Empty;
+        public string ModifiedDate { get; protected set; }
         [JsonProperty]
-        public string ModifiedBy { get; protected set; } = string.Empty;
+        public string ModifiedBy { get; protected set; }
         [JsonProperty]
-        public bool Deleted { get; protected set; } = false;
+        public bool Deleted { get; protected set; } 
        
         
         protected ValidationResult ValidationResult { get; set; } = new ValidationResult();
@@ -38,7 +38,7 @@ namespace Framework.Core.Models
         
         
         
-        protected internal virtual bool Create(string by,string id = null)
+        protected internal virtual bool Create(string by,Guid id = default)
         {
             this.CreatedDate =  GetDateTimeStr();
             this.ModifiedDate = this.CreatedDate;
@@ -48,8 +48,8 @@ namespace Framework.Core.Models
             this.ModifiedBy = by;
 
             //if id is empty, get new id automaticaly
-            if (string.IsNullOrWhiteSpace(id))
-                id = this.GetNewId();
+            if (id == default)
+                id = Guid.NewGuid();
 
             this.Id = id;
 
@@ -93,12 +93,6 @@ namespace Framework.Core.Models
             this.ModifiedBy = by;
             this.Deleted = true;
             return true;
-        }
-
-        protected virtual string GetNewId()
-        {
-            var cDateId = DateTime.Now.ToUniversalTime().ToString("yyMMddHHmmssfff");
-            return cDateId + this.CreatedBy;
         }
 
         protected string GetDateTimeStr()

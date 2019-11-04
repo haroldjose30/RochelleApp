@@ -10,18 +10,19 @@ namespace ApplicationBusiness.Authentication
 {
     public class AuthenticationService: IAuthenticationService
     {
-
-        private readonly IUserRepository _repository;
+        //todo: harold - change to mediator
+        
+        private readonly IUserGenericRepository genericRepository;
         private readonly IMediatorHandler _bus;
         private readonly IMediator mediator;
         private readonly IServiceProvider _serviceProvider;
 
-        public AuthenticationService(IUserRepository repository, 
+        public AuthenticationService(IUserGenericRepository genericRepository, 
                               IMediatorHandler bus,
                               IMediator mediator,
                               IServiceProvider serviceProvider)
         {
-            _repository = repository;
+            this.genericRepository = genericRepository;
             _bus = bus;
             this.mediator = mediator;
             this._serviceProvider = serviceProvider;
@@ -30,7 +31,7 @@ namespace ApplicationBusiness.Authentication
         public async Task<User> Login(string login, string password)
         {
             //todo: passar para mediator
-            var user = await _repository.GetByLogin(login);
+            var user = await genericRepository.GetByLogin(login);
 
             if (user == null)
             {

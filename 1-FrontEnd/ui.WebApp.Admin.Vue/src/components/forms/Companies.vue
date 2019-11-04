@@ -1,6 +1,6 @@
 <template>
   <crud-view
-    title="Companies"
+    title="Empresa"
     api-module="Companies"
     api-list-method="get"
     api-create-method="post"
@@ -39,14 +39,7 @@ export default {
           name: "corporateNumber",
           type: "text",
           placeholder: "Numero de Inscriçao"
-        },
-        {
-          name: "CreatedBy",
-          type: "text",
-          placeholder: "Usuário",
-          value:"admin",
-          readonly:true
-        },
+        }
       ]
     };
   }

@@ -74,7 +74,7 @@ export default {
             
             this.$refs.loginModal.hide()
             this.$emit('loginSuccessful', username, data.data.accessToken)
-            //this.$api.setToken(data.data.accessToken)
+            this.$api.setToken(data.data.accessToken)
           },
           error: () => {
             this.loginError = true

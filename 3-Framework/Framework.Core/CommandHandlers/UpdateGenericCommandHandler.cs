@@ -12,24 +12,29 @@ namespace Framework.Core.CommandHandlers
 {
    public class UpdateGenericCommandHandler<TEntity> : CommandHandler, IRequestHandler<UpdateGenericCommand<TEntity>> where TEntity : Entity
     {
-        IRepository<TEntity> repository;
+        private readonly IGenericRepository<TEntity> genericRepository;
 
-        public UpdateGenericCommandHandler(IRepository<TEntity> _Repository,IUnitOfWork _uow, IMediatorHandler _Bus, INotificationHandler<DomainNotification> notifications) : base(_uow, _Bus, notifications)
+        public UpdateGenericCommandHandler(IGenericRepository<TEntity> genericRepository,
+            IUnitOfWork uow,
+            IMediatorHandler bus,
+            INotificationHandler<DomainNotification> notifications) : base(uow,
+            bus,
+            notifications)
         {
-            repository = _Repository;
+            this.genericRepository = genericRepository;
         }
 
-        public async Task<Unit> Handle(UpdateGenericCommand<TEntity> request, CancellationToken cancellationToken)
+        public virtual async Task<Unit> Handle(UpdateGenericCommand<TEntity> request, CancellationToken cancellationToken)
         {
-            Debug.WriteLine("UpdateGenericCommand");
+            Debug.WriteLine("UpdateGenericCommandHandler.Handle");
 
             //execute action to mark as created register
-            request.entity.Update(request.entity.ModifiedBy);
+            request.Entity.Update(request.Entity.ModifiedBy);
 
             //verify if entity was valid
-            request.ValidationResult = request.entity.GetValidationResult();
+            request.ValidationResult = request.Entity.GetValidationResult();
 
-            await repository.Update(request.entity);
+            await genericRepository.Update(request.Entity);
 
             if (!request.IsValid())
             {
@@ -38,11 +43,11 @@ namespace Framework.Core.CommandHandlers
             }
 
 
-            await repository.Update(request.entity);
+            await genericRepository.Update(request.Entity);
 
             if (await CommitAsync())
             {
-                await Bus.PublishEvent(new GenericUpdatedEvent<TEntity>(request.entity));
+                await _bus.PublishEvent(new UpdatedGenericEvent<TEntity>(request.Entity));
             }
 
             return new Unit();

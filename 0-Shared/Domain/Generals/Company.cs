@@ -1,4 +1,5 @@
-﻿using Framework.Core.Models;
+﻿using System;
+using Framework.Core.Models;
 using Newtonsoft.Json;
 
 namespace Domain.Generals
@@ -12,7 +13,7 @@ namespace Domain.Generals
         [JsonProperty]
         public string CorporateNumber { get; protected set; }
 
-        public bool Create(string companyName, string fantasyName, string corporateNumber,string by, string id = null)
+        public bool Create(string companyName, string fantasyName, string corporateNumber,string by, Guid id = default)
         {
             CompanyName = companyName;
             FantasyName = fantasyName;

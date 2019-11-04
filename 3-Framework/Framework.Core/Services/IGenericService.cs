@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Framework.Core.Models;
 
@@ -6,12 +7,12 @@ namespace Framework.Core.Services
 {
 
     public interface IGenericService<TEntity> where TEntity : Entity
-    {
-        Task<TEntity> RegisterAsync(TEntity entity);
+    { 
         Task<IEnumerable<TEntity>> GetAll();
-        Task<TEntity> GetById(string id);
-        Task<TEntity> UpdateAsync(TEntity entity);
-        Task<bool> RemoveAsync(string id, string deletedBy);
+        Task<TEntity> GetById(Guid id);
+        Task<TEntity> Create(TEntity entity);
+        Task<TEntity> Update(TEntity entity);
+        Task<bool> Delete(Guid id, string deletedBy);
     }
 
 }

@@ -1,7 +1,14 @@
+using System.Linq;
 using System.Reflection;
 using ApplicationBusiness.Companies.CommandHandlers;
+using Domain.Generals;
+using Domain.Identity;
+using Framework.Core.CommandHandlers;
+using Framework.Core.Commands;
+using Framework.Core.Models;
 using Framework.Core.Notifications;
 using MediatR;
+using MediatR.Pipeline;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -62,21 +69,11 @@ namespace WebApi
         public static void ConfigureMediatR(IServiceCollection services)
         {
 
-            //OBS: dont register DomainNotificationHandler automatic, only in scoped section like above
-            //this very important becouse we need only one instance por request (Scoped)
-            services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
-
-
             // if you have handlers/events in other assemblies
             services.AddMediatR(
                 typeof(Startup).GetTypeInfo().Assembly
-                ,typeof(RegisterNewCompanyCommandHandler).GetTypeInfo().Assembly
-
+                //,typeof(RegisterNewCompanyCommandHandler).GetTypeInfo().Assembly
             );
-
-
-       
-
 
         }
 
@@ -105,4 +102,6 @@ namespace WebApi
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
+    
+    
 }

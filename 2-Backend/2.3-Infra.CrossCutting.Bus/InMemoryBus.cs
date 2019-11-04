@@ -22,7 +22,7 @@ namespace Infra.CrossCutting.Bus
             return _mediator.Publish(@event);
         }
 
-        public Task SendCommand<TComand>(TComand command) where TComand : Command
+        public Task SendCommand<TCommand>(TCommand command) where TCommand : Command
         {
             return _mediator.Send(command);
         }

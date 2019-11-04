@@ -9,21 +9,21 @@ namespace Framework.Core.Validations
 
         protected void ValidateId()
         {
-            RuleFor(c => c.entity.Id)
+            RuleFor(c => c.Entity.Id)
                 .NotEmpty()
                 .WithMessage("Id deve ser informado");
         }
        
         protected void ValidateCreatedBy()
         {
-            RuleFor(c => c.entity.CreatedBy)
+            RuleFor(c => c.Entity.CreatedBy)
              .NotEmpty()
              .WithMessage("Usuário não informado!");
         }
 
         protected void ValidateModifiedBy()
         {
-            RuleFor(c => c.entity.ModifiedBy)
+            RuleFor(c => c.Entity.ModifiedBy)
              .NotEmpty()
              .WithMessage("Usuário não informado!");
         }

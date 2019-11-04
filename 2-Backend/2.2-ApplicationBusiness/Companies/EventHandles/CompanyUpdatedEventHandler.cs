@@ -8,9 +8,9 @@ using MediatR;
 namespace ApplicationBusiness.Companies.EventHandles
 {
 
-    public class CompanyUpdatedEventHandler : INotificationHandler<GenericUpdatedEvent<Company>>
+    public class CompanyUpdatedEventHandler : INotificationHandler<UpdatedGenericEvent<Company>>
     {
-        public Task Handle(GenericUpdatedEvent<Company> notification, CancellationToken cancellationToken)
+        public Task Handle(UpdatedGenericEvent<Company> notification, CancellationToken cancellationToken)
         {
             // Send some greetings e-mail
             Debug.WriteLine("GenericRegisteredEventHandler");

@@ -27,7 +27,7 @@ namespace Domain.Generals
 
     public enum ParamConfigurationType
     {
-        character,
-        number,
+        character = 0,
+        number = 1,
     }
 }

@@ -26,7 +26,7 @@
             <e p="User.cs" t="Include" />
           </e>
           <e p="Interfaces" t="Include">
-            <e p="ICompanyRepository.cs" t="Include" />
+            <e p="ICompanyGenericRepository.cs" t="Include" />
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
@@ -65,6 +65,9 @@
               <e p="GenericController.cs" t="Include" />
             </e>
             <e p="CompaniesController.cs" t="Include" />
+            <e p="CustomersController.cs" t="Include" />
+            <e p="ParamConfigurationsController.cs" t="Include" />
+            <e p="ProductsController.cs" t="Include" />
             <e p="UsersController.cs" t="Include" />
           </e>
           <e p="Infrastructure" t="Include">
@@ -98,8 +101,8 @@
           <e p="bin" t="ExcludeRecursive" />
           <e p="Companies" t="Include">
             <e p="CommandHandlers" t="Include">
-              <e p="RegisterNewCompanyCommandHandler.cs" t="Include" />
-              <e p="RemoveCompanyCommandHandler.cs" t="Include" />
+              <e p="CreateCompanyCommandHandler.cs" t="Include" />
+              <e p="DeleteCompanyCommandHandler.cs" t="Include" />
               <e p="UpdateCompanyCommandHandler.cs" t="Include" />
             </e>
             <e p="EventHandles" t="Include">
@@ -109,8 +112,8 @@
             </e>
             <e p="Validations" t="Include">
               <e p="CompanyValidation.cs" t="Include" />
-              <e p="RegisterNewCompanyCommandValidation.cs" t="Include" />
-              <e p="RemoveCompanyCommandValidation.cs" t="Include" />
+              <e p="CreateCompanyCommandValidation.cs" t="Include" />
+              <e p="DeleteCompanyCommandValidation.cs" t="Include" />
               <e p="UpdateCompanyCommandValidation.cs" t="Include" />
             </e>
           </e>
@@ -145,8 +148,8 @@
             <e p="IDbContextGeneric.cs" t="Include" />
           </e>
           <e p="Migrations" t="Include">
-            <e p="20191103001536_InitialCreate.cs" t="Include" />
-            <e p="20191103001536_InitialCreate.Designer.cs" t="Include" />
+            <e p="20191103235850_InitialCreate.cs" t="Include" />
+            <e p="20191103235850_InitialCreate.Designer.cs" t="Include" />
             <e p="DbContextGenericModelSnapshot.cs" t="Include" />
           </e>
           <e p="obj" t="ExcludeRecursive">
@@ -158,14 +161,12 @@
           </e>
           <e p="Repositories" t="Include">
             <e p="Base" t="Include">
-              <e p="IRepositoryWithCompany.cs" t="Include" />
-              <e p="Repository.cs" t="Include" />
-              <e p="RepositoryWithCompany.cs" t="Include" />
+              <e p="GenericRepository.cs" t="Include" />
+              <e p="GenericRepositoryWithCompany.cs" t="Include" />
+              <e p="IGenericRepositoryWithCompany.cs" t="Include" />
             </e>
-            <e p="CompanyRepository.cs" t="Include" />
-            <e p="ICompanyRepository.cs" t="Include" />
-            <e p="IUserRepository.cs" t="Include" />
-            <e p="UserRepository.cs" t="Include" />
+            <e p="IUserGenericRepository.cs" t="Include" />
+            <e p="UserGenericRepository.cs" t="Include" />
           </e>
           <e p="UoW" t="Include">
             <e p="UnitOfWork.cs" t="Include" />
@@ -188,36 +189,37 @@
         <e p="Framework.Core" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
           <e p="CommandHandlers" t="Include">
-            <e p="RegisterNewGenericCommandHandler.cs" t="Include" />
-            <e p="RemoveGenericCommandHandler.cs" t="Include" />
+            <e p="CommandHandler.cs" t="Include" />
+            <e p="CreateGenericCommandHandler.cs" t="Include" />
+            <e p="DeleteGenericCommandHandler.cs" t="Include" />
             <e p="UpdateGenericCommandHandler.cs" t="Include" />
           </e>
           <e p="Commands" t="Include">
             <e p="Command.cs" t="Include" />
-            <e p="CommandHandler.cs" t="Include" />
-            <e p="EntityCommand.cs" t="Include" />
-            <e p="RegisterNewGenericCommand.cs" t="Include" />
-            <e p="RemoveGenericCommand.cs" t="Include" />
+            <e p="CreateGenericCommand.cs" t="Include" />
+            <e p="DeleteGenericCommand.cs" t="Include" />
+            <e p="GenericCommand.cs" t="Include" />
+            <e p="MessageRequest.cs" t="Include" />
             <e p="UpdateGenericCommand.cs" t="Include" />
           </e>
           <e p="EventHandlers" t="Include">
-            <e p="GenericRegisteredEventHandler.cs" t="Include" />
-            <e p="GenericRemovedEventHandler.cs" t="Include" />
-            <e p="GenericUpdatedEventHandler.cs" t="Include" />
+            <e p="CreatedGenericEventHandler.cs" t="Include" />
+            <e p="DeletedGenericEventHandler.cs" t="Include" />
+            <e p="UpdatedGenericEventHandler.cs" t="Include" />
           </e>
           <e p="Events" t="Include">
-            <e p="Event.cs" t="Include" />
-            <e p="GenericRegisteredEvent.cs" t="Include" />
-            <e p="GenericRemovedEvent.cs" t="Include" />
-            <e p="GenericUpdatedEvent.cs" t="Include" />
-            <e p="Message.cs" t="Include" />
+            <e p="CreatedGenericEvent.cs" t="Include" />
+            <e p="DeletedGenericEvent.cs" t="Include" />
+            <e p="EventNotification.cs" t="Include" />
+            <e p="MessageNotification.cs" t="Include" />
+            <e p="UpdatedGenericEvent.cs" t="Include" />
           </e>
           <e p="Framework.Core.csproj" t="IncludeRecursive" />
           <e p="Interfaces" t="Include">
+            <e p="ICreateGenericCommandValidation.cs" t="Include" />
+            <e p="IDeleteGenericCommandValidation.cs" t="Include" />
+            <e p="IGenericRepository.cs" t="Include" />
             <e p="IMediatorHandler.cs" t="Include" />
-            <e p="IRegisterNewGenericCommandValidation.cs" t="Include" />
-            <e p="IRemoveGenericCommandValidation.cs" t="Include" />
-            <e p="IRepository.cs" t="Include" />
             <e p="IUnitOfWork.cs" t="Include" />
             <e p="IUpdateGenericCommandValidation.cs" t="Include" />
           </e>
@@ -241,15 +243,24 @@
             <e p="IGenericService.cs" t="Include" />
           </e>
           <e p="Validations" t="Include">
+            <e p="CreateGenericCommandValidation.cs" t="Include" />
+            <e p="DeleteGenericCommandValidation.cs" t="Include" />
             <e p="GenericValidation.cs" t="Include" />
-            <e p="RegisterNewGenericCommandValidation.cs" t="Include" />
-            <e p="RemoveGenericCommandValidation.cs" t="Include" />
             <e p="UpdateGenericCommandValidation.cs" t="Include" />
           </e>
         </e>
       </e>
       <e p="4-Tests" t="Include" />
-      <e p="5-Documents" t="Include" />
+      <e p="5-Documents" t="Include">
+        <e p="Locamail __ Bem-vindo a Uber Harold Jose.pdf" t="Include" />
+        <e p="RochelleApp-FluxoAdmin.jpg" t="Include" />
+        <e p="RochelleApp-FluxoIndicado.jpg" t="Include" />
+        <e p="RochelleApp-Fluxonao indicado.jpg" t="Include" />
+        <e p="RochelleApp.jpg" t="Include" />
+        <e p="RochelleApp.xml" t="Include" />
+        <e p="RochelleApp_UML.mdj" t="Include" />
+        <e p="Sketch_App.sketch" t="Include" />
+      </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="RochelleApp.sln" t="IncludeFlat" />
     </e>

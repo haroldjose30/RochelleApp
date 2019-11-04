@@ -16,6 +16,10 @@ export default {
     return {
       items: [
         { id: 'Companies', name: 'Empresas', icon: 'layers' },
+        { id: 'Users', name: 'Usuários', icon: 'layers' },
+        { id: 'Customers', name: 'Clientes', icon: 'layers' },
+        { id: 'Products', name: 'Produtos/Serviços', icon: 'layers' },
+        { id: 'ParamConfigurations', name: 'ParamConfigurations', icon: 'layers' },
       ]
     }
   },

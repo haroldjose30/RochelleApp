@@ -9,9 +9,9 @@ namespace ApplicationBusiness.Companies.EventHandles
 {
 
 
-    public class CompanyRemovedEventHandler : INotificationHandler<GenericRemovedEvent<Company>>
+    public class CompanyRemovedEventHandler : INotificationHandler<DeletedGenericEvent<Company>>
     {
-        public Task Handle(GenericRemovedEvent<Company> notification, CancellationToken cancellationToken)
+        public Task Handle(DeletedGenericEvent<Company> notification, CancellationToken cancellationToken)
         {
             // Send some greetings e-mail
             Debug.WriteLine("GenericRegisteredEventHandler");

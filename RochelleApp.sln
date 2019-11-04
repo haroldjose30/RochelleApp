@@ -2,6 +2,16 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Documents", "5-Documents", "{86AB5C04-0591-496C-8F38-BDEB9780ECEF}"
+ProjectSection(SolutionItems) = preProject
+	5-Documents\Locamail __ Bem-vindo a Uber Harold Jose.pdf = 5-Documents\Locamail __ Bem-vindo a Uber Harold Jose.pdf
+	5-Documents\RochelleApp-FluxoAdmin.jpg = 5-Documents\RochelleApp-FluxoAdmin.jpg
+	5-Documents\RochelleApp-FluxoIndicado.jpg = 5-Documents\RochelleApp-FluxoIndicado.jpg
+	5-Documents\RochelleApp-Fluxonao indicado.jpg = 5-Documents\RochelleApp-Fluxonao indicado.jpg
+	5-Documents\RochelleApp.jpg = 5-Documents\RochelleApp.jpg
+	5-Documents\RochelleApp.xml = 5-Documents\RochelleApp.xml
+	5-Documents\RochelleApp_UML.mdj = 5-Documents\RochelleApp_UML.mdj
+	5-Documents\Sketch_App.sketch = 5-Documents\Sketch_App.sketch
+EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-FrontEnd", "1-FrontEnd", "{09791D04-B95D-43FA-B081-93257FC96DE0}"
 EndProject

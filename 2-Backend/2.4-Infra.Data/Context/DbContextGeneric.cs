@@ -1,4 +1,5 @@
-﻿using Domain.Generals;
+﻿using System;
+using Domain.Generals;
 using Domain.Identity;
 using Domain.PointsManager;
 using Domain.Store;
@@ -60,9 +61,12 @@ namespace Infra.Data.Context
 
         private void InsertDefaultData(ModelBuilder modelBuilder)
         {
+            var id = Guid.NewGuid();
+            
+            
             //add the default company for first login
             var companyAdmin = new Company();
-            companyAdmin.Create("Admin", "Admin", "Admin","Admin","admin");
+            companyAdmin.Create("Admin", "Admin", "Admin","Admin",id);
             
              
             modelBuilder.Entity<Company>()
@@ -70,7 +74,7 @@ namespace Infra.Data.Context
             
             //add the default user for first login
             var userAdmin = new User();
-            userAdmin.Create("Admin","Admin", "admin@admin.com", "Admin","Admin","Admin");
+            userAdmin.Create(id,"Admin", "admin@admin.com", "Admin","Admin","Admin");
 
             modelBuilder.Entity<User>()
                 .HasData(userAdmin);

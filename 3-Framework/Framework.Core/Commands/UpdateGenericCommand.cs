@@ -7,28 +7,23 @@ namespace Framework.Core.Commands
 {
     public class UpdateGenericCommand<TEntity> : GenericCommand<TEntity> where TEntity : Entity
     {
-        IServiceProvider serviceProvider;
-        public UpdateGenericCommand(TEntity _entity, IServiceProvider _serviceProvider) : base(_entity)
+        private readonly IServiceProvider _serviceProvider;
+        public UpdateGenericCommand(TEntity entity, IServiceProvider serviceProvider) : base(entity)
         {
-            serviceProvider = _serviceProvider;
+            this._serviceProvider = serviceProvider;
         }
 
         public override bool IsValid()
         {
             try
             {
-                IUpdateGenericCommandValidation<TEntity> validation = (IUpdateGenericCommandValidation<TEntity>)serviceProvider.GetService(typeof(IUpdateGenericCommandValidation<TEntity>));
+                IUpdateGenericCommandValidation<TEntity> validation = (IUpdateGenericCommandValidation<TEntity>)_serviceProvider.GetService(typeof(IUpdateGenericCommandValidation<TEntity>));
 
                 if (validation == null)
                     validation = new UpdateGenericCommandValidation<TEntity>();
 
-                if (validation != null)
-                {
-                    ValidationResult = validation.Validate(this);
-                    return ValidationResult.IsValid;
-                }
-
-                return true;
+                ValidationResult = validation.Validate(this);
+                return ValidationResult.IsValid;
             }
             catch (Exception ex)
             {

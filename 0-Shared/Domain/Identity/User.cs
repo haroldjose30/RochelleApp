@@ -1,4 +1,5 @@
-﻿using Domain.Base;
+﻿using System;
+using Domain.Base;
 using Newtonsoft.Json;
 
 namespace Domain.Identity
@@ -20,7 +21,7 @@ namespace Domain.Identity
         public RegisterState State { get; private set; }
       
         
-        public bool Create(string companyId, string name, string email, string login, string password,string by)
+        public bool Create(Guid companyId, string name, string email, string login, string password,string by)
         {
             Name = name;
             Email = email;
