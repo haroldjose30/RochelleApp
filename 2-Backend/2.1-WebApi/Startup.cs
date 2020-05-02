@@ -1,14 +1,5 @@
-using System.Linq;
 using System.Reflection;
-using ApplicationBusiness.Companies.CommandHandlers;
-using Domain.Generals;
-using Domain.Identity;
-using Framework.Core.CommandHandlers;
-using Framework.Core.Commands;
-using Framework.Core.Models;
-using Framework.Core.Notifications;
 using MediatR;
-using MediatR.Pipeline;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

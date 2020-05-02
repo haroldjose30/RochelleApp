@@ -12,10 +12,10 @@ namespace Framework.Core.CommandHandlers
 {
     public class CreateGenericCommandHandler<TEntity> : CommandHandler, IRequestHandler<CreateGenericCommand<TEntity>> where TEntity : Entity
     {
-        private readonly IGenericRepository<TEntity> genericRepository;
-        public CreateGenericCommandHandler(IGenericRepository<TEntity> genericRepository, IUnitOfWork uow, IMediatorHandler bus, INotificationHandler<DomainNotification> notifications) : base(uow, bus, notifications)
+        private readonly IGenericRepositoryEntity<TEntity> genericRepositoryEntity;
+        public CreateGenericCommandHandler(IGenericRepositoryEntity<TEntity> genericRepositoryEntity, IUnitOfWork uow, IMediatorHandler bus, INotificationHandler<DomainNotification> notifications) : base(uow, bus, notifications)
         {
-            this.genericRepository = genericRepository;
+            this.genericRepositoryEntity = genericRepositoryEntity;
         }
 
         public virtual async Task<Unit> Handle(CreateGenericCommand<TEntity> request, CancellationToken cancellationToken)
@@ -35,7 +35,7 @@ namespace Framework.Core.CommandHandlers
                 return new Unit();
             }
 
-            var entityRegistered = await genericRepository.Insert(request.Entity);
+            var entityRegistered = await genericRepositoryEntity.Insert(request.Entity);
 
 
             if (await CommitAsync())

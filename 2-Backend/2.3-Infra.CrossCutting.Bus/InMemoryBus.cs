@@ -11,21 +11,13 @@ namespace Infra.CrossCutting.Bus
         private readonly IMediator _mediator;
         //private readonly IEventStore _eventStore;
 
-        public InMemoryBus(IMediator mediator)
-        {
-            //_eventStore = eventStore;
-            _mediator = mediator;
-        }
+        public InMemoryBus(IMediator mediator) => _mediator = mediator;
 
         public Task PublishEvent<T>(T @event) where T : EventNotification
-        {
-            return _mediator.Publish(@event);
-        }
+            => _mediator.Publish(@event);
 
         public Task SendCommand<TCommand>(TCommand command) where TCommand : Command
-        {
-            return _mediator.Send(command);
-        }
+            => _mediator.Send(command);
 
     }
 }

@@ -4,7 +4,6 @@ using Framework.Core.Models;
 using Framework.Core.Notifications;
 using Framework.Core.Services;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.Base

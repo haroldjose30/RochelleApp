@@ -1,5 +1,4 @@
 ﻿using System;
-using Framework.Core.Events;
 using FluentValidation.Results;
 
 namespace Framework.Core.Commands

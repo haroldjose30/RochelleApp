@@ -1,10 +1,4 @@
-﻿using Domain.Generals;
-using Framework.Core.Notifications;
-using Framework.Core.Services;
-using MediatR;
-using WebApi.Controllers.Base;
-
-namespace WebApi.Controllers
+﻿namespace WebApi.Controllers
 {
    
 

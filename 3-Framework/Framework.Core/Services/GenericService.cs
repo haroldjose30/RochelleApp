@@ -10,27 +10,27 @@ namespace Framework.Core.Services
     public class GenericService<TEntity> : IGenericService<TEntity> where TEntity : Entity, new()
     {
 
-        private readonly IGenericRepository<TEntity> genericRepository;
+        private readonly IGenericRepositoryEntity<TEntity> genericRepositoryEntity;
         private readonly IMediatorHandler _bus;
         private readonly IServiceProvider _serviceProvider;
 
-        public GenericService(IGenericRepository<TEntity> genericRepository, 
+        public GenericService(IGenericRepositoryEntity<TEntity> genericRepositoryEntity, 
                               IMediatorHandler bus,
                               IServiceProvider serviceProvider)
         {
-            this.genericRepository = genericRepository;
+            this.genericRepositoryEntity = genericRepositoryEntity;
             _bus = bus;
             _serviceProvider = serviceProvider;
         }
 
         public virtual async Task<IEnumerable<TEntity>>  GetAll()
         {
-            return await genericRepository.GetAll();
+            return await genericRepositoryEntity.GetAll();
         }
 
         public async Task<TEntity> GetById(Guid id)
         {
-            return await genericRepository.GetById(id);
+            return await genericRepositoryEntity.GetById(id);
         }
 
         public async Task<TEntity> Create(TEntity entity)

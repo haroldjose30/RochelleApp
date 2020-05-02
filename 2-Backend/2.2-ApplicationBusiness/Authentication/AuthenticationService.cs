@@ -12,17 +12,17 @@ namespace ApplicationBusiness.Authentication
     {
         //todo: harold - change to mediator
         
-        private readonly IUserGenericRepository genericRepository;
+        private readonly IUserGenericRepositoryEntity genericRepositoryEntity;
         private readonly IMediatorHandler _bus;
         private readonly IMediator mediator;
         private readonly IServiceProvider _serviceProvider;
 
-        public AuthenticationService(IUserGenericRepository genericRepository, 
+        public AuthenticationService(IUserGenericRepositoryEntity genericRepositoryEntity, 
                               IMediatorHandler bus,
                               IMediator mediator,
                               IServiceProvider serviceProvider)
         {
-            this.genericRepository = genericRepository;
+            this.genericRepositoryEntity = genericRepositoryEntity;
             _bus = bus;
             this.mediator = mediator;
             this._serviceProvider = serviceProvider;
@@ -31,7 +31,7 @@ namespace ApplicationBusiness.Authentication
         public async Task<User> Login(string login, string password)
         {
             //todo: passar para mediator
-            var user = await genericRepository.GetByLogin(login);
+            var user = await genericRepositoryEntity.GetByLogin(login);
 
             if (user == null)
             {

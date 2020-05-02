@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Framework.Core.Models;
 
-namespace Infra.Data.Repositories.Base
+namespace Framework.Core.Interfaces
 {
     public interface IGenericRepository<TEntity>:IDisposable where TEntity : Entity
     {
@@ -15,26 +16,18 @@ namespace Infra.Data.Repositories.Base
         /// <param name="orderBy"></param>
         /// <param name="includes"></param>
         /// <returns></returns>
-        List<TEntity> Get(
+        Task<IEnumerable<TEntity>> Get(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             params Expression<Func<TEntity, object>>[] includes);
- 
-        /// <summary>
-        /// Get query for entity
-        /// </summary>
-        /// <param name="filter"></param>
-        /// <param name="orderBy"></param>
-        /// <returns></returns>
-        IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null);
-
+     
         /// <summary>
         /// Get first or default entity by filter
         /// </summary>
         /// <param name="filter"></param>
         /// <param name="includes"></param>
         /// <returns></returns>
-        TEntity GetFirstOrDefault(
+        Task<TEntity> GetFirstOrDefault(
             Expression<Func<TEntity, bool>> filter = null,
             params Expression<Func<TEntity, object>>[] includes);
  
@@ -42,18 +35,26 @@ namespace Infra.Data.Repositories.Base
         /// Insert entity to db
         /// </summary>
         /// <param name="entity"></param>
-        void Insert(TEntity entity);
+        Task<TEntity> Insert(TEntity entity);
  
         /// <summary>
         /// Update entity in db
         /// </summary>
         /// <param name="entity"></param>
-        void Update(TEntity entity);
- 
+        Task<TEntity> Update(TEntity entity);
+
         /// <summary>
         /// Delete entity from db by primary key
         /// </summary>
         /// <param name="id"></param>
-        void Delete(object id);
+        /// <param name="deletedBy"></param>
+        Task<bool> DeleteLogically(Guid id,string deletedBy);
+        
+        
+        /// <summary>
+        /// Delete entity from db by primary key
+        /// </summary>
+        /// <param name="id"></param>
+        Task<bool> DeletePhysically(Guid id);
     }
 }

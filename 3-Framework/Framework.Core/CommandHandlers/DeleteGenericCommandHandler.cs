@@ -12,18 +12,18 @@ namespace Framework.Core.CommandHandlers
 {
    public class DeleteGenericCommandHandler<TEntity> : CommandHandler, IRequestHandler<DeleteGenericCommand<TEntity>> where TEntity : Entity, new()
     {
-        private readonly IGenericRepository<TEntity> genericRepository;
+        private readonly IGenericRepositoryEntity<TEntity> genericRepositoryEntity;
 
-        public DeleteGenericCommandHandler(IGenericRepository<TEntity> genericRepository,IUnitOfWork uow, IMediatorHandler bus, INotificationHandler<DomainNotification> notifications) : base(uow, bus, notifications)
+        public DeleteGenericCommandHandler(IGenericRepositoryEntity<TEntity> genericRepositoryEntity,IUnitOfWork uow, IMediatorHandler bus, INotificationHandler<DomainNotification> notifications) : base(uow, bus, notifications)
         {
-            this.genericRepository = genericRepository;
+            this.genericRepositoryEntity = genericRepositoryEntity;
         }
 
         public virtual async Task<Unit> Handle(DeleteGenericCommand<TEntity> request, CancellationToken cancellationToken)
         {
             Debug.WriteLine("DeleteGenericCommandHandler.Handle");
 
-            await genericRepository.Delete(request.Entity.Id, request.Entity.ModifiedBy);
+            await genericRepositoryEntity.DeleteLogically(request.Entity.Id, request.Entity.ModifiedBy);
 
             if (await CommitAsync())
             {

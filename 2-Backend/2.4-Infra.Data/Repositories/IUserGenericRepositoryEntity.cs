@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using Domain.Identity;
-using Framework.Core.Interfaces;
 using Infra.Data.Repositories.Base;
 
 namespace Infra.Data.Repositories

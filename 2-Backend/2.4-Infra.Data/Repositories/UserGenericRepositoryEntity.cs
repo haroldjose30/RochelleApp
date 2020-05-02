@@ -1,10 +1,10 @@
+using System;
 using System.Diagnostics;
-using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Domain.Identity;
 using Infra.Data.Context;
 using Infra.Data.Repositories.Base;
-using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Repositories
 {
@@ -18,7 +18,8 @@ namespace Infra.Data.Repositories
 
         public async Task<User> GetByLogin(string login)
         {
-            return await _dbSet.Where(u => u.Login == login).FirstOrDefaultAsync();
+            Expression<Func<User, bool>> filterBy = e => e.Login == login && e.Deleted == false;
+            return await base.GetFirstOrDefault(filterBy);
         }
     }
 }

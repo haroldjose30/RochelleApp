@@ -1,6 +1,6 @@
 ﻿using ApplicationBusiness.Authentication;
 using ApplicationBusiness.Companies.CommandHandlers;
-using ApplicationBusiness.Companies.Validations;
+using Domain.Base;
 using Domain.Generals;
 using Domain.Identity;
 using Framework.Core.CommandHandlers;
@@ -58,17 +58,17 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped<INotificationHandler<DeletedGenericEvent<Company>>, DeletedGenericEventHandler<Company>>();
             
             //Company repository
-            services.AddScoped<IGenericRepository<Company>, GenericRepository<Company>>();
+            services.AddScoped<IGenericRepositoryEntity<Company>, GenericRepositoryEntity<Company>>();
         
             
             
-            services.RegisterGenericCrudInterfaces<Customer>();
-            services.RegisterGenericCrudInterfaces<ParamConfiguration>();
-            services.RegisterGenericCrudInterfaces<Product>();
-            services.RegisterGenericCrudInterfaces<User>();
+            services.RegisterGenericCrudEntityWithCompanyInterfaces<Customer>();
+            services.RegisterGenericCrudEntityWithCompanyInterfaces<ParamConfiguration>();
+            services.RegisterGenericCrudEntityWithCompanyInterfaces<Product>();
+            services.RegisterGenericCrudEntityWithCompanyInterfaces<User>();
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
-            services.AddScoped<IUserGenericRepository, UserGenericRepository>();
+            services.AddScoped<IUserGenericRepositoryEntity, UserGenericRepositoryEntity>();
         }
 
        
@@ -76,7 +76,7 @@ namespace Infra.CrossCutting.IoC
     
     public static class ServiceCollectionExtension
     {
-        public static IServiceCollection RegisterGenericCrudInterfaces<TEntity>(this IServiceCollection services)  where TEntity:Entity, new()
+        public static IServiceCollection RegisterGenericCrudEntityInterfaces<TEntity>(this IServiceCollection services)  where TEntity:Entity, new()
         {
             //services
             services.AddScoped<IGenericService<TEntity>, GenericService<TEntity>>();
@@ -89,7 +89,25 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped<INotificationHandler<UpdatedGenericEvent<TEntity>>, UpdatedGenericEventHandler<TEntity>>();
             services.AddScoped<INotificationHandler<DeletedGenericEvent<TEntity>>, DeletedGenericEventHandler<TEntity>>();
             //repository
-            services.AddScoped<IGenericRepository<TEntity>, GenericRepository<TEntity>>();
+            services.AddScoped<IGenericRepositoryEntity<TEntity>, GenericRepositoryEntity<TEntity>>();
+            return services;
+        }
+        
+        
+        public static IServiceCollection RegisterGenericCrudEntityWithCompanyInterfaces<TEntity>(this IServiceCollection services)  where TEntity:EntityWithCompany, new()
+        {
+            //services
+            services.AddScoped<IGenericService<TEntity>, GenericService<TEntity>>();
+            //Command Handlers
+            services.AddScoped<IRequestHandler<CreateGenericCommand<TEntity>,Unit>, CreateGenericCommandHandler<TEntity>>();
+            services.AddScoped<IRequestHandler<UpdateGenericCommand<TEntity>, Unit>, UpdateGenericCommandHandler<TEntity>>();
+            services.AddScoped<IRequestHandler<DeleteGenericCommand<TEntity>, Unit>, DeleteGenericCommandHandler<TEntity>>();
+            //Event Handlers
+            services.AddScoped<INotificationHandler<CreatedGenericEvent<TEntity>>, CreatedGenericEventHandler<TEntity>>();
+            services.AddScoped<INotificationHandler<UpdatedGenericEvent<TEntity>>, UpdatedGenericEventHandler<TEntity>>();
+            services.AddScoped<INotificationHandler<DeletedGenericEvent<TEntity>>, DeletedGenericEventHandler<TEntity>>();
+            //repository
+            services.AddScoped<IGenericRepositoryEntityWithCompany<TEntity>, GenericRepositoryEntityWithCompany<TEntity>>();
             return services;
         }
     }

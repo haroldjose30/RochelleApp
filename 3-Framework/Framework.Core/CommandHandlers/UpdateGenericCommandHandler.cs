@@ -12,16 +12,16 @@ namespace Framework.Core.CommandHandlers
 {
    public class UpdateGenericCommandHandler<TEntity> : CommandHandler, IRequestHandler<UpdateGenericCommand<TEntity>> where TEntity : Entity
     {
-        private readonly IGenericRepository<TEntity> genericRepository;
+        private readonly IGenericRepositoryEntity<TEntity> genericRepositoryEntity;
 
-        public UpdateGenericCommandHandler(IGenericRepository<TEntity> genericRepository,
+        public UpdateGenericCommandHandler(IGenericRepositoryEntity<TEntity> genericRepositoryEntity,
             IUnitOfWork uow,
             IMediatorHandler bus,
             INotificationHandler<DomainNotification> notifications) : base(uow,
             bus,
             notifications)
         {
-            this.genericRepository = genericRepository;
+            this.genericRepositoryEntity = genericRepositoryEntity;
         }
 
         public virtual async Task<Unit> Handle(UpdateGenericCommand<TEntity> request, CancellationToken cancellationToken)
@@ -34,7 +34,7 @@ namespace Framework.Core.CommandHandlers
             //verify if entity was valid
             request.ValidationResult = request.Entity.GetValidationResult();
 
-            await genericRepository.Update(request.Entity);
+            await genericRepositoryEntity.Update(request.Entity);
 
             if (!request.IsValid())
             {
@@ -43,7 +43,7 @@ namespace Framework.Core.CommandHandlers
             }
 
 
-            await genericRepository.Update(request.Entity);
+            await genericRepositoryEntity.Update(request.Entity);
 
             if (await CommitAsync())
             {

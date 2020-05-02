@@ -5,7 +5,6 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using ApplicationBusiness.Authentication;
 using Domain.Identity;
-using FluentValidation.Internal;
 using Framework.Core.Models;
 using Framework.Core.Notifications;
 using MediatR;
