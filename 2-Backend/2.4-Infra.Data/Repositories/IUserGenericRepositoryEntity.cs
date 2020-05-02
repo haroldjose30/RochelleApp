@@ -5,7 +5,7 @@ using Infra.Data.Repositories.Base;
 
 namespace Infra.Data.Repositories
 {
-    public interface IUserGenericRepository:  IGenericRepositoryWithCompany<User> 
+    public interface IUserGenericRepositoryEntity:  IGenericRepositoryEntityWithCompany<User> 
     {
         Task<User> GetByLogin(string login);
     }

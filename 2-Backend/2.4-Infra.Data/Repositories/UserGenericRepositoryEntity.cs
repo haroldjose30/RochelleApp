@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Repositories
 {
-    public class UserGenericRepository : GenericRepositoryWithCompany<User>, IUserGenericRepository
+    public class UserGenericRepositoryEntity : GenericRepositoryEntityWithCompany<User>, IUserGenericRepositoryEntity
     {
-        public UserGenericRepository(DbContextGeneric context)
+        public UserGenericRepositoryEntity(DbContextGeneric context)
             : base(context)
         {
             Debug.WriteLine("User");

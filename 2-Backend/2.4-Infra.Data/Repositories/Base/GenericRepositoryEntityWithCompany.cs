@@ -10,11 +10,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Repositories.Base
 {
-    public class GenericRepositoryWithCompany<TEntity> : GenericRepository<TEntity>,
-        IGenericRepositoryWithCompany<TEntity>
+    public class GenericRepositoryEntityWithCompany<TEntity> : GenericRepositoryEntity<TEntity>,
+        IGenericRepositoryEntityWithCompany<TEntity>
          where TEntity : EntityWithCompany
     {
-        public GenericRepositoryWithCompany(DbContextGeneric dbContext) : base(dbContext)
+        public GenericRepositoryEntityWithCompany(DbContextGeneric dbContext) : base(dbContext)
         {
 
         }
